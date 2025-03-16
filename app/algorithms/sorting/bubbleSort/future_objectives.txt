@@ -1,0 +1,6 @@
+1. add building breaking effects tot he model in 3d 
+ ---  i think for breaking effects we can make it like this, the building goes in the ground and then they gets swap when they are not visible and then gets swaped and then they come up the surface
+2. optimize the model more 
+3. understand the code better for 3d 
+
+4. add a tutorial for the 3d model view change like zoom in and out, host mouse  left button and change position and extra 
