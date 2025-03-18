@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTheme } from "../../../context/ThemeContext";
-import { useSorting } from "../context/SortingContext";
+import { useSorting } from "../SortingContext";
 import { useWarnings } from "../../../context/WarningContext";
 
 const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {

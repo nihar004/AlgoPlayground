@@ -3,14 +3,13 @@
 import { WarningProvider } from "./context/WarningContext";
 import Warning from "./Components/common/Warning";
 import { useAppContext } from "./context/AppContext";
-import { algorithms } from "./algorithms/registry/algo";
+import { path } from "./algorithms/registry/path.js";
 
 export default function Home() {
-  const { currentCategory, currentAlgorithm } = useAppContext();
+  const { currentCategory } = useAppContext();
 
   // Get the selected algorithm component
-  const SelectedAlgorithm =
-    algorithms[currentCategory]?.[currentAlgorithm]?.component;
+  const SelectedAlgorithm = path[currentCategory];
 
   return (
     <>

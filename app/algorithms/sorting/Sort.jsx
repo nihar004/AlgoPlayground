@@ -1,9 +1,9 @@
-import SortingLeftPanel from "../layout/SortingLeftPanel";
-import SortingRightPanel from "../layout/SortingRightPanel";
-import VisualizationArea from "../layout/VisualizationArea";
-import { SortingProvider } from "../context/SortingContext";
+import SortingLeftPanel from "./layout/SortingLeftPanel";
+import SortingRightPanel from "./layout/SortingRightPanel";
+import VisualizationArea from "./layout/VisualizationArea";
+import { SortingProvider } from "./SortingContext";
 
-function BubbleSort() {
+function Sort() {
   return (
     <SortingProvider>
       <main className="w-full mx-auto p-4 relative">
@@ -27,4 +27,4 @@ function BubbleSort() {
   );
 }
 
-export default BubbleSort;
+export default Sort;

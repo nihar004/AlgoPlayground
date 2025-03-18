@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
 import GenerateArrayMenu from "./GenerateArrayMenu";
 import { useWarnings } from "../../../context/WarningContext";
-import { useSorting } from "../context/SortingContext";
+import { useSorting } from "../SortingContext";
 
 const SortingLeftPanel = () => {
   const [isExpanded, setIsExpanded] = useState(false);

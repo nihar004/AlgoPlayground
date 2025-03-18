@@ -5,7 +5,7 @@ import { TextureLoader } from "three";
 import * as THREE from "three";
 import { useWarnings } from "../../../context/WarningContext";
 import { useTheme } from "../../../context/ThemeContext";
-import { useSorting } from "../context/SortingContext";
+import { useSorting } from "../SortingContext";
 
 // FPS monitoring component
 const FPSMonitor = ({ onFPSChange }) => {

@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import ProgressBar from "../../../Components/controls/ProgressBar";
 import Controls from "../../../Components/controls/Controls";
 import { useTheme } from "../../../context/ThemeContext";
-import { useSorting } from "../context/SortingContext";
+import { useSorting } from "../SortingContext";
 import SortingVisualization3D from "./SortingVisualization3D";
 import { useWarnings } from "../../../context/WarningContext";
 

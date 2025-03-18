@@ -1,15 +1,14 @@
 import { useTheme } from "../../../context/ThemeContext";
 import { Info, Copy, Check } from "lucide-react";
-import { useSorting } from "../context/SortingContext";
-import { languageAndHighlight } from "../bubbleSort/languageAndHighlight.js";
+import { useSorting } from "../SortingContext";
 import { useState, useRef, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   materialLight,
   atomDark,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { metadata } from "../bubbleSort/metadata";
 import { languages } from "../../registry/lang.js";
+import { useAppContext } from "@/app/context/AppContext";
 
 const SortingRightPanel = () => {
   const { isDarkMode } = useTheme();
@@ -18,6 +17,86 @@ const SortingRightPanel = () => {
   const [fontSize, setFontSize] = useState(14); // Start with default font size
   const [isCopied, setIsCopied] = useState(false);
   const codeContainerRef = useRef(null);
+  const { currentAlgorithm } = useAppContext();
+  const [metadata, setMetadata] = useState({
+    timeComplexity: { best: "N/A", average: "N/A", worst: "N/A" },
+    spaceComplexity: "N/A",
+  });
+
+  const [codeData, setCodeData] = useState({ code: "// Loading Code..." });
+  const [highlightedLines, setHighlightedLines] = useState({
+    lineHighlighting: {},
+  });
+
+  // Load algorithm-Specific data when algorithm changes
+  useEffect(() => {
+    if (!currentAlgorithm) return;
+
+    // Load metadata
+    import(`../${currentAlgorithm}Sort/metadata.js`)
+      .then((module) => {
+        setMetadata(
+          module.metadata || {
+            timeComplexity: { best: "N/A", average: "N/A", worst: "N/A" },
+            spaceComplexity: "N/A",
+          }
+        );
+      })
+      .catch((err) => {
+        console.log(`Failed to load metadata for ${currentAlgorithm}:`, err);
+        setMetadata({
+          timeComplexity: { best: "N/A", average: "N/A", worst: "N/A" },
+          spaceComplexity: "N/A",
+        });
+      });
+
+    // Load language and highlighting data
+    updateCodeDataForCurrentAlgorithm();
+  }, [currentAlgorithm]);
+
+  // Update code data when language changes
+  useEffect(() => {
+    if (currentAlgorithm) {
+      updateCodeDataForCurrentAlgorithm();
+    }
+  }, [selectedLanguage]);
+
+  const updateCodeDataForCurrentAlgorithm = () => {
+    import(`../${currentAlgorithm}Sort/languageAndHighlight.js`)
+      .then((module) => {
+        const langData = module.languageAndHighlight || {};
+
+        if (langData[selectedLanguage]) {
+          setCodeData(langData[selectedLanguage]);
+        } else {
+          setCodeData({
+            code: `// Code not available for ${selectedLanguage}`,
+          });
+        }
+
+        // Update highlighted lines after setting code data
+        updateHighlightedLines(langData);
+      })
+      .catch((err) => {
+        console.error(`Failed to load code for ${currentAlgorithm}:`, err);
+        setCodeData({ code: `// Failed to load code for ${currentAlgorithm}` });
+        setHighlightedLines([]);
+      });
+  };
+
+  // Helper function to update highlighted lines based on current step
+  const updateHighlightedLines = (langData = null) => {
+    if (langData) {
+      // If languageData is provided, use it directly
+      if (langData[selectedLanguage]?.lineHighlighting) {
+        setHighlightedLines(langData[selectedLanguage]);
+      } else {
+        setHighlightedLines({
+          lineHighlighting: {},
+        });
+      }
+    }
+  };
 
   const handleCopyCode = async () => {
     try {
@@ -30,14 +109,8 @@ const SortingRightPanel = () => {
   };
 
   const currentStep = sortingStates[currentStateIndex] || {};
-  const highlightedLines =
-    languageAndHighlight[selectedLanguage]?.lineHighlighting[
-      currentStep.action
-    ] || [];
-
-  const codeData = languageAndHighlight[selectedLanguage] || {
-    code: "// Code not found",
-  };
+  const currHighlightedLines =
+    highlightedLines?.lineHighlighting?.[currentStep.action] || [];
 
   // Function to check for horizontal scroll and adjust font size
   const adjustFontSize = () => {
@@ -158,7 +231,7 @@ const SortingRightPanel = () => {
               margin: 0,
             }}
             lineProps={(lineNumber) =>
-              highlightedLines.includes(lineNumber)
+              currHighlightedLines.includes(lineNumber)
                 ? {
                     style: {
                       backgroundColor: isDarkMode ? "#52525B" : "#E4E4E7",

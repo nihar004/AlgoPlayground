@@ -1,4 +1,4 @@
-import { useSorting } from "../../algorithms/sorting/context/SortingContext";
+import { useSorting } from "../../algorithms/sorting/SortingContext";
 import { useTheme } from "../../context/ThemeContext";
 
 const ProgressBar = () => {

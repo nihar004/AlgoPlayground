@@ -1,6 +1,6 @@
 import { useTheme } from "../../context/ThemeContext";
 import { SkipForward, SkipBack, RefreshCcw, Play, Pause } from "lucide-react";
-import { useSorting } from "../../algorithms/sorting/context/SortingContext";
+import { useSorting } from "../../algorithms/sorting/SortingContext";
 import { useEffect } from "react";
 
 const Controls = () => {
