@@ -74,7 +74,7 @@ const VisualizationArea = () => {
   };
 
   // Calculate the maximum value in the array for scaling
-  const maxValue = Math.max(...(sortingStates[currentStateIndex].array || []));
+  const maxValue = Math.max(...(sortingStates[currentStateIndex]?.array || []));
 
   // Update container width on mount and resize
   useEffect(() => {

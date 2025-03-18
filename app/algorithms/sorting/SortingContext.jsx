@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { generateStates } from "./bubbleSort/StateGenerator";
+import { useAppContext } from "@/app/context/AppContext";
 
 const SortingContext = createContext();
 
@@ -7,16 +7,34 @@ export const SortingProvider = ({ children }) => {
   const [size, setSize] = useState(9); // Add size state
   const [array, setArray] = useState([5, 3, 8, 4, 2, 3, 5, 6, 8]); // Default array
   const [is3D, setIs3D] = useState(false);
-  const [sortingStates, setSortingStates] = useState(generateStates(array));
+  const [sortingStates, setSortingStates] = useState([]);
 
   const [currentStateIndex, setCurrentStateIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(1); // Default speed (1000ms per step)
+  const { currentAlgorithm } = useAppContext();
 
   useEffect(() => {
-    setSortingStates(generateStates(array)); // Regenerate states when array changes
-    setCurrentStateIndex(0); // Reset index
-  }, [array]);
+    if (!currentAlgorithm) return;
+
+    import(`./${currentAlgorithm}Sort/StateGenerator`)
+      .then((module) => {
+        // Assuming each module exports a generateStates function
+        const generateStates = module.generateStates;
+        const newStates = generateStates(array);
+        setSortingStates(newStates);
+        setCurrentStateIndex(0);
+      })
+      .catch((err) => {
+        console.error(
+          `Failed to load StateGenerator for ${currentAlgorithm}:`,
+          err
+        );
+        // Optionally, fallback to an empty state or a default generator
+        setSortingStates([]);
+        setCurrentStateIndex(0);
+      });
+  }, [currentAlgorithm, array]);
 
   useEffect(() => {
     let interval;

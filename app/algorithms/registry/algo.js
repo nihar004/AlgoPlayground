@@ -10,8 +10,17 @@ export const algorithms = {
       id: "selection",
       name: "Selection Sort",
     },
-    // quick: {
-    //   id: "quick",
-    //   name: "Quick Sort",
+    insertion: {
+      id: "insertion",
+      name: "Insertion Sort",
+    },
+    quick: {
+      id: "quick",
+      name: "Quick Sort",
+    },
+    merge: {
+      id: "merge",
+      name: "Merge Sort",
+    },
   },
 };
