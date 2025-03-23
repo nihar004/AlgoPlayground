@@ -97,7 +97,7 @@ export const generateStates = (arr, target) => {
     right: -1,
     mid: -1,
     action: "not-found",
-    description: "Element not found in the array.",
+    description: `Element not found in the array. Left pointer (${left}) exceeded right pointer (${right}), so exiting the search.`,
   });
 
   return states;

@@ -8,8 +8,13 @@ import { algorithms } from "@/app/algorithms/registry/algo.js";
 
 const Header = () => {
   const { isDarkMode } = useTheme();
-  const { currentCategory } = useAppContext();
+  const { currentCategory, changeAlgorithm } = useAppContext();
   const algoNames = Object.values(algorithms[currentCategory]);
+
+  const handleAlgorithmChange = (event) => {
+    const selectedAlgoId = event.target.value;
+    changeAlgorithm(selectedAlgoId); // Update the currentAlgorithm in context
+  };
 
   return (
     <>
@@ -41,6 +46,7 @@ const Header = () => {
                     ? "bg-white border-zinc-200"
                     : "bg-zinc-700 border-zinc-700"
                 }`}
+                onChange={handleAlgorithmChange} // Attach event handler
               >
                 {algoNames.map((algo) => (
                   <option key={algo.id} value={algo.id}>
