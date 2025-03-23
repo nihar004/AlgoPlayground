@@ -1,6 +1,6 @@
 import { useTheme } from "../../../context/ThemeContext";
 import { Info, Copy, Check } from "lucide-react";
-import { useSorting } from "../SortingContext";
+import { useSearching } from "../SearchingContext";
 import { useState, useRef, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
@@ -10,9 +10,9 @@ import {
 import { languages } from "../../registry/lang.js";
 import { useAppContext } from "@/app/context/AppContext";
 
-const SortingRightPanel = () => {
+const SearchingRightPanel = () => {
   const { isDarkMode } = useTheme();
-  const { states, currentStateIndex } = useSorting();
+  const { states, currentStateIndex } = useSearching();
   const [selectedLanguage, setSelectedLanguage] = useState("cpp");
   const [fontSize, setFontSize] = useState(14); // Start with default font size
   const [isCopied, setIsCopied] = useState(false);
@@ -33,7 +33,7 @@ const SortingRightPanel = () => {
     if (!currentAlgorithm) return;
 
     // Load metadata
-    import(`../${currentAlgorithm}Sort/metadata.js`)
+    import(`../${currentAlgorithm}Search/metadata.js`)
       .then((module) => {
         setMetadata(
           module.metadata || {
@@ -62,7 +62,7 @@ const SortingRightPanel = () => {
   }, [selectedLanguage]);
 
   const updateCodeDataForCurrentAlgorithm = () => {
-    import(`../${currentAlgorithm}Sort/languageAndHighlight.js`)
+    import(`../${currentAlgorithm}Search/languageAndHighlight.js`)
       .then((module) => {
         const langData = module.languageAndHighlight || {};
 
@@ -134,7 +134,7 @@ const SortingRightPanel = () => {
         <div className="flex items-center gap-2">
           {/* Message */}
           <p className="text-sm">
-            {currentStep.description || "Sorting in progress..."}
+            {currentStep.description || "Searching in progress..."}
           </p>
 
           {/* Indicator Box */}
@@ -266,4 +266,4 @@ const SortingRightPanel = () => {
   );
 };
 
-export default SortingRightPanel;
+export default SearchingRightPanel;

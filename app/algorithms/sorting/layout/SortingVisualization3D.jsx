@@ -254,8 +254,8 @@ const Scene = ({ currentState, isDarkMode, performanceMode, size }) => {
 const SortingVisualization3D = () => {
   const { addWarning } = useWarnings();
   const { isDarkMode } = useTheme();
-  const { sortingStates, currentStateIndex, size } = useSorting();
-  const currentState = sortingStates[currentStateIndex] || { array: [] };
+  const { states, currentStateIndex, size } = useSorting();
+  const currentState = states[currentStateIndex] || { array: [] };
   const [fps, setFPS] = useState(60);
   const [performanceMode, setPerformanceMode] = useState(false);
 

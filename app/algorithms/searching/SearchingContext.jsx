@@ -1,27 +1,29 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useAppContext } from "@/app/context/AppContext";
 
-const SortingContext = createContext();
+const SearchContext = createContext();
 
-export const SortingProvider = ({ children }) => {
-  const [size, setSize] = useState(9); // Add size state
-  const [array, setArray] = useState([5, 3, 8, 4, 2, 3, 5, 6, 8]); // Default array
-  const [is3D, setIs3D] = useState(false);
+export const SearchingProvider = ({ children }) => {
+  const [size, setSize] = useState(10); // Add size state
+  const [array, setArray] = useState([
+    37, -43, -84, -14, -23, -30, 79, -7, -38, 17,
+  ]); // Default array
   const [states, setStates] = useState([]);
 
   const [currentStateIndex, setCurrentStateIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [speed, setSpeed] = useState(1); // Default speed (1000ms per step)
   const { currentAlgorithm } = useAppContext();
+  const [target, setTarget] = useState(79);
 
   useEffect(() => {
     if (!currentAlgorithm) return;
 
-    import(`./${currentAlgorithm}Sort/StateGenerator`)
+    import(`./${currentAlgorithm}Search/StateGenerator`)
       .then((module) => {
         // Assuming each module exports a generateStates function
         const generateStates = module.generateStates;
-        const newStates = generateStates(array);
+        const newStates = generateStates(array, target);
         setStates(newStates);
         setCurrentStateIndex(0);
       })
@@ -34,7 +36,7 @@ export const SortingProvider = ({ children }) => {
         setStates([]);
         setCurrentStateIndex(0);
       });
-  }, [currentAlgorithm, array]);
+  }, [currentAlgorithm, array, target]);
 
   useEffect(() => {
     let interval;
@@ -66,7 +68,7 @@ export const SortingProvider = ({ children }) => {
   };
 
   return (
-    <SortingContext.Provider
+    <SearchContext.Provider
       value={{
         array,
         setArray,
@@ -82,13 +84,13 @@ export const SortingProvider = ({ children }) => {
         reset,
         nextStep,
         prevStep,
-        is3D,
-        setIs3D,
+        target,
+        setTarget,
       }}
     >
       {children}
-    </SortingContext.Provider>
+    </SearchContext.Provider>
   );
 };
 
-export const useSorting = () => useContext(SortingContext);
+export const useSearching = () => useContext(SearchContext);

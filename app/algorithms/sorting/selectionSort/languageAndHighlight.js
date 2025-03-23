@@ -1,15 +1,17 @@
 export const languageAndHighlight = {
   cpp: {
     code: `void selectionSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
+    // Iterating through each element in the array
+    for (int i = 0; i < n - 1; i++) {  
+        // Finding the minimum element in the unsorted portion of the array
         int minIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            // Compare with current minimum
-            if (arr[j] < arr[minIndex]) {
+        for (int j = i + 1; j < n; j++) {  
+            // Compare the current element with the current minimum
+            if (arr[j] < arr[minIndex]) {  
                 minIndex = j;
             }
         }
-        // Swap if a smaller element was found
+        // Swapping the smallest element found with the first element of the unsorted part
         if (minIndex != i) {
             swap(arr[i], arr[minIndex]);
         }
@@ -17,26 +19,30 @@ export const languageAndHighlight = {
 }`,
     lineHighlighting: {
       start: [1],
-      "new-min": [3],
+      initialize: [3],
+      "initialize-j": [4],
       compare: [5, 6],
-      "update-min": [7],
-      swap: [10, 11],
-      "bar-complete": [2],
+      "update-min": [6],
+      "find-min-complete": [],
+      swap: [9, 10],
+      "increment-i": [3],
       complete: [],
     },
   },
   java: {
-    code: `void selectionSort(int arr[]) {
+    code: `public static void selectionSort(int[] arr) {
     int n = arr.length;
-    for (int i = 0; i < n - 1; i++) {
+    // Iterating through each element in the array
+    for (int i = 0; i < n - 1; i++) {  
+        // Finding the minimum element in the unsorted portion of the array
         int minIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            // Compare with current minimum
-            if (arr[j] < arr[minIndex]) {
+        for (int j = i + 1; j < n; j++) {  
+            // Compare the current element with the current minimum
+            if (arr[j] < arr[minIndex]) {  
                 minIndex = j;
             }
         }
-        // Swap if a smaller element was found
+        // Swapping the smallest element found with the first element of the unsorted part
         if (minIndex != i) {
             int temp = arr[i];
             arr[i] = arr[minIndex];
@@ -46,62 +52,71 @@ export const languageAndHighlight = {
 }`,
     lineHighlighting: {
       start: [1],
-      "new-min": [3],
-      compare: [5, 6],
+      initialize: [4],
+      "initialize-j": [5],
+      compare: [6, 7],
       "update-min": [7],
+      "find-min-complete": [],
       swap: [10, 11, 12, 13],
-      "bar-complete": [2],
+      "increment-i": [4],
       complete: [],
     },
   },
   python: {
     code: `def selection_sort(arr):
     n = len(arr)
+    # Iterating through each element in the array
     for i in range(n - 1):
+        # Finding the minimum element in the unsorted portion of the array
         min_index = i
         for j in range(i + 1, n):
-            # Compare with current minimum
+            # Compare the current element with the current minimum
             if arr[j] < arr[min_index]:
                 min_index = j
-        # Swap if a smaller element was found
+        # Swapping the smallest element found with the first element of the unsorted part
         if min_index != i:
             arr[i], arr[min_index] = arr[min_index], arr[i]
-    return arr`,
+`,
     lineHighlighting: {
       start: [1],
-      "new-min": [3],
-      compare: [5, 6],
+      initialize: [3],
+      "initialize-j": [5],
+      compare: [6, 7],
       "update-min": [7],
+      "find-min-complete": [],
       swap: [9, 10],
-      "bar-complete": [2],
+      "increment-i": [3],
       complete: [],
     },
   },
   javascript: {
     code: `function selectionSort(arr) {
     let n = arr.length;
+    // Iterating through each element in the array
     for (let i = 0; i < n - 1; i++) {
+        // Finding the minimum element in the unsorted portion of the array
         let minIndex = i;
         for (let j = i + 1; j < n; j++) {
-            // Compare with current minimum
+            // Compare the current element with the current minimum
             if (arr[j] < arr[minIndex]) {
                 minIndex = j;
             }
         }
-        // Swap if a smaller element was found
+        // Swapping the smallest element found with the first element of the unsorted part
         if (minIndex !== i) {
             [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
         }
     }
-    return arr;
 }`,
     lineHighlighting: {
       start: [1],
-      "new-min": [3],
-      compare: [5, 6],
+      initialize: [3],
+      "initialize-j": [5],
+      compare: [6, 7],
       "update-min": [7],
-      swap: [10, 11],
-      "bar-complete": [2],
+      "find-min-complete": [],
+      swap: [9, 10],
+      "increment-i": [3],
       complete: [],
     },
   },

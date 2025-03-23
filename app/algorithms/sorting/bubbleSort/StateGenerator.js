@@ -2,6 +2,7 @@ export const generateStates = (arr) => {
   const states = [];
   const array = [...arr];
   const completedBars = [];
+  let swapped;
 
   states.push({
     array: [...array],
@@ -18,10 +19,12 @@ export const generateStates = (arr) => {
     j: -2,
     action: "initialize",
     completedBars: [],
-    description: `Initialize i and j to 0`,
+    description: "Initialize i and j to 0.",
   });
 
   for (let i = 0; i < array.length; i++) {
+    swapped = false; // Track if any swap happens
+
     for (let j = 0; j < array.length - i - 1; j++) {
       states.push({
         array: [...array],
@@ -29,18 +32,19 @@ export const generateStates = (arr) => {
         j,
         action: "compare",
         completedBars: [...completedBars],
-        description: `Comparing elements ${array[j]} and ${array[j + 1]}`,
+        description: `Comparing elements ${array[j]} and ${array[j + 1]}.`,
       });
 
       if (array[j] > array[j + 1]) {
         [array[j], array[j + 1]] = [array[j + 1], array[j]];
+        swapped = true;
         states.push({
           array: [...array],
           i,
           j,
           action: "swap",
           completedBars: [...completedBars],
-          description: `Swapping ${array[j]} and ${array[j + 1]}`,
+          description: `Swapping ${array[j]} and ${array[j + 1]}.`,
         });
       }
 
@@ -50,11 +54,22 @@ export const generateStates = (arr) => {
         j: j + 1,
         action: "increment-j",
         completedBars: [...completedBars],
-        description: `Incrementing j to ${j + 1}`,
+        description: `Incrementing j to ${j + 1}.`,
       });
     }
 
-    // Add a state to mark bars at the end as completed
+    if (!swapped) {
+      states.push({
+        array: [...array],
+        i,
+        j: -2,
+        action: "early-stop",
+        completedBars: [...completedBars],
+        description: "Array is already sorted, stopping early!",
+      });
+      break;
+    }
+
     completedBars.push(array.length - i - 1);
     states.push({
       array: [...array],
@@ -73,7 +88,7 @@ export const generateStates = (arr) => {
       j: 0,
       action: "increment-i",
       completedBars: [...completedBars],
-      description: `Incrementing i to ${i + 1}`,
+      description: `Incrementing i to ${i + 1}.`,
     });
   }
 

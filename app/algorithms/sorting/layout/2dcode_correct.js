@@ -9,13 +9,13 @@ import { useWarnings } from "../../../context/WarningContext";
 const VisualizationArea = () => {
   const { isDarkMode } = useTheme();
   const [showAutoAdjustOption, setShowAutoAdjustOption] = useState(false);
-  const { states, currentStateIndex, setArray, setSize, is3D, setIs3D } =
+  const { sortingStates, currentStateIndex, setArray, setSize, is3D, setIs3D } =
     useSorting();
   const { addWarning } = useWarnings();
   const [containerWidth, setContainerWidth] = useState(800);
   const containerRef = useRef(null);
 
-  const currentState = states[currentStateIndex];
+  const currentState = sortingStates[currentStateIndex];
 
   // Check if array meets 3D visualization requirements
   const checkArrayRequirements = (array) => {
@@ -74,7 +74,7 @@ const VisualizationArea = () => {
   };
 
   // Calculate the maximum value in the array for scaling
-  const maxValue = Math.max(...(states[currentStateIndex]?.array || []));
+  const maxValue = Math.max(...(sortingStates[currentStateIndex]?.array || []));
 
   // Update container width on mount and resize
   useEffect(() => {
@@ -148,17 +148,17 @@ const VisualizationArea = () => {
         {showAutoAdjustOption && (
           <div
             className={`
-              absolute
-              top-4
-              right-4
-              z-10
-              px-4
-              py-2
-              rounded-md
-              shadow-lg
-              flex
-              items-center
-              justify-between
+              absolute 
+              top-4 
+              right-4 
+              z-10 
+              px-4 
+              py-2 
+              rounded-md 
+              shadow-lg 
+              flex 
+              items-center 
+              justify-between 
               font-medium
               ${
                 !isDarkMode
@@ -173,15 +173,15 @@ const VisualizationArea = () => {
             <button
               onClick={autoAdjustArray}
               className={`
-                px-3
-                py-1
-                rounded
-                text-sm
-                font-medium
-                transition-colors
+                px-3 
+                py-1 
+                rounded 
+                text-sm 
+                font-medium 
+                transition-colors 
                 duration-200
                 bg-blue-500 text-white
-                hover:bg-blue-600
+                hover:bg-blue-600              
               `}
             >
               Adjust
@@ -189,14 +189,14 @@ const VisualizationArea = () => {
             <button
               onClick={() => setShowAutoAdjustOption(false)}
               className={`
-                px-3
-                py-1
-                rounded
-                text-sm
-                font-medium
-                transition-colors
+                px-3 
+                py-1 
+                rounded 
+                text-sm 
+                font-medium 
+                transition-colors 
                 duration-200
-                ml-2 bg-blue-500 text-white hover:bg-blue-600
+                ml-2 bg-blue-500 text-white hover:bg-blue-600                
               `}
             >
               Cancel
@@ -250,6 +250,7 @@ const VisualizationArea = () => {
             })}
 
             {/* Indices Container */}
+
             <div
               className="flex items-center justify-center w-full p-8 absolute -bottom-6"
               style={{ gap: `${gap}px` }}

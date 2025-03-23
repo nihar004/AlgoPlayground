@@ -4,5 +4,5 @@ export const metadata = {
     worst: "O(n²)", // When the array is sorted in reverse order
     average: "O(n²)", // General case
   },
-  spaceComplexity: "O(1)", // In-place sorting algorithm
+  spaceComplexity: "O(1)", // Insertion Sort is an in-place sorting algorithm
 };

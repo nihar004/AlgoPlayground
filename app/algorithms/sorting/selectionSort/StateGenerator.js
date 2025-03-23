@@ -1,37 +1,46 @@
-export const generateStates = (arr) => {
+export const generateSelectionSortStates = (arr) => {
   const states = [];
   const array = [...arr];
-  const completedBars = [];
 
   states.push({
     array: [...array],
-    i: -2,
-    j: -2,
+    i: -1,
+    j: -1,
+    minIndex: -1,
     action: "start",
-    completedBars: [],
     description: "Starting selection sort...",
   });
 
   for (let i = 0; i < array.length - 1; i++) {
-    let minIndex = i;
-
     states.push({
       array: [...array],
       i,
       j: -1,
-      action: "new-min",
-      completedBars: [...completedBars],
-      description: ` Starting new pass: assuming element at index ${i} (${array[i]}) is the smallest.`,
+      minIndex: i,
+      action: "initialize",
+      description: `Setting i to ${i}. Starting to find the minimum from index ${i} onwards.`,
     });
 
+    states.push({
+      array: [...array],
+      i,
+      j: i + 1,
+      minIndex: i,
+      action: "initialize-j",
+      description: `Setting j to ${
+        i + 1
+      } and iterating through the unsorted portion.`,
+    });
+
+    let minIndex = i;
     for (let j = i + 1; j < array.length; j++) {
       states.push({
         array: [...array],
         i,
         j,
+        minIndex,
         action: "compare",
-        completedBars: [...completedBars],
-        description: `Comparing current min ${array[minIndex]} with ${array[j]}`,
+        description: `Comparing elements ${array[j]} and ${array[minIndex]}, as ${array[minIndex]} is smaller, hence no change.`,
       });
 
       if (array[j] < array[minIndex]) {
@@ -40,43 +49,62 @@ export const generateStates = (arr) => {
           array: [...array],
           i,
           j,
+          minIndex,
           action: "update-min",
-          completedBars: [...completedBars],
-          description: ` Found new minimum at index ${minIndex} (${array[minIndex]})`,
+          description: `${array[j]} is smaller. Updating the minimum index to ${j}.`,
         });
       }
     }
+
+    states.push({
+      array: [...array],
+      i,
+      j: -1,
+      minIndex,
+      action: "find-min-complete",
+      description: `Minimum element ${array[minIndex]} found for this iteration.`,
+    });
 
     if (minIndex !== i) {
       [array[i], array[minIndex]] = [array[minIndex], array[i]];
       states.push({
         array: [...array],
         i,
-        j: minIndex,
+        j: -1,
+        minIndex,
         action: "swap",
-        completedBars: [...completedBars],
-        description: `Swapping ${array[minIndex]} and ${array[i]}`,
+        description: `Swapping ${array[minIndex]} with ${array[i]}.`,
       });
     }
 
-    completedBars.push(i);
     states.push({
       array: [...array],
       i,
-      j: -2,
+      j: -1,
+      minIndex,
       action: "bar-complete",
-      completedBars: [...completedBars],
-      description: `Element ${array[i]} is now in its correct position.`,
+      description: `Element ${array[i]} is now at its correct position!`,
+    });
+
+    states.push({
+      array: [...array],
+      i: i + 1,
+      j: -1,
+      minIndex: -1,
+      action: "increment-i",
+      description: `Incrementing i to ${
+        i + 1
+      } to place the next smallest element.`,
     });
   }
 
   states.push({
     array: [...array],
-    i: array.length - 1,
-    j: -2,
-    action: "bar-complete",
-    completedBars: [...completedBars, array.length - 1],
-    description: "Sorting complete! 🎉",
+    i: array.length,
+    j: -1,
+    minIndex: -1,
+    action: "complete",
+    description: "Selection sort complete! 🎉",
   });
 
   return states;

@@ -1,113 +1,42 @@
-// export const generateBinarySearchStates = (arr, target) => {
-//   const states = [];
-//   const array = [...arr].sort((a, b) => a - b); // Binary search requires a sorted array
-//   let left = 0,
-//     right = array.length - 1;
-
-//   states.push({
-//     array: [...array],
-//     left,
-//     right,
-//     mid: -1,
-//     action: "start",
-//     description: "Starting binary search...",
-//   });
-
-//   while (left <= right) {
-//     let mid = Math.floor((left + right) / 2);
-
-//     states.push({
-//       array: [...array],
-//       left,
-//       right,
-//       mid,
-//       action: "calculate-mid",
-//       description: `Calculating mid: ${mid}, Value: ${array[mid]}`,
-//     });
-
-//     if (array[mid] === target) {
-//       states.push({
-//         array: [...array],
-//         left,
-//         right,
-//         mid,
-//         action: "found",
-//         description: `Element found at index ${mid}!`,
-//       });
-//       return states;
-//     }
-
-//     if (array[mid] < target) {
-//       states.push({
-//         array: [...array],
-//         left,
-//         right,
-//         mid,
-//         action: "move-right",
-//         description: `The target is greater than ${array[mid]}, so we move to the right half`,
-//       });
-//       left = mid + 1;
-//     } else {
-//       states.push({
-//         array: [...array],
-//         left,
-//         right,
-//         mid,
-//         action: "move-left",
-//         description: `The target is smaller than ${array[mid]}, so we move to the left half`,
-//       });
-//       right = mid - 1;
-//     }
-//   }
-
-//   states.push({
-//     array: [...array],
-//     left,
-//     right,
-//     mid: -1,
-//     action: "not-found",
-//     description: "Element not found in the array.",
-//   });
-
-//   return states;
-// };
-
 export const generateStates = (arr, target) => {
   const states = [];
-  const array = [...arr].sort((a, b) => a - b); // Binary search requires a sorted array
-  let left = 0,
-    right = array.length - 1;
+  const array = [...arr];
+  let left = 0;
+  let right = array.length - 1;
 
+  // Start State
+  states.push({
+    array: [...array],
+    left: -1,
+    right: -1,
+    mid: -1,
+    action: "start",
+    description: "Starting binary search...",
+  });
+
+  // Initialize State
   states.push({
     array: [...array],
     left,
     right,
     mid: -1,
-    action: "start",
-    description: "Starting the binary search...",
+    action: "initialize",
+    description: `Initializing left to ${left} and right to ${right}.`,
   });
 
   while (left <= right) {
-    let mid = Math.floor((left + right) / 2);
-
+    // Calculate Mid State
+    const mid = Math.floor((left + right) / 2);
     states.push({
       array: [...array],
       left,
       right,
       mid,
       action: "calculate-mid",
-      description: `Checking the middle element at index ${mid}: ${array[mid]}`,
+      description: `Calculating mid index: (${left} + ${right}) / 2 = ${mid}.`,
     });
 
-    states.push({
-      array: [...array],
-      left,
-      right,
-      mid,
-      action: "check-mid",
-      description: `Is ${array[mid]} the number we're looking for?`,
-    });
-
+    // Compare Mid with Target State
     if (array[mid] === target) {
       states.push({
         array: [...array],
@@ -115,41 +44,60 @@ export const generateStates = (arr, target) => {
         right,
         mid,
         action: "found",
-        description: `Element found at index ${mid}! 🎯`,
+        description: `Element ${array[mid]} at index ${mid} matches the target value ${target}.`,
       });
       return states;
-    }
-
-    if (array[mid] < target) {
+    } else if (array[mid] < target) {
       states.push({
         array: [...array],
         left,
         right,
         mid,
-        action: "move-right",
-        description: `The target is greater than ${array[mid]}, so we move to the right half ➡`,
+        action: "compare-mid-smaller",
+        description: `Element ${array[mid]} at index ${mid} is smaller than the target value ${target}. Searching the right half.`,
       });
+
       left = mid + 1;
+      // Adjust Pointers - Left Increment
+      states.push({
+        array: [...array],
+        left,
+        right,
+        mid,
+        action: "adjust-pointers-left",
+        description: ` Increasing left to ${left} (mid+1) as the target is greater than ${array[mid]}.`,
+      });
     } else {
       states.push({
         array: [...array],
         left,
         right,
         mid,
-        action: "move-left",
-        description: `The target is smaller than ${array[mid]}, so we move to the left half ⬅`,
+        action: "compare-mid-larger",
+        description: `Element ${array[mid]} at index ${mid} is larger than the target value ${target}. Searching the left half.`,
       });
+
       right = mid - 1;
+      // Adjust Pointers - Right Decrement
+      states.push({
+        array: [...array],
+        left,
+        right,
+        mid,
+        action: "adjust-pointers-right",
+        description: `Decreasing right to ${right} (mid-1) as the target is smaller than ${array[mid]}.`,
+      });
     }
   }
 
+  // Not Found State
   states.push({
     array: [...array],
-    left,
-    right,
+    left: -1,
+    right: -1,
     mid: -1,
     action: "not-found",
-    description: "Element not found in the array. ❌",
+    description: "Element not found in the array.",
   });
 
   return states;

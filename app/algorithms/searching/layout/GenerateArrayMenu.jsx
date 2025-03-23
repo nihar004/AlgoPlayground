@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useTheme } from "../../../context/ThemeContext";
-import { useSorting } from "../SortingContext";
+import { useSearching } from "../SearchingContext";
 import { useWarnings } from "../../../context/WarningContext";
 
 const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
   const [selectedOption, setSelectedOption] = useState("random");
   const [manualInput, setManualInput] = useState("");
   const { isDarkMode } = useTheme();
-  const { setArray, size, setSize, play } = useSorting();
+  const { setArray, size, setSize, play } = useSearching();
   const { addWarning } = useWarnings();
 
   const generateOptions = [
     { id: "random", label: "Random" },
     { id: "sorted", label: "Sorted" },
     { id: "nearlySorted", label: "Nearly Sorted" },
-    { id: "reversed", label: "Reverse Sorted" },
-    { id: "duplicates", label: "Many Duplicates" },
     { id: "manual", label: "Manual Input" },
   ];
 
@@ -26,8 +24,8 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
 
   const generateArray = () => {
     let newArray = [];
-    const min = 1; // Keeping minimum as 1 to avoid zero in any operation
-    const max = 50;
+    const min = -100;
+    const max = 100;
 
     switch (selectedOption) {
       case "random":
@@ -46,15 +44,6 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
           [newArray[idx1], newArray[idx2]] = [newArray[idx2], newArray[idx1]];
         }
         break;
-      case "duplicates":
-        const possibleValues = Array.from({ length: 5 }, () =>
-          getRandomNumber(min, max)
-        );
-        newArray = Array.from(
-          { length: size },
-          () => possibleValues[getRandomNumber(0, possibleValues.length - 1)]
-        );
-        break;
       case "sorted":
         // Create a strictly increasing array starting from min (1)
         newArray = Array.from({ length: size }, (_, i) => {
@@ -68,22 +57,6 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
         // Sort to ensure strictly increasing
         newArray.sort((a, b) => a - b);
         break;
-
-      case "reversed":
-        // Create a strictly decreasing array starting from max down to min (1)
-        newArray = Array.from({ length: size }, (_, i) => {
-          // Reverse the logic of sorted array, ensuring values start at max and go down to min
-          return Math.max(
-            min,
-            Math.floor(((size - 1 - i) / (size - 1)) * (max - min)) -
-              getRandomNumber(0, 5) +
-              min
-          );
-        });
-        // Sort to ensure strictly decreasing
-        newArray.sort((a, b) => b - a);
-        break;
-
       case "manual":
         // Parse the input string into an array of numbers
         const parsedArray = manualInput
@@ -98,12 +71,12 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
         }
 
         // Check if there are at least 5 elements
-        if (parsedArray.length < 3) {
-          addWarning("Please enter at least 3 valid numbers.", 5000);
+        if (parsedArray.length < 5) {
+          addWarning("Please enter at least 5 valid numbers.", 5000);
           return;
         }
 
-        // Validate the range (1-50) and filter out invalid numbers
+        // Validate the range (-100 to 100) and filter out invalid numbers
         const validNumbers = [];
         const invalidNumbers = [];
 
@@ -130,11 +103,13 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
           newArray = validNumbers;
         } else {
           // If no valid numbers, don't proceed
-          addWarning("No valid numbers in the range 1-50 were provided", 5000);
+          addWarning(
+            "No valid numbers in the range -100 to 100 were provided",
+            5000
+          );
           return;
         }
         break;
-
       default:
         newArray = [];
     }
@@ -184,7 +159,7 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
                   !isDarkMode ? "text-gray-600" : "text-gray-300"
                 }`}
               >
-                *Numbers must be between 1 and 50
+                *Numbers must be between -100 to 100
               </div>
             </div>
           )}

@@ -23,4 +23,14 @@ export const algorithms = {
       name: "Merge Sort",
     },
   },
+  Searching: {
+    linear: {
+      id: "linear",
+      name: "Linear Search",
+    },
+    binary: {
+      id: "binary",
+      name: "Binary Search",
+    },
+  },
 };

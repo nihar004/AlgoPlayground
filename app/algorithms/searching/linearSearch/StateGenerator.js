@@ -2,66 +2,52 @@ export const generateStates = (arr, target) => {
   const states = [];
   const array = [...arr];
 
+  // Initial state
   states.push({
     array: [...array],
     i: -1,
     action: "start",
-    foundIndex: -1,
-    description: "Starting linear search...",
+    description: `Starting linear search...`,
   });
 
-  states.push({
-    array: [...array],
-    i: 0,
-    action: "initialize",
-    foundIndex: -1,
-    description: "Initializing index i to 0.",
-  });
-
+  // Iterate through the array
   for (let i = 0; i < array.length; i++) {
+    // Compare state
     states.push({
       array: [...array],
       i,
       action: "compare",
-      foundIndex: -1,
-      description: `Comparing ${array[i]} with target ${target}.`,
+      description: `Comparing element at index ${i} with the target value ${target}.`,
     });
 
     if (array[i] === target) {
+      // Found state
       states.push({
         array: [...array],
         i,
         action: "found",
-        foundIndex: i,
-        description: `Target ${target} found at index ${i}!`,
+        description: `Element found at index ${i}!`,
       });
-
-      states.push({
-        array: [...array],
-        i,
-        action: "complete",
-        foundIndex: i,
-        description: "Search complete!",
-      });
-
       return states;
     }
 
+    // Increment i state
     states.push({
       array: [...array],
-      i,
+      i: i + 1,
       action: "increment-i",
-      foundIndex: -1,
-      description: `Incrementing i to ${i + 1}.`,
+      description: ` Values don't match. Moving to the next index ${
+        i + 1
+      } to continue the search.`,
     });
   }
 
+  // Not found state
   states.push({
     array: [...array],
-    i: array.length,
+    i: -1,
     action: "not-found",
-    foundIndex: -1,
-    description: `Target ${target} not found in the array.`,
+    description: "Element not found in the array.",
   });
 
   return states;
