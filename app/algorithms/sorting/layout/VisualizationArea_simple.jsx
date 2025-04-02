@@ -5,8 +5,9 @@ import { useTheme } from "../../../context/ThemeContext";
 import { useSorting } from "../SortingContext";
 import SortingVisualization3D from "./SortingVisualization3D";
 import { useWarnings } from "../../../context/WarningContext";
+import { useAppContext } from "@/app/context/AppContext";
 
-const VisualizationArea = () => {
+const VisualizationAreaSimple = () => {
   const { isDarkMode } = useTheme();
   const [showAutoAdjustOption, setShowAutoAdjustOption] = useState(false);
   const { states, currentStateIndex, setArray, setSize, is3D, setIs3D } =
@@ -14,6 +15,7 @@ const VisualizationArea = () => {
   const { addWarning } = useWarnings();
   const [containerWidth, setContainerWidth] = useState(800);
   const containerRef = useRef(null);
+  const { currentAlgorithm } = useAppContext();
 
   const currentState = states[currentStateIndex];
 
@@ -90,11 +92,45 @@ const VisualizationArea = () => {
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  const getBarColor = (index) => {
+  const getBarColorMap = {
+    bubble: (index) => {
+      // Bubble sort specific color logic
+      return getBarColor_bubble(index);
+    },
+    selection: (index) => {
+      // Selection sort specific color logic
+      return getBarColor_selection(index);
+    },
+    insertion: (index) => {
+      // Insertion sort specific color logic
+      return getBarColor_insertion(index);
+    },
+  };
+
+  // For Insertion Sort
+  const getBarColor_insertion = (index) => {
+    switch (currentState.action) {
+      case "shift":
+        if (index > currentState.j && index <= currentState.i)
+          return "bg-rose-500";
+        break;
+      case "section-sorted":
+        if (index <= currentState.i) return "bg-green-500";
+        break;
+    }
+
+    if (index === currentState.i) return "bg-amber-500"; // Current key
+    if (index === currentState.j) return "bg-sky-500"; // Comparison element
+
+    return isDarkMode ? "bg-slate-400" : "bg-slate-200"; // Default unsorted color
+  };
+
+  // For Bubble Sort
+  const getBarColor_bubble = (index) => {
     // Color bars green if they are in the completed bars list
     if (
-      currentState.completedBars &&
-      currentState.completedBars.includes(index)
+      currentState.action === "complete" ||
+      (currentState.completedBars && currentState.completedBars.includes(index))
     ) {
       return "bg-green-500";
     }
@@ -104,8 +140,42 @@ const VisualizationArea = () => {
       return currentState.action === "swap" ? "bg-red-600" : "bg-yellow-400";
     }
 
+    // Highlight the entire array in blue when early stop happens
+    if (currentState.action === "early-stop") {
+      return "bg-green-300";
+    }
+
     // Default color is blue, especially at the start
     return "bg-blue-500";
+  };
+
+  // For Selection Sort
+  const getBarColor_selection = (index) => {
+    // Current outer loop index (i)
+    if (index === currentState.i) {
+      return "bg-blue-500"; // Soft blue to highlight current iteration
+    }
+
+    // Current minimum element
+    if (index === currentState.minIndex) {
+      return "bg-yellow-400"; // Keeping yellow to highlight min element
+    }
+
+    // Elements being compared or swapped
+    if (
+      currentState.action === "swap" &&
+      (index === currentState.i || index === currentState.minIndex)
+    ) {
+      return "bg-red-500"; // Red for active swapping
+    }
+
+    // Sorted portion (completed elements)
+    if (index <= currentState.i) {
+      return "bg-green-500"; // Teal to indicate sorted portion
+    }
+
+    // Default unsorted elements
+    return isDarkMode ? "bg-slate-400" : "bg-slate-200"; // Default unsorted color
   };
 
   // Calculate dynamic bar width based on array length (max 30)
@@ -213,7 +283,7 @@ const VisualizationArea = () => {
           // 2D visualization code
           <div
             ref={containerRef}
-            className="flex items-end justify-center h-full w-full p-8 mb-2"
+            className="flex items-end justify-center h-full w-full p-8 mb-10"
             style={{ gap: `${gap}px` }}
           >
             {currentState?.array.map((value, index) => {
@@ -221,10 +291,8 @@ const VisualizationArea = () => {
               const heightPercentage = Math.max((value / maxValue) * 85, 3);
 
               // Determine text visibility and styling
-              const isTextVisible = value > 0;
               const textStyle = {
                 fontSize: barWidth < 35 ? "0.6rem" : "0.875rem", // text-xs : text-sm
-                color: "white",
                 fontWeight: 600,
                 textAlign: "center",
                 position: "absolute",
@@ -236,51 +304,74 @@ const VisualizationArea = () => {
               return (
                 <div
                   key={index}
-                  className={`rounded-t-xs transition-all duration-500 relative ${getBarColor(
-                    index
-                  )}`}
+                  className={`rounded-t-xs transition-all duration-500 relative ${
+                    currentAlgorithm !== "merge" &&
+                    getBarColorMap[currentAlgorithm](index)
+                  }`}
                   style={{
                     height: `${heightPercentage}%`,
                     width: `${barWidth}px`,
                   }}
                 >
-                  <div style={textStyle}>{value}</div>
+                  <div
+                    className={`${isDarkMode ? "text-zinc-800" : "text-white"}`}
+                    style={textStyle}
+                  >
+                    {value}
+                  </div>
                 </div>
               );
             })}
 
+            {currentAlgorithm === "insertion" && (
+              <div
+                className={`absolute top-18 right-10 rounded-lg px-3 py-1 text-md font-bold text-blue-900 ${
+                  !isDarkMode ? "bg-blue-200 " : "bg-blue-200"
+                }`}
+              >
+                <span className="opacity-60 mr-2">Key:</span>
+                {currentState.key || "_"}
+              </div>
+            )}
+
             {/* Indices Container */}
             <div
-              className="flex items-center justify-center w-full p-8 absolute -bottom-6"
+              className="flex items-center justify-center w-full p-8 absolute -bottom-8"
               style={{ gap: `${gap}px` }}
             >
               {currentState?.array.map((_, index) => (
                 <div
                   key={index}
                   className="flex flex-col items-center relative transition-all duration-300 ease-in-out"
-                  style={{ width: `${barWidth}px` }}
+                  style={{ width: `${barWidth}px`, height: "3rem" }}
                 >
-                  {/* Index (Only visible if j is NOT at this position) */}
-                  {currentState.j !== index && (
-                    <div
-                      className={`text-center ${
-                        !isDarkMode ? "text-zinc-500" : "text-zinc-300"
-                      } ${barWidth < 35 ? "text-xs" : "text-sm"}`}
-                    >
-                      {index}
-                    </div>
-                  )}
+                  <div className="flex items-center justify-center space-x-1">
+                    {/* i indicator replacing index when it matches */}
+                    {currentState.i === index && (
+                      <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-medium">
+                        i
+                      </div>
+                    )}
 
-                  {/* j indicator replacing index when it matches */}
-                  {currentState.j === index && (
-                    <div
-                      className={
-                        "p-1 rounded-md text-xs font-bold bg-blue-200 text-blue-800 transition-all duration-400 ease-in-out"
-                      }
-                    >
-                      j = {index}
-                    </div>
-                  )}
+                    {currentState.j === index && (
+                      <div className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center text-white text-sm font-medium">
+                        j
+                      </div>
+                    )}
+                    {currentState.minIndex === index && (
+                      <div className="w-6 h-5 rounded-sm bg-purple-400 flex items-center justify-center text-white text-xs font-medium">
+                        min
+                      </div>
+                    )}
+                  </div>
+
+                  <div
+                    className={`text-center ${
+                      !isDarkMode ? "text-zinc-500" : "text-zinc-300"
+                    } ${barWidth < 35 ? "text-xs" : "text-sm"}`}
+                  >
+                    {index}
+                  </div>
                 </div>
               ))}
             </div>
@@ -331,4 +422,4 @@ const VisualizationArea = () => {
   );
 };
 
-export default VisualizationArea;
+export default VisualizationAreaSimple;

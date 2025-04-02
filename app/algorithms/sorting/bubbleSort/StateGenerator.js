@@ -65,7 +65,8 @@ export const generateStates = (arr) => {
         j: -2,
         action: "early-stop",
         completedBars: [...completedBars],
-        description: "Array is already sorted, stopping early!",
+        description:
+          "No swaps were performed in this pass, meaning the array is already sorted. stopping early!",
       });
       break;
     }

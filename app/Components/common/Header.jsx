@@ -29,7 +29,6 @@ const Header = () => {
         <div className="w-full px-1 mx-auto flex justify-between items-center">
           <div className="flex items-center gap-4">
             <a href="#" className="flex items-center">
-              {/* <img src={logo} alt="logo" className="h-10 w-auto" /> */}
               <Image
                 src="/logo.png"
                 alt="logo"

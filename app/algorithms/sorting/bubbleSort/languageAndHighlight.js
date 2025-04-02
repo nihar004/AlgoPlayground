@@ -23,7 +23,7 @@ export const languageAndHighlight = {
       "increment-j": [5],
       compare: [6, 7],
       swap: [8, 9],
-      "early-stop": [11],
+      "early-stop": [13, 14],
       complete: [],
     },
   },
@@ -53,8 +53,8 @@ export const languageAndHighlight = {
       "increment-j": [5],
       compare: [6, 7],
       swap: [8, 9, 10, 11],
-      "early-stop": [13],
-      complete: [],
+      "early-stop": [15, 16],
+      complete: [15, 16],
     },
   },
   python: {
@@ -70,8 +70,7 @@ export const languageAndHighlight = {
                 swapped = True
         # Early stop if no swaps were done
         if not swapped:
-            break
-    return arr`,
+            break`,
     lineHighlighting: {
       start: [1],
       initialize: [3, 4],
@@ -79,7 +78,7 @@ export const languageAndHighlight = {
       "increment-j": [5],
       compare: [6, 7],
       swap: [8, 9],
-      "early-stop": [11, 12],
+      "early-stop": [12, 13],
       complete: [],
     },
   },
@@ -107,7 +106,7 @@ export const languageAndHighlight = {
       "increment-j": [5],
       compare: [6, 7],
       swap: [8, 9],
-      "early-stop": [11],
+      "early-stop": [13, 14],
       complete: [],
     },
   },

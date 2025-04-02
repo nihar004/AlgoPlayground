@@ -1,5 +1,4 @@
 import "./globals.css";
-import Header from "@/app/Components/common/Header";
 import { ThemeProvider } from "@/app/context/ThemeContext";
 import { AppProvider } from "@/app/context/AppContext";
 
@@ -17,10 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="min-h-screen transition-colors duration-500 ease-in-out">
         <AppProvider>
-          <ThemeProvider>
-            <Header />
-            {children}
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </AppProvider>
       </body>
     </html>

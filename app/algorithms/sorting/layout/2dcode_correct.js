@@ -9,13 +9,13 @@ import { useWarnings } from "../../../context/WarningContext";
 const VisualizationArea = () => {
   const { isDarkMode } = useTheme();
   const [showAutoAdjustOption, setShowAutoAdjustOption] = useState(false);
-  const { sortingStates, currentStateIndex, setArray, setSize, is3D, setIs3D } =
+  const { states, currentStateIndex, setArray, setSize, is3D, setIs3D } =
     useSorting();
   const { addWarning } = useWarnings();
   const [containerWidth, setContainerWidth] = useState(800);
   const containerRef = useRef(null);
 
-  const currentState = sortingStates[currentStateIndex];
+  const currentState = states[currentStateIndex];
 
   // Check if array meets 3D visualization requirements
   const checkArrayRequirements = (array) => {
@@ -74,7 +74,7 @@ const VisualizationArea = () => {
   };
 
   // Calculate the maximum value in the array for scaling
-  const maxValue = Math.max(...(sortingStates[currentStateIndex]?.array || []));
+  const maxValue = Math.max(...(states[currentStateIndex]?.array || []));
 
   // Update container width on mount and resize
   useEffect(() => {
