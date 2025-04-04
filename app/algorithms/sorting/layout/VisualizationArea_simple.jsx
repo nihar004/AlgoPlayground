@@ -330,7 +330,7 @@ const VisualizationAreaSimple = () => {
                 }`}
               >
                 <span className="opacity-60 mr-2">Key:</span>
-                {currentState.key || "_"}
+                {currentState ? currentState.key : "_"}
               </div>
             )}
 

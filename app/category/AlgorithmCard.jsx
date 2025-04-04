@@ -23,12 +23,13 @@ const AlgorithmCard = ({ categoryData, data }) => {
   };
 
   // Handle click on explore button
-  const handleExploreClick = () => {
+  const handleExploreClick = (data) => {
     // Set the category and the first algorithm as default
-    setCurrentCategory(data.id);
+    setCurrentCategory(data.name);
     if (algorithmsArray.length > 0) {
       setCurrentAlgorithm(algorithmsArray[0].id);
     }
+
     router.push("/");
   };
 
@@ -92,7 +93,7 @@ const AlgorithmCard = ({ categoryData, data }) => {
           {/* Explore button */}
 
           <button
-            onClick={handleExploreClick}
+            onClick={() => handleExploreClick(data)}
             className={`w-full py-2.5 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 relative overflow-hidden group border-1 ${`bg-gradient-to-r ${data.button} text-white`}`}
           >
             <span className="relative z-10 flex items-center justify-center">
