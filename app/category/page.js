@@ -974,7 +974,7 @@ const AlgorithmsPage = () => {
                     isDarkMode ? "text-zinc-300" : "text-zinc-700"
                   }`}
                 >
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
                 <div className="flex items-center">
                   <div
