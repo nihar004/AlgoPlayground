@@ -934,9 +934,9 @@ const AlgorithmsPage = () => {
               {
                 quote:
                   "I use AlgoPlayground in my algorithm classes. The interactive elements keep students engaged and help visualize abstract concepts.",
-                name: "Dr. Kiran Soni",
+                name: "Dr. Rahul Soni",
                 title: "CS Professor",
-                avatar: "S",
+                avatar: "R",
               },
               {
                 quote:
@@ -1329,7 +1329,7 @@ const AlgorithmsPage = () => {
                         : "text-zinc-600 hover:text-blue-600"
                     } transition-colors`}
                   >
-                    Blog & Articles
+                    Blog &amp; Articles
                   </a>
                 </li>
                 <li>
