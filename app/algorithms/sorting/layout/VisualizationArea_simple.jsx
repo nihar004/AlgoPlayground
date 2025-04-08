@@ -365,10 +365,7 @@ const VisualizationAreaSimple = () => {
                     width: `${barWidth}px`,
                   }}
                 >
-                  <div
-                    className={`${isDarkMode ? "text-zinc-800" : "text-white"}`}
-                    style={textStyle}
-                  >
+                  <div className="text-white" style={textStyle}>
                     {value}
                   </div>
                 </div>
