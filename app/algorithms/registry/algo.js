@@ -33,6 +33,32 @@ export const algorithms = {
       name: "Binary Search",
     },
   },
+  LinkedList: {
+    singly: {
+      id: "ll-singly",
+      name: "Singly Linked List",
+      ops: {
+        traversal: { id: "ll-singly-traverse", name: "Traversal" },
+        insert: { id: "ll-singly-insert", name: "Insertion" },
+        delete: { id: "ll-singly-delete", name: "Deletion" },
+      },
+    },
+    doubly: {
+      id: "ll-doubly",
+      name: "Doubly Linked List",
+      ops: {
+        insertHead: { id: "ll-doubly-insert-head", name: "Head Insertion" },
+        deleteTail: { id: "ll-doubly-delete-tail", name: "Tail Deletion" },
+      },
+    },
+    circular: {
+      id: "ll-circular",
+      name: "Circular Linked List",
+      ops: {
+        josephus: { id: "ll-circular-josephus", name: "Josephus Problem" },
+      },
+    },
+  },
 };
 
 export const algorithmCardData = {

@@ -57,7 +57,51 @@ const Header = () => {
               </select>
             )}
           </div>
-          <DarkModeToggle />
+          <div className="flex items-center space-x-6">
+            <nav className="hidden md:flex space-x-8 mr-8">
+              <a
+                href="#"
+                className={`font-medium text-sm transition-colors duration-200 ${
+                  isDarkMode
+                    ? "text-zinc-300 hover:text-white"
+                    : "text-zinc-600 hover:text-zinc-900"
+                } hover:scale-105 transition-transform`}
+              >
+                Home
+              </a>
+              <a
+                href="/category"
+                className={`font-medium text-sm relative transition-all duration-200 ${
+                  isDarkMode ? "text-blue-400" : "text-blue-600"
+                } hover:scale-105`}
+              >
+                Algorithms
+              </a>
+              {/* <a
+                href="#"
+                className={`font-medium text-sm relative transition-all duration-200 ${
+                  isDarkMode ? "text-blue-400" : "text-blue-600"
+                } after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 ${
+                  isDarkMode
+                    ? "after:bg-gradient-to-r after:from-blue-400 after:to-purple-400"
+                    : "after:bg-gradient-to-r after:from-blue-600 after:to-indigo-600"
+                } after:-bottom-1 hover:scale-105`}
+              >
+                Algorithms
+              </a> */}
+              <a
+                href="#"
+                className={`font-medium text-sm transition-colors duration-200 ${
+                  isDarkMode
+                    ? "text-zinc-300 hover:text-white"
+                    : "text-zinc-600 hover:text-zinc-900"
+                } hover:scale-105 transition-transform`}
+              >
+                About Us
+              </a>
+            </nav>
+            <DarkModeToggle />
+          </div>
         </div>
       </nav>
     </>
