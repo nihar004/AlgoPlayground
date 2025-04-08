@@ -8,7 +8,8 @@ import { algorithms } from "@/app/algorithms/registry/algo.js";
 
 const Header = () => {
   const { isDarkMode } = useTheme();
-  const { currentCategory, changeAlgorithm } = useAppContext();
+  const { currentCategory, currentAlgorithm, changeAlgorithm } =
+    useAppContext();
   const algoNames = Object.values(algorithms[currentCategory]);
 
   const handleAlgorithmChange = (event) => {
@@ -40,6 +41,7 @@ const Header = () => {
             <h1 className="text-2xl font-bold">{currentCategory}</h1>
             {algoNames.length > 0 && (
               <select
+                value={currentAlgorithm}
                 className={`px-3 py-1 outline-none rounded-sm border ${
                   !isDarkMode
                     ? "bg-white border-zinc-200"

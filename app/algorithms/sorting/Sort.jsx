@@ -15,7 +15,7 @@ function Sort() {
 
   useEffect(() => {
     // If the algorithm requires a complex visualization, load it dynamically.
-    if (currentAlgorithm === "merge" || currentAlgorithm === "quick") {
+    if (currentAlgorithm === "merge") {
       const loadComplexVisualization = async () => {
         try {
           const complexModule = await import(

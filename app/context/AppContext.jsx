@@ -10,8 +10,8 @@ export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
   // Core states for tracking selections
-  const [currentCategory, setCurrentCategory] = useState("Searching");
-  const [currentAlgorithm, setCurrentAlgorithm] = useState("binary"); // Make sure this matches your registry
+  const [currentCategory, setCurrentCategory] = useState("Sorting");
+  const [currentAlgorithm, setCurrentAlgorithm] = useState("merge"); // Make sure this matches your registry
 
   const changeCategory = (category) => {
     if (algorithms[category]) {

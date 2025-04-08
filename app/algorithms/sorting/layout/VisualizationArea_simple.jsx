@@ -10,7 +10,7 @@ import { useAppContext } from "@/app/context/AppContext";
 const VisualizationAreaSimple = () => {
   const { isDarkMode } = useTheme();
   const [showAutoAdjustOption, setShowAutoAdjustOption] = useState(false);
-  const { states, currentStateIndex, setArray, setSize, is3D, setIs3D } =
+  const { states, currentStateIndex, array, setArray, setSize, is3D, setIs3D } =
     useSorting();
   const { addWarning } = useWarnings();
   const [containerWidth, setContainerWidth] = useState(800);
@@ -105,6 +105,10 @@ const VisualizationAreaSimple = () => {
       // Insertion sort specific color logic
       return getBarColor_insertion(index);
     },
+    quick: (index) => {
+      // Quick sort specific color logic
+      return getBarColor_quick(index);
+    },
   };
 
   // For Insertion Sort
@@ -158,7 +162,7 @@ const VisualizationAreaSimple = () => {
 
     // Current minimum element
     if (index === currentState.minIndex) {
-      return "bg-yellow-400"; // Keeping yellow to highlight min element
+      return "bg-yellow-500"; // Keeping yellow to highlight min element
     }
 
     // Elements being compared or swapped
@@ -176,6 +180,54 @@ const VisualizationAreaSimple = () => {
 
     // Default unsorted elements
     return isDarkMode ? "bg-slate-400" : "bg-slate-200"; // Default unsorted color
+  };
+
+  // For quick sort
+  const getBarColor_quick = (index) => {
+    if (!currentState) return isDarkMode ? "bg-slate-400" : "bg-slate-200";
+
+    // Elements in their final sorted positions
+    if (currentState.correctPositions && currentState.correctPositions[index]) {
+      return "bg-green-500";
+    }
+
+    // Current pivot element
+    if (currentState.pivotIndex === index) {
+      return "bg-purple-500"; // Highlight current pivot
+    }
+
+    // Elements being compared with pivot
+    if (currentState.action === "compare" && index === currentState.j) {
+      return "bg-yellow-400";
+    }
+
+    // Elements being swapped
+    if (
+      (currentState.action === "swap" ||
+        currentState.action === "swap-prepare") &&
+      (index === currentState.i || index === currentState.j)
+    ) {
+      return "bg-rose-500";
+    }
+
+    // When sorting left subarray, shade right subarray lighter
+    if (currentState.action === "sort-left") {
+      // Elements in left subarray (being sorted)
+      if (index >= currentState.low && index <= currentState.high) {
+        return "bg-blue-400";
+      }
+    }
+
+    // When sorting right subarray, shade left subarray lighter
+    if (currentState.action === "sort-right") {
+      // Elements in right subarray (being sorted)
+      if (index >= currentState.low && index <= currentState.high) {
+        return "bg-blue-400";
+      }
+    }
+
+    // Default color for other elements
+    return isDarkMode ? "bg-slate-400" : "bg-slate-200";
   };
 
   // Calculate dynamic bar width based on array length (max 30)
@@ -363,6 +415,17 @@ const VisualizationAreaSimple = () => {
                         min
                       </div>
                     )}
+
+                    {currentAlgorithm === "quick" &&
+                      currentState?.pivotIndex === index && (
+                        <div
+                          className={`${
+                            barWidth < 35 ? "w-6" : "w-10"
+                          } h-5 rounded-sm bg-purple-500 flex items-center justify-center text-white text-xs font-medium`}
+                        >
+                          {barWidth < 35 ? "P" : "Pivot"}
+                        </div>
+                      )}
                   </div>
 
                   <div

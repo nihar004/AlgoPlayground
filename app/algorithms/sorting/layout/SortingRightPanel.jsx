@@ -14,7 +14,6 @@ const SortingRightPanel = () => {
   const { isDarkMode } = useTheme();
   const { states, currentStateIndex } = useSorting();
   const [selectedLanguage, setSelectedLanguage] = useState("cpp");
-  const [fontSize, setFontSize] = useState(14); // Start with default font size
   const [isCopied, setIsCopied] = useState(false);
   const codeContainerRef = useRef(null);
   const { currentAlgorithm } = useAppContext();
@@ -203,7 +202,7 @@ const SortingRightPanel = () => {
             showLineNumbers
             wrapLines
             customStyle={{
-              fontSize: `${fontSize}px`,
+              fontSize: `14px`,
               margin: 0,
             }}
             lineProps={(lineNumber) =>

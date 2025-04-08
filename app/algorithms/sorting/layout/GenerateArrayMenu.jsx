@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTheme } from "../../../context/ThemeContext";
 import { useSorting } from "../SortingContext";
 import { useWarnings } from "../../../context/WarningContext";
+import { useAppContext } from "@/app/context/AppContext";
 
 const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
   const [selectedOption, setSelectedOption] = useState("random");
@@ -9,6 +10,7 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
   const { isDarkMode } = useTheme();
   const { setArray, size, setSize, play } = useSorting();
   const { addWarning } = useWarnings();
+  const { currentAlgorithm } = useAppContext();
 
   const generateOptions = [
     { id: "random", label: "Random" },
