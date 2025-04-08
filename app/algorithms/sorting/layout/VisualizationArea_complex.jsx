@@ -308,7 +308,7 @@ const VisualizationAreaComplex = () => {
             }}
           >
             {/* Value text */}
-            <div className="absolute inset-0 flex items-center justify-center text-center font-bold">
+            <div className="absolute inset-0 flex items-center justify-center text-center font-bold text-white">
               {value}
             </div>
             {/* Add index label for elements at depth 0 */}
