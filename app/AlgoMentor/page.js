@@ -94,8 +94,12 @@ export default function Home() {
           messages: [
             {
               role: "system",
-              content:
-                'You are a code language detector. Respond with a simple JSON object: {"language": "[language]"}. Only valid values for language are: javascript, python, java, cpp. Base detection on syntax patterns and language-specific keywords.',
+              content: `You are a code language detector. Respond with a simple JSON object: 
+                {
+                  &quot;language&quot;: &quot;[language]&quot;
+                }
+                Only valid values for language are: javascript, python, java, cpp.
+                Base detection on syntax patterns and language-specific keywords.`,
             },
             {
               role: "user",
@@ -152,8 +156,12 @@ export default function Home() {
           messages: [
             {
               role: "system",
-              content:
-                "You are a code language detector. Return ONLY the language name (javascript, python, java, or cpp) without any additional text or formatting. Base your detection on syntax and language-specific patterns in the code.",
+              content: `You are a code language detector. Respond with a simple JSON object:
+                {
+                  &quot;language&quot;: &quot;[language]&quot;
+                }
+                Only valid values for language are: javascript, python, java, cpp.
+                Base detection on syntax patterns and language-specific keywords.`,
             },
             {
               role: "user",
