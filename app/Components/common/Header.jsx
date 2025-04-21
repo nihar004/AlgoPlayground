@@ -8,13 +8,41 @@ import { algorithms } from "@/app/algorithms/registry/algo.js";
 
 const Header = () => {
   const { isDarkMode } = useTheme();
-  const { currentCategory, currentAlgorithm, changeAlgorithm } =
-    useAppContext();
+  const {
+    currentCategory,
+    currentAlgorithm,
+    changeAlgorithm,
+    activeTab,
+    changeTab,
+  } = useAppContext();
   const algoNames = Object.values(algorithms[currentCategory]);
 
   const handleAlgorithmChange = (event) => {
     const selectedAlgoId = event.target.value;
     changeAlgorithm(selectedAlgoId); // Update the currentAlgorithm in context
+  };
+
+  const getTabStyles = (tabName) => {
+    const isActive = activeTab === tabName;
+    return `font-medium text-md relative transition-all duration-200 ${
+      isActive
+        ? isDarkMode
+          ? "text-blue-400 font-semibold scale-105"
+          : "text-blue-600 font-semibold scale-105"
+        : isDarkMode
+        ? "text-zinc-300 hover:text-white"
+        : "text-zinc-600 hover:text-zinc-900"
+    } ${
+      isActive
+        ? "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:scale-x-100 " +
+          (isDarkMode
+            ? "after:bg-gradient-to-r after:from-blue-400 after:via-purple-400 after:to-blue-400"
+            : "after:bg-gradient-to-r after:from-blue-600 after:via-indigo-500 after:to-blue-600")
+        : "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 " +
+          (isDarkMode
+            ? "after:bg-gradient-to-r after:from-blue-400/50 after:to-purple-400/50"
+            : "after:bg-gradient-to-r after:from-blue-600/50 after:to-indigo-600/50")
+    }`;
   };
 
   return (
@@ -61,41 +89,41 @@ const Header = () => {
             <nav className="hidden md:flex space-x-8 mr-8">
               <a
                 href="#"
-                className={`font-medium text-sm transition-colors duration-200 ${
-                  isDarkMode
-                    ? "text-zinc-300 hover:text-white"
-                    : "text-zinc-600 hover:text-zinc-900"
-                } hover:scale-105 transition-transform`}
+                className={getTabStyles("Home")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeTab("Home", "/");
+                }}
               >
                 Home
               </a>
               <a
                 href="/category"
-                className={`font-medium text-sm relative transition-all duration-200 ${
-                  isDarkMode ? "text-blue-400" : "text-blue-600"
-                } hover:scale-105`}
+                className={getTabStyles("Algorithms")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeTab("Algorithms", "/category");
+                }}
               >
                 Algorithms
               </a>
-              {/* <a
-                href="#"
-                className={`font-medium text-sm relative transition-all duration-200 ${
-                  isDarkMode ? "text-blue-400" : "text-blue-600"
-                } after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 ${
-                  isDarkMode
-                    ? "after:bg-gradient-to-r after:from-blue-400 after:to-purple-400"
-                    : "after:bg-gradient-to-r after:from-blue-600 after:to-indigo-600"
-                } after:-bottom-1 hover:scale-105`}
+              <a
+                href="/AlgoMentor"
+                className={getTabStyles("AlgoMentor")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeTab("AlgoMentor", "/AlgoMentor");
+                }}
               >
-                Algorithms
-              </a> */}
+                AlgoMentor
+              </a>
               <a
                 href="#"
-                className={`font-medium text-sm transition-colors duration-200 ${
-                  isDarkMode
-                    ? "text-zinc-300 hover:text-white"
-                    : "text-zinc-600 hover:text-zinc-900"
-                } hover:scale-105 transition-transform`}
+                className={getTabStyles("About Us")}
+                onClick={(e) => {
+                  e.preventDefault();
+                  changeTab("About Us", "/about");
+                }}
               >
                 About Us
               </a>

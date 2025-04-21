@@ -1,45 +1,41 @@
 "use client";
 
 import React from "react";
-import { useAppContext } from "../context/AppContext";
-import { useRouter } from "next/navigation";
 import { useTheme } from "../context/ThemeContext";
+import { useRouter } from "next/navigation";
+import { useAppContext } from "../context/AppContext";
+import Marquee from "react-fast-marquee";
 
 const AlgorithmCard = ({ categoryData, data }) => {
   const { isDarkMode } = useTheme();
+  const { changeCategory, changeAlgorithm } = useAppContext();
   const router = useRouter();
-  const { setCurrentCategory, setCurrentAlgorithm } = useAppContext();
 
-  // Convert categoryData object to array for mapping if it's an object
-  const algorithmsArray = Array.isArray(categoryData)
-    ? categoryData
-    : Object.values(categoryData || {});
-
-  // Handle click on an algorithm
-  const handleAlgorithmClick = (algo) => {
-    setCurrentCategory(data.name);
-    setCurrentAlgorithm(algo.id);
-    router.push("/");
+  // Extract colors from button gradient
+  const getGradientColors = () => {
+    const gradientMatch = data.button.match(/from-(.*?)\s+to-(.*?)(\s|$)/);
+    return {
+      from: gradientMatch ? gradientMatch[1] : "blue-500",
+      to: gradientMatch ? gradientMatch[2] : "indigo-500",
+    };
   };
 
-  // Handle click on explore button
-  const handleExploreClick = (data) => {
-    // Set the category and the first algorithm as default
-    setCurrentCategory(data.name);
-    if (algorithmsArray.length > 0) {
-      setCurrentAlgorithm(algorithmsArray[0].id);
-    }
+  const colors = getGradientColors();
+  const algorithmsArray = Object.values(categoryData);
 
+  // Handle algorithm selection
+  const handleAlgorithmClick = (algo) => {
+    changeCategory(data.id);
+    changeAlgorithm(algo.id);
     router.push("/");
   };
 
   return (
     <div className="p-2">
       <div
-        className={`
-          rounded-lg overflow-hidden w-full shadow-xl
-          ${isDarkMode ? " shadow-blue-900/5" : " shadow-blue-500/10"}
-        `}
+        className={`rounded-lg overflow-hidden w-full shadow-xl ${
+          isDarkMode ? "shadow-blue-900/5" : "shadow-blue-500/10"
+        }`}
       >
         {/* Card Content Container */}
         <div
@@ -71,29 +67,36 @@ const AlgorithmCard = ({ categoryData, data }) => {
             className={`mb-4 w-16 h-0.5 rounded-full transition-all duration-500 bg-gradient-to-r ${data.button}`}
           ></div>
 
-          {/* Algorithms list */}
-          <div className="w-full flex flex-wrap justify-center gap-2 mb-6">
-            {algorithmsArray.map((algo, index) => (
-              <span
-                key={algo.id || index}
-                onClick={() => handleAlgorithmClick(algo)}
-                className={`px-3 py-1 text-xs rounded-full transition-all duration-300 cursor-pointer transform hover:scale-105 ${
-                  isDarkMode
-                    ? "bg-blue-900/30 hover:bg-blue-800/40 text-blue-100 hover:text-white"
-                    : "bg-blue-100 hover:bg-blue-200 text-blue-800"
-                } border ${
-                  isDarkMode ? "border-blue-800/30" : "border-blue-200"
-                }`}
-              >
-                {algo.name}
-              </span>
-            ))}
+          {/* Replace the scrolling section with Marquee */}
+          <div className="relative w-full mb-4 overflow-hidden">
+            <Marquee
+              gradient={false}
+              speed={40}
+              pauseOnHover={true}
+              className="py-3"
+            >
+              <div className="flex gap-3 px-2">
+                {algorithmsArray.map((algo, index) => (
+                  <span
+                    key={algo.id || index}
+                    onClick={() => handleAlgorithmClick(algo)}
+                    className={`inline-block px-4 py-2 rounded-full text-sm font-medium text-white border-white
+                  ${
+                    isDarkMode
+                      ? `bg-${colors.from}/40 hover:bg-${colors.to}/50 shadow-lg shadow-${colors.from}/30`
+                      : `bg-${colors.from}/30 hover:bg-${colors.to}/40 shadow-md shadow-${colors.from}/20`
+                  } border `}
+                  >
+                    {algo.name}
+                  </span>
+                ))}
+              </div>
+            </Marquee>
           </div>
 
           {/* Explore button */}
-
           <button
-            onClick={() => handleExploreClick(data)}
+            onClick={() => router.push("/")}
             className={`w-full py-2.5 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 relative overflow-hidden group border-1 ${`bg-gradient-to-r ${data.button} text-white`}`}
           >
             <span className="relative z-10 flex items-center justify-center">

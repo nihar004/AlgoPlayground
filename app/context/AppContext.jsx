@@ -1,6 +1,7 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { algorithms } from "../algorithms/registry/algo";
+import { usePathname, useRouter } from "next/navigation";
 
 // Create the context
 const AppContext = createContext();
@@ -11,12 +12,29 @@ export const useAppContext = () => useContext(AppContext);
 export const AppProvider = ({ children }) => {
   // Core states for tracking selections
   const [currentCategory, setCurrentCategory] = useState("Sorting");
-  const [currentAlgorithm, setCurrentAlgorithm] = useState("bubble"); // Make sure this matches your registry
+  const [currentAlgorithm, setCurrentAlgorithm] = useState("bubble");
+  const [activeTab, setActiveTab] = useState("Algorithms");
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Sync active tab with the current URL path only on initial load
+  useEffect(() => {
+    const getInitialTab = () => {
+      if (pathname === "/") return "Home";
+      if (pathname === "/category" || pathname.includes("/algorithm/"))
+        return "Algorithms";
+      if (pathname === "/AlgoMentor") return "AlgoMentor";
+      if (pathname === "/about") return "About Us";
+      return "Home";
+    };
+
+    setActiveTab(getInitialTab());
+  }, []); // Only run once on mount
 
   const changeCategory = (category) => {
     if (algorithms[category]) {
       setCurrentCategory(category);
-      // Optionally reset algorithm when category changes
       const firstAlgorithm = Object.keys(algorithms[category])[0];
       if (firstAlgorithm) {
         setCurrentAlgorithm(firstAlgorithm);
@@ -30,6 +48,15 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const changeTab = async (tabName, href) => {
+    if (["Home", "Algorithms", "AlgoMentor", "About Us"].includes(tabName)) {
+      setActiveTab(tabName);
+      if (href) {
+        await router.push(href);
+      }
+    }
+  };
+
   // Value object to be provided by the context
   const contextValue = {
     currentCategory,
@@ -38,6 +65,8 @@ export const AppProvider = ({ children }) => {
     setCurrentAlgorithm,
     changeAlgorithm,
     changeCategory,
+    activeTab,
+    changeTab,
   };
 
   return (
