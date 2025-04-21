@@ -156,7 +156,7 @@ export default function Home() {
           messages: [
             {
               role: "system",
-              content: `You are a code language detector. Respond with a simple JSON object:
+              content: `You are a code language detector. Respond with a simple JSON object: 
                 {
                   &quot;language&quot;: &quot;[language]&quot;
                 }
