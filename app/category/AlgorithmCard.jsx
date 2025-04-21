@@ -25,8 +25,23 @@ const AlgorithmCard = ({ categoryData, data }) => {
 
   // Handle algorithm selection
   const handleAlgorithmClick = (algo) => {
-    changeCategory(data.id);
+    // First set the selected algorithm
     changeAlgorithm(algo.id);
+    // Then set its parent category
+    changeCategory(data.name);
+    // Finally navigate to home
+    router.push("/");
+  };
+
+  // Handle explore button click
+  const handleExplore = () => {
+    // Get the first algorithm from the category
+    const firstAlgo = Object.values(categoryData)[0];
+    // Set the selected algorithm
+    changeAlgorithm(firstAlgo.id);
+    // Set its parent category
+    changeCategory(data.name);
+    // Navigate to home
     router.push("/");
   };
 
@@ -96,7 +111,7 @@ const AlgorithmCard = ({ categoryData, data }) => {
 
           {/* Explore button */}
           <button
-            onClick={() => router.push("/")}
+            onClick={handleExplore}
             className={`w-full py-2.5 rounded-lg font-medium text-sm transition-all duration-300 transform hover:scale-105 relative overflow-hidden group border-1 ${`bg-gradient-to-r ${data.button} text-white`}`}
           >
             <span className="relative z-10 flex items-center justify-center">

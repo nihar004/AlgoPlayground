@@ -35,10 +35,6 @@ export const AppProvider = ({ children }) => {
   const changeCategory = (category) => {
     if (algorithms[category]) {
       setCurrentCategory(category);
-      const firstAlgorithm = Object.keys(algorithms[category])[0];
-      if (firstAlgorithm) {
-        setCurrentAlgorithm(firstAlgorithm);
-      }
     }
   };
 
