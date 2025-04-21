@@ -195,12 +195,12 @@ export default function Home() {
                 
                 Response format (strictly follow this structure):
                 {
-                  "isCorrect": boolean,
-                  "explanation": "beginner-friendly explanation",
-                  "correctedCode": "code if needed",
-                  "complexity": {
-                    "time": "Big O notation",
-                    "space": "Big O notation"
+                  &quot;isCorrect&quot;: boolean,
+                  &quot;explanation&quot;: &quot;beginner-friendly explanation&quot;,
+                  &quot;correctedCode&quot;: &quot;code if needed&quot;,
+                  &quot;complexity&quot;: {
+                    &quot;time&quot;: &quot;Big O notation&quot;,
+                    &quot;space&quot;: &quot;Big O notation&quot;
                   }
                 }`,
             },
