@@ -36,6 +36,7 @@ export default function Home() {
   const [code, setCode] = useState(
     "// Enter your algorithm code here\n\nfunction bubbleSort(arr) {\n  let len = arr.length;\n  for (let i = 0; i < len; i++) {\n    for (let j = 0; j < len - 1; j++) {\n      if (arr[j] > arr[j + 1]) {\n        // Swap elements\n        let temp = arr[j];\n        arr[j] = arr[j + 1];\n        arr[j + 1] = temp;\n      }\n    }\n  }\n  return arr;\n}"
   );
+
   const [analysisResults, setAnalysisResults] = useState(null);
   const [showVisualization, setShowVisualization] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
