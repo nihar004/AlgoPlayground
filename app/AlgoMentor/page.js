@@ -156,7 +156,7 @@ export default function Home() {
           messages: [
             {
               role: "system",
-              content: `You are a code language detector. Respond with a simple JSON object: 
+              content: `You are a code language detector. Respond with a simple JSON object:
                 {
                   &quot;language&quot;: &quot;[language]&quot;
                 }
@@ -686,7 +686,8 @@ export default function Home() {
                         <br />
                         2. Implement your algorithm in the editor
                         <br />
-                        3. Click "Analyze Code" to get detailed feedback
+                        3. Click &quot;Analyze Code&quot; to get detailed
+                        feedback
                         <br />
                         4. View step-by-step visualization to understand the
                         execution
