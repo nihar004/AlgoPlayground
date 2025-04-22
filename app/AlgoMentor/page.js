@@ -1,17 +1,17 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import CodeEditor from "./components/CodeEditor";
 import AnalysisResults from "./components/AnalysisResults";
-import Visualization from "./components/Visualization";
 import Header from "../category/Header";
 import Footer from "../category/Footer";
 import { ArrowRight, Sparkle, Zap } from "lucide-react";
 import { NextResponse } from "next/server";
+import VisualizationContainer from "./components/VisualizationContainer";
 
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = "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";
 const MODEL = "llama-3.3-70b-versatile";
 
 // Add this utility function at the top of the file
@@ -174,6 +174,12 @@ export default function Home() {
       });
 
       const detectionData = await detectionResponse.json();
+
+      // Add error checking for the API response
+      if (!detectionData.choices || !detectionData.choices[0]) {
+        throw new Error(`API Error: ${JSON.stringify(detectionData)}`);
+      }
+
       const detectedLang = detectionData.choices[0].message.content
         .trim()
         .toLowerCase();
@@ -223,6 +229,12 @@ export default function Home() {
       });
 
       const analysisData = await analysisResponse.json();
+
+      // Add error checking for the analysis response
+      if (!analysisData.choices || !analysisData.choices[0]) {
+        throw new Error(`Analysis API Error: ${JSON.stringify(analysisData)}`);
+      }
+
       const content = analysisData.choices[0].message.content;
 
       let analysisResult;
@@ -265,9 +277,9 @@ export default function Home() {
       });
     } catch (error) {
       console.error("Analysis error:", error);
-      // Add user feedback
+      // Improved error message
       alert(
-        "Failed to analyze code. Please try again. Error: " + error.message
+        `Failed to analyze code. ${error.message}\nPlease check your API key and try again.`
       );
     } finally {
       setIsAnalyzing(false);
@@ -291,243 +303,374 @@ export default function Home() {
           : "bg-gradient-to-br from-white via-zinc-50 to-blue-50 text-zinc-800"
       }`}
     >
-      <Header title="AlgoMentor" />
+      {/* Only show Header when not in visualization mode */}
+      {!showVisualization && <Header title="AlgoMentor" />}
 
-      <main className="flex-grow">
+      <main className={`flex-grow ${showVisualization ? "h-screen" : ""}`}>
         {!showVisualization ? (
-          <AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {/* Hero Section with animated gradient */}
-              <section className={`relative overflow-hidden py-12 px-6 mb-8`}>
-                {/* Background with animated gradient */}
-                <div
-                  className={`absolute inset-0 z-0 ${
-                    isDarkMode
-                      ? "bg-gradient-to-br from-gray-900 to-gray-800"
-                      : "bg-gradient-to-br from-blue-100 via-indigo-50 to-white"
-                  }`}
-                ></div>
-
-                {/* Decorative circles/blobs */}
-                <div
-                  className={`absolute top-10 left-10 w-64 h-64 rounded-full ${
-                    isDarkMode ? "bg-gray-800" : "bg-blue-200/30"
-                  } blur-3xl`}
-                ></div>
-                <div
-                  className={`absolute bottom-10 right-10 w-80 h-80 rounded-full ${
-                    isDarkMode ? "bg-gray-700" : "bg-indigo-200/30"
-                  } blur-3xl`}
-                ></div>
-
-                <div className="relative z-10">
-                  <motion.h1
-                    className={`text-4xl md:text-5xl font-bold mb-4 tracking-tight ${
+          <>
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Hero Section with animated gradient */}
+                <section className={`relative overflow-hidden py-12 px-6 mb-8`}>
+                  {/* Background with animated gradient */}
+                  <div
+                    className={`absolute inset-0 z-0 ${
                       isDarkMode
-                        ? "bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent"
-                        : "bg-gradient-to-r from-blue-800 via-blue-600 to-indigo-800 bg-clip-text text-transparent"
+                        ? "bg-gradient-to-br from-gray-900 to-gray-800"
+                        : "bg-gradient-to-br from-blue-100 via-indigo-50 to-white"
                     }`}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
-                    Algorithm Analysis & Visualization
-                  </motion.h1>
-                  <motion.p
-                    className={`text-lg max-w-3xl leading-relaxed mb-8 ${
-                      isDarkMode ? "text-zinc-300" : "text-zinc-600"
-                    }`}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    Optimize your algorithms with real-time analysis,
-                    visualization, and comprehensive feedback. Each algorithm
-                    comes with detailed explanations, step-by-step
-                    visualization, and performance metrics.
-                  </motion.p>
+                  ></div>
 
-                  <div className="flex flex-wrap gap-4">
-                    <button
-                      className="group relative px-6 py-3 rounded-lg font-medium text-sm text-white overflow-hidden"
-                      onClick={handleAnalyzeCode}
+                  {/* Decorative circles/blobs */}
+                  <div
+                    className={`absolute top-10 left-10 w-64 h-64 rounded-full ${
+                      isDarkMode ? "bg-gray-800" : "bg-blue-200/30"
+                    } blur-3xl`}
+                  ></div>
+                  <div
+                    className={`absolute bottom-10 right-10 w-80 h-80 rounded-full ${
+                      isDarkMode ? "bg-gray-700" : "bg-indigo-200/30"
+                    } blur-3xl`}
+                  ></div>
+
+                  <div className="relative z-10">
+                    <motion.h1
+                      className={`text-4xl md:text-5xl font-bold mb-4 tracking-tight ${
+                        isDarkMode
+                          ? "bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent"
+                          : "bg-gradient-to-r from-blue-800 via-blue-600 to-indigo-800 bg-clip-text text-transparent"
+                      }`}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:from-blue-500 group-hover:to-indigo-500 transition-all duration-300"></div>
-                      <span className="relative flex items-center gap-2">
-                        Start Analyzing
-                        <ArrowRight width="17" height="17" />
-                      </span>
-                    </button>
-                    <button
-                      className={`relative px-6 py-3 rounded-lg font-medium text-sm overflow-hidden ${
-                        isDarkMode ? "text-white" : "text-zinc-800"
+                      Algorithm Analysis & Visualization
+                    </motion.h1>
+                    <motion.p
+                      className={`text-lg max-w-3xl leading-relaxed mb-8 ${
+                        isDarkMode ? "text-zinc-300" : "text-zinc-600"
+                      }`}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                      Optimize your algorithms with real-time analysis,
+                      visualization, and comprehensive feedback. Each algorithm
+                      comes with detailed explanations, step-by-step
+                      visualization, and performance metrics.
+                    </motion.p>
+
+                    <div className="flex flex-wrap gap-4">
+                      <button
+                        className="group relative px-6 py-3 rounded-lg font-medium text-sm text-white overflow-hidden"
+                        onClick={handleAnalyzeCode}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:from-blue-500 group-hover:to-indigo-500 transition-all duration-300"></div>
+                        <span className="relative flex items-center gap-2">
+                          Start Analyzing
+                          <ArrowRight width="17" height="17" />
+                        </span>
+                      </button>
+                      <button
+                        className={`relative px-6 py-3 rounded-lg font-medium text-sm overflow-hidden ${
+                          isDarkMode ? "text-white" : "text-zinc-800"
+                        }`}
+                      >
+                        <div
+                          className={`absolute inset-0 ${
+                            isDarkMode
+                              ? "bg-slate-700 hover:bg-slate-600"
+                              : "bg-white hover:bg-zinc-50"
+                          } border ${
+                            isDarkMode ? "border-zinc-700" : "border-zinc-200"
+                          } transition-all duration-300`}
+                        ></div>
+                        <span className="relative">View Documentation</span>
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 px-4">
+                  <div
+                    className={`rounded-xl p-6 shadow-xl lg:col-span-1 ${
+                      isDarkMode
+                        ? "bg-gray-800 border border-gray-700"
+                        : "bg-white/80 backdrop-blur-sm border border-zinc-200"
+                    }`}
+                  >
+                    <div className="flex justify-between items-center mb-4">
+                      <h2
+                        className={`text-xl font-semibold ${
+                          isDarkMode ? "text-blue-400" : "text-blue-600"
+                        }`}
+                      >
+                        Problem Statement
+                      </h2>
+                      <div className="relative">
+                        <select
+                          className={`text-sm rounded-md px-3 py-2 border focus:border-transparent appearance-none cursor-pointer pr-8 ${
+                            isDarkMode
+                              ? "bg-slate-700 text-white border-slate-800 outline-none"
+                              : "bg-white text-zinc-800 border-zinc-300 outline-zinc-300"
+                          }`}
+                          onChange={(e) => handleSelectProblem(e.target.value)}
+                          defaultValue=""
+                        >
+                          <option value="" disabled>
+                            Select a problem...
+                          </option>
+                          {sampleProblems.map((problem) => (
+                            <option key={problem.id} value={problem.id}>
+                              {problem.name}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 9l-7 7-7-7"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`relative rounded-lg border overflow-hidden mb-4 ${
+                        isDarkMode
+                          ? "bg-gray-900 border-gray-700"
+                          : "bg-zinc-50 border-zinc-200"
                       }`}
                     >
                       <div
-                        className={`absolute inset-0 ${
+                        className={`absolute top-0 right-0 px-3 py-1 text-xs font-medium rounded-bl-lg ${
                           isDarkMode
-                            ? "bg-slate-700 hover:bg-slate-600"
-                            : "bg-white hover:bg-zinc-50"
-                        } border ${
-                          isDarkMode ? "border-zinc-700" : "border-zinc-200"
-                        } transition-all duration-300`}
-                      ></div>
-                      <span className="relative">View Documentation</span>
-                    </button>
-                  </div>
-                </div>
-              </section>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 px-4">
-                <div
-                  className={`rounded-xl p-6 shadow-xl lg:col-span-1 ${
-                    isDarkMode
-                      ? "bg-gray-800 border border-gray-700"
-                      : "bg-white/80 backdrop-blur-sm border border-zinc-200"
-                  }`}
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <h2
-                      className={`text-xl font-semibold ${
-                        isDarkMode ? "text-blue-400" : "text-blue-600"
-                      }`}
-                    >
-                      Problem Statement
-                    </h2>
-                    <div className="relative">
-                      <select
-                        className={`text-sm rounded-md px-3 py-2 border focus:border-transparent appearance-none cursor-pointer pr-8 ${
-                          isDarkMode
-                            ? "bg-slate-700 text-white border-slate-800 outline-none"
-                            : "bg-white text-zinc-800 border-zinc-300 outline-zinc-300"
+                            ? "bg-gray-800 text-zinc-400"
+                            : "bg-zinc-200 text-zinc-600"
                         }`}
-                        onChange={(e) => handleSelectProblem(e.target.value)}
-                        defaultValue=""
                       >
-                        <option value="" disabled>
-                          Select a problem...
-                        </option>
-                        {sampleProblems.map((problem) => (
-                          <option key={problem.id} value={problem.id}>
-                            {problem.name}
-                          </option>
-                        ))}
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
+                        Problem
+                      </div>
+                      <textarea
+                        className={`w-full h-40 p-4 pt-8 outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent resize-none ${
+                          isDarkMode
+                            ? "bg-transparent text-white placeholder-gray-400"
+                            : "bg-transparent text-zinc-800 placeholder-zinc-400"
+                        }`}
+                        placeholder="Enter the problem statement here..."
+                        value={problemStatement}
+                        onChange={(e) => setProblemStatement(e.target.value)}
+                      ></textarea>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div
+                        className={`border rounded-lg p-4 ${
+                          isDarkMode
+                            ? "bg-blue-600/20 border-blue-800/30"
+                            : "bg-blue-50 border-blue-200"
+                        }`}
+                      >
+                        <h3
+                          className={`text-sm font-medium flex items-center mb-2 ${
+                            isDarkMode ? "text-blue-400" : "text-blue-600"
+                          }`}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 9l-7 7-7-7"
-                          ></path>
-                        </svg>
+                          <svg
+                            className="w-4 h-4 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            ></path>
+                          </svg>
+                          Algorithm Tips
+                        </h3>
+                        <p
+                          className={`text-xs ${
+                            isDarkMode ? "text-zinc-300" : "text-zinc-600"
+                          }`}
+                        >
+                          For optimal results, ensure your code is
+                          well-structured and includes the function declaration
+                          as shown in the template. The analysis engine will
+                          evaluate correctness, efficiency, and best practices.
+                        </p>
+                      </div>
+
+                      <div
+                        className={`rounded-lg p-4 border ${
+                          isDarkMode
+                            ? "bg-gray-900/50 border-zinc-700/50"
+                            : "bg-zinc-50 border-zinc-200"
+                        }`}
+                      >
+                        <h3
+                          className={`text-sm font-medium mb-2 ${
+                            isDarkMode ? "text-zinc-400" : "text-zinc-600"
+                          }`}
+                        >
+                          Algorithm Analysis Features
+                        </h3>
+                        <ul
+                          className={`text-xs space-y-2 ${
+                            isDarkMode ? "text-zinc-400" : "text-zinc-600"
+                          }`}
+                        >
+                          <li className="flex items-center">
+                            <svg
+                              className="w-4 h-4 mr-2 text-green-500"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            Correctness validation
+                          </li>
+                          <li className="flex items-center">
+                            <svg
+                              className="w-4 h-4 mr-2 text-green-500"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            Time & space complexity analysis
+                          </li>
+                          <li className="flex items-center">
+                            <svg
+                              className="w-4 h-4 mr-2 text-green-500"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            Optimization suggestions
+                          </li>
+                          <li className="flex items-center">
+                            <svg
+                              className="w-4 h-4 mr-2 text-green-500"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              ></path>
+                            </svg>
+                            Interactive visualization
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
 
                   <div
-                    className={`relative rounded-lg border overflow-hidden mb-4 ${
+                    className={`rounded-xl p-6 shadow-xl lg:col-span-2 ${
                       isDarkMode
-                        ? "bg-gray-900 border-gray-700"
-                        : "bg-zinc-50 border-zinc-200"
+                        ? "bg-gray-800 border border-gray-700"
+                        : "bg-white/80 backdrop-blur-sm border border-zinc-200"
                     }`}
                   >
-                    <div
-                      className={`absolute top-0 right-0 px-3 py-1 text-xs font-medium rounded-bl-lg ${
-                        isDarkMode
-                          ? "bg-gray-800 text-zinc-400"
-                          : "bg-zinc-200 text-zinc-600"
-                      }`}
-                    >
-                      Problem
-                    </div>
-                    <textarea
-                      className={`w-full h-40 p-4 pt-8 outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent resize-none ${
-                        isDarkMode
-                          ? "bg-transparent text-white placeholder-gray-400"
-                          : "bg-transparent text-zinc-800 placeholder-zinc-400"
-                      }`}
-                      placeholder="Enter the problem statement here..."
-                      value={problemStatement}
-                      onChange={(e) => setProblemStatement(e.target.value)}
-                    ></textarea>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div
-                      className={`border rounded-lg p-4 ${
-                        isDarkMode
-                          ? "bg-blue-600/20 border-blue-800/30"
-                          : "bg-blue-50 border-blue-200"
-                      }`}
-                    >
-                      <h3
-                        className={`text-sm font-medium flex items-center mb-2 ${
+                    <div className="flex justify-between items-center mb-4">
+                      <h2
+                        className={`text-xl font-semibold ${
                           isDarkMode ? "text-blue-400" : "text-blue-600"
                         }`}
                       >
-                        <svg
-                          className="w-4 h-4 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
+                        Code Editor
+                      </h2>
+                      <div className="flex space-x-2">
+                        <button
+                          className={`text-sm px-3 py-1 rounded-md transition duration-200 border ${
+                            isDarkMode
+                              ? "bg-zinc-900 hover:bg-zinc-700 text-zinc-300 border-zinc-700"
+                              : "bg-zinc-50 hover:bg-zinc-200 text-zinc-700 border-zinc-300"
+                          }`}
+                          onClick={() => setCode("")}
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          ></path>
-                        </svg>
-                        Algorithm Tips
-                      </h3>
-                      <p
-                        className={`text-xs ${
-                          isDarkMode ? "text-zinc-300" : "text-zinc-600"
-                        }`}
-                      >
-                        For optimal results, ensure your code is well-structured
-                        and includes the function declaration as shown in the
-                        template. The analysis engine will evaluate correctness,
-                        efficiency, and best practices.
-                      </p>
+                          Clear
+                        </button>
+                        <button
+                          className={`text-sm px-3 py-1 rounded-md transition duration-200 border ${
+                            isDarkMode
+                              ? "bg-zinc-900 hover:bg-zinc-700 text-zinc-300 border-zinc-700"
+                              : "bg-zinc-50 hover:bg-zinc-200 text-zinc-700 border-zinc-300"
+                          }`}
+                          onClick={() => navigator.clipboard.writeText(code)}
+                        >
+                          Copy
+                        </button>
+                      </div>
                     </div>
 
-                    <div
-                      className={`rounded-lg p-4 border ${
-                        isDarkMode
-                          ? "bg-gray-900/50 border-zinc-700/50"
-                          : "bg-zinc-50 border-zinc-200"
-                      }`}
-                    >
-                      <h3
-                        className={`text-sm font-medium mb-2 ${
-                          isDarkMode ? "text-zinc-400" : "text-zinc-600"
+                    <CodeEditor code={code} setCode={setCode} />
+
+                    {showTutorial && (
+                      <div
+                        className={`mt-4 rounded-lg p-4 relative border ${
+                          isDarkMode
+                            ? "bg-indigo-900/40 border-indigo-700/30"
+                            : "bg-indigo-50 border-indigo-200"
                         }`}
                       >
-                        Algorithm Analysis Features
-                      </h3>
-                      <ul
-                        className={`text-xs space-y-2 ${
-                          isDarkMode ? "text-zinc-400" : "text-zinc-600"
-                        }`}
-                      >
-                        <li className="flex items-center">
+                        <button
+                          className={`absolute top-2 right-2 ${
+                            isDarkMode
+                              ? "text-zinc-400 hover:text-white"
+                              : "text-zinc-500 hover:text-zinc-800"
+                          }`}
+                          onClick={() => setShowTutorial(false)}
+                        >
                           <svg
-                            className="w-4 h-4 mr-2 text-green-500"
+                            className="w-4 h-4"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -537,218 +680,92 @@ export default function Home() {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth="2"
-                              d="M5 13l4 4L19 7"
+                              d="M6 18L18 6M6 6l12 12"
                             ></path>
                           </svg>
-                          Correctness validation
-                        </li>
-                        <li className="flex items-center">
-                          <svg
-                            className="w-4 h-4 mr-2 text-green-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            ></path>
-                          </svg>
-                          Time & space complexity analysis
-                        </li>
-                        <li className="flex items-center">
-                          <svg
-                            className="w-4 h-4 mr-2 text-green-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            ></path>
-                          </svg>
-                          Optimization suggestions
-                        </li>
-                        <li className="flex items-center">
-                          <svg
-                            className="w-4 h-4 mr-2 text-green-500"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M5 13l4 4L19 7"
-                            ></path>
-                          </svg>
-                          Interactive visualization
-                        </li>
-                      </ul>
-                    </div>
+                        </button>
+                        <h3
+                          className={`text-sm font-medium mb-2 ${
+                            isDarkMode ? "text-indigo-400" : "text-indigo-600"
+                          }`}
+                        >
+                          Getting Started
+                        </h3>
+                        <p
+                          className={`text-xs ${
+                            isDarkMode ? "text-zinc-300" : "text-zinc-600"
+                          }`}
+                        >
+                          1. Select a problem from the dropdown or write your
+                          own
+                          <br />
+                          2. Implement your algorithm in the editor
+                          <br />
+                          3. Click &quot;Analyze Code&quot; to get detailed
+                          feedback
+                          <br />
+                          4. View step-by-step visualization to understand the
+                          execution
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div
-                  className={`rounded-xl p-6 shadow-xl lg:col-span-2 ${
-                    isDarkMode
-                      ? "bg-gray-800 border border-gray-700"
-                      : "bg-white/80 backdrop-blur-sm border border-zinc-200"
-                  }`}
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <h2
-                      className={`text-xl font-semibold ${
-                        isDarkMode ? "text-blue-400" : "text-blue-600"
-                      }`}
-                    >
-                      Code Editor
-                    </h2>
-                    <div className="flex space-x-2">
-                      <button
-                        className={`text-sm px-3 py-1 rounded-md transition duration-200 border ${
-                          isDarkMode
-                            ? "bg-zinc-900 hover:bg-zinc-700 text-zinc-300 border-zinc-700"
-                            : "bg-zinc-50 hover:bg-zinc-200 text-zinc-700 border-zinc-300"
-                        }`}
-                        onClick={() => setCode("")}
-                      >
-                        Clear
-                      </button>
-                      <button
-                        className={`text-sm px-3 py-1 rounded-md transition duration-200 border ${
-                          isDarkMode
-                            ? "bg-zinc-900 hover:bg-zinc-700 text-zinc-300 border-zinc-700"
-                            : "bg-zinc-50 hover:bg-zinc-200 text-zinc-700 border-zinc-300"
-                        }`}
-                        onClick={() => navigator.clipboard.writeText(code)}
-                      >
-                        Copy
-                      </button>
-                    </div>
-                  </div>
-
-                  <CodeEditor code={code} setCode={setCode} />
-
-                  {showTutorial && (
-                    <div
-                      className={`mt-4 rounded-lg p-4 relative border ${
-                        isDarkMode
-                          ? "bg-indigo-900/40 border-indigo-700/30"
-                          : "bg-indigo-50 border-indigo-200"
-                      }`}
-                    >
-                      <button
-                        className={`absolute top-2 right-2 ${
-                          isDarkMode
-                            ? "text-zinc-400 hover:text-white"
-                            : "text-zinc-500 hover:text-zinc-800"
-                        }`}
-                        onClick={() => setShowTutorial(false)}
-                      >
+                <div className="flex justify-center mb-6">
+                  <motion.button
+                    className="px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg transition-all duration-300 flex items-center text-white"
+                    onClick={handleAnalyzeCode}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    disabled={isAnalyzing}
+                  >
+                    {isAnalyzing ? (
+                      <>
                         <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                           xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
                         >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
                           <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M6 18L18 6M6 6l12 12"
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                           ></path>
                         </svg>
-                      </button>
-                      <h3
-                        className={`text-sm font-medium mb-2 ${
-                          isDarkMode ? "text-indigo-400" : "text-indigo-600"
-                        }`}
-                      >
-                        Getting Started
-                      </h3>
-                      <p
-                        className={`text-xs ${
-                          isDarkMode ? "text-zinc-300" : "text-zinc-600"
-                        }`}
-                      >
-                        1. Select a problem from the dropdown or write your own
-                        <br />
-                        2. Implement your algorithm in the editor
-                        <br />
-                        3. Click &quot;Analyze Code&quot; to get detailed
-                        feedback
-                        <br />
-                        4. View step-by-step visualization to understand the
-                        execution
-                      </p>
-                    </div>
-                  )}
+                        Analyzing Code...
+                      </>
+                    ) : (
+                      <>
+                        <span>Analyze Code</span>
+                        <Sparkle className="ml-2 h-5 w-5" />
+                      </>
+                    )}
+                  </motion.button>
                 </div>
-              </div>
 
-              <div className="flex justify-center mb-6">
-                <motion.button
-                  className="px-8 py-3 text-lg font-semibold rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg transition-all duration-300 flex items-center text-white"
-                  onClick={handleAnalyzeCode}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  disabled={isAnalyzing}
-                >
-                  {isAnalyzing ? (
-                    <>
-                      <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Analyzing Code...
-                    </>
-                  ) : (
-                    <>
-                      <span>Analyze Code</span>
-                      <Sparkle className="ml-2 h-5 w-5" />
-                    </>
-                  )}
-                </motion.button>
-              </div>
-
-              {analysisResults && (
-                <div className="px-4 mb-8">
-                  <AnalysisResults
-                    results={analysisResults}
-                    onVisualize={handleVisualize}
-                    isDarkMode={isDarkMode}
-                  />
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
+                {analysisResults && (
+                  <div className="px-4 mb-8">
+                    <AnalysisResults
+                      results={analysisResults}
+                      onVisualize={handleVisualize}
+                      isDarkMode={isDarkMode}
+                    />
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+            <Footer />
+          </>
         ) : (
           <AnimatePresence>
             <motion.div
@@ -756,18 +773,16 @@ export default function Home() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
+              className="w-full h-full"
             >
-              <Visualization
+              <VisualizationContainer
                 code={visualizationCode}
-                onBackToCode={handleBackToCode}
-                isDarkMode={isDarkMode}
+                onBack={handleBackToCode}
               />
             </motion.div>
           </AnimatePresence>
         )}
       </main>
-
-      <Footer />
     </div>
   );
 }

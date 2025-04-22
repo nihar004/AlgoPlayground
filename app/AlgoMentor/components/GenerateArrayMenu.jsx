@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { useTheme } from "../../../context/ThemeContext";
-import { useSorting } from "../SortingContext";
-import { useWarnings } from "../../../context/WarningContext";
+import { useTheme } from "../../context/ThemeContext";
+import { useArray } from "./ArrayContext";
+import { useWarnings } from "@/app/context/WarningContext";
 
 const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
   const [selectedOption, setSelectedOption] = useState("random");
   const [manualInput, setManualInput] = useState("");
   const { isDarkMode } = useTheme();
-  const { setArray, size, setSize, play } = useSorting();
-  const { addWarning } = useWarnings();
+  const { setArray, size, setSize, play } = useArray();
+  const { showWarning } = useWarnings();
 
   const generateOptions = [
     { id: "random", label: "Random" },
@@ -19,14 +19,13 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
     { id: "manual", label: "Manual Input" },
   ];
 
-  // Array generation functions remain the same
   const getRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
   const generateArray = () => {
     let newArray = [];
-    const min = 1; // Keeping minimum as 1 to avoid zero in any operation
+    const min = 1;
     const max = 50;
 
     switch (selectedOption) {
@@ -35,17 +34,19 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
           getRandomNumber(min, max)
         );
         break;
+
       case "nearlySorted":
-        // Ensure minimum value is at least 1
         newArray = Array.from({ length: size }, (_, i) =>
           Math.max(min, Math.floor((i / size) * max))
         );
+        // Swap a few elements to make it nearly sorted
         for (let i = 0; i < size * 0.1; i++) {
           const idx1 = getRandomNumber(0, size - 1);
           const idx2 = getRandomNumber(0, size - 1);
           [newArray[idx1], newArray[idx2]] = [newArray[idx2], newArray[idx1]];
         }
         break;
+
       case "duplicates":
         const possibleValues = Array.from({ length: 5 }, () =>
           getRandomNumber(min, max)
@@ -55,24 +56,20 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
           () => possibleValues[getRandomNumber(0, possibleValues.length - 1)]
         );
         break;
+
       case "sorted":
-        // Create a strictly increasing array starting from min (1)
         newArray = Array.from({ length: size }, (_, i) => {
-          // Ensure a consistent increase with some small randomness
           return (
             Math.floor((i / (size - 1)) * (max - min)) +
             getRandomNumber(0, 5) +
             min
           );
         });
-        // Sort to ensure strictly increasing
         newArray.sort((a, b) => a - b);
         break;
 
       case "reversed":
-        // Create a strictly decreasing array starting from max down to min (1)
         newArray = Array.from({ length: size }, (_, i) => {
-          // Reverse the logic of sorted array, ensuring values start at max and go down to min
           return Math.max(
             min,
             Math.floor(((size - 1 - i) / (size - 1)) * (max - min)) -
@@ -80,57 +77,42 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
               min
           );
         });
-        // Sort to ensure strictly decreasing
         newArray.sort((a, b) => b - a);
         break;
 
       case "manual":
-        // Parse the input string into an array of numbers
         const parsedArray = manualInput
           .split(",")
           .map((num) => parseInt(num.trim()))
           .filter((num) => !isNaN(num));
 
-        // Check if the array is empty
         if (parsedArray.length === 0) {
-          addWarning("Please enter valid numbers separated by commas", 5000);
+          showWarning("Please enter valid numbers separated by commas");
           return;
         }
 
-        // Check if there are at least 5 elements
         if (parsedArray.length < 3) {
-          addWarning("Please enter at least 3 valid numbers.", 5000);
+          showWarning("Please enter at least 3 valid numbers.");
           return;
         }
 
-        // Validate the range (1-50) and filter out invalid numbers
-        const validNumbers = [];
-        const invalidNumbers = [];
+        const validNumbers = parsedArray.filter(
+          (num) => num >= min && num <= max
+        );
+        const invalidNumbers = parsedArray.filter(
+          (num) => num < min || num > max
+        );
 
-        parsedArray.forEach((num) => {
-          if (num >= min && num <= max) {
-            validNumbers.push(num);
-          } else {
-            invalidNumbers.push(num);
-          }
-        });
-
-        // If there are any invalid numbers, show a warning
         if (invalidNumbers.length > 0) {
-          addWarning(
-            `Numbers must be between ${min} and ${max}. Invalid numbers: ${invalidNumbers.join(
-              ", "
-            )}`,
-            5000
+          showWarning(
+            `Numbers must be between ${min} and ${max}. Invalid numbers: ${invalidNumbers.join(", ")}`
           );
         }
 
-        // If we have at least some valid numbers, use them
         if (validNumbers.length > 0) {
           newArray = validNumbers;
         } else {
-          // If no valid numbers, don't proceed
-          addWarning("No valid numbers in the range 1-50 were provided", 5000);
+          showWarning("No valid numbers in the range 1-50 were provided");
           return;
         }
         break;
@@ -149,7 +131,7 @@ const GenerateArrayMenu = ({ setShowGenerateMenu, setIsExpanded }) => {
   return (
     <>
       <div
-        className={`absolute left-[107%] rounded-2xl shadow-lg p-4 w-64 top-4 ${
+        className={`absolute left-[107%] rounded-2xl shadow-lg p-4 w-64 -top-105 ${
           !isDarkMode ? "bg-white" : "bg-zinc-600"
         }`}
       >
