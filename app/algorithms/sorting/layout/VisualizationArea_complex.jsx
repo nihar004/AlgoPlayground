@@ -3,17 +3,19 @@ import ProgressBar from "../../../Components/controls/ProgressBar";
 import Controls from "../../../Components/controls/Controls";
 import { useTheme } from "../../../context/ThemeContext";
 import { useSorting } from "../SortingContext";
+import { useAppContext } from "../../../context/AppContext";
 
 const VisualizationAreaComplex = () => {
   const { isDarkMode } = useTheme();
   const { states, currentStateIndex } = useSorting();
+  const { layoutMode } = useAppContext();
   const [containerWidth, setContainerWidth] = useState(800);
   const [containerHeight, setContainerHeight] = useState(500);
   const containerRef = useRef(null);
   const prevStateRef = useRef(null);
   const [leftMargin, setLeftMargin] = useState(100);
 
-  const currentState = states[currentStateIndex];
+  const currentState = states[currentStateIndex] || {};
 
   // Calculate the maximum value in the array for scaling
   const maxValue = Math.max(...(currentState?.array || []));
@@ -338,17 +340,26 @@ const VisualizationAreaComplex = () => {
     <>
       {/* Visualization Area */}
       <div
-        className={`h-130 rounded-t-lg flex items-center justify-center relative shadow-lg ${
-          !isDarkMode ? "bg-white " : "bg-zinc-700"
+        className={`h-130 rounded-t-lg flex flex-col items-center relative shadow-lg ${
+          !isDarkMode ? "bg-white" : "bg-zinc-700"
         }`}
       >
+        {/* Description Text - Show when not in default layout */}
+        {layoutMode !== "default" && (
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+            <p className="text-sm px-3 py-1.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">
+              {currentState.description || "Sorting in progress..."}
+            </p>
+          </div>
+        )}
+
         <div
           ref={containerRef}
           className="relative flex items-end justify-center h-full w-full p-8"
         >
           {/* Container for the staggered elements */}
           <div
-            className={"relative w-full h-full mr-5"}
+            className="relative w-full h-full mr-5"
             style={{ marginLeft: `${leftMargin}px` }}
           >
             {renderShadows()}

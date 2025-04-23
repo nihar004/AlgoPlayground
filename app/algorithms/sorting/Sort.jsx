@@ -7,14 +7,12 @@ import { useAppContext } from "@/app/context/AppContext";
 import VisualizationAreaSimple from "./layout/VisualizationArea_simple";
 
 function Sort() {
-  const { currentAlgorithm } = useAppContext();
-  // Default to the simple visualization component
+  const { currentAlgorithm, layoutMode } = useAppContext();
   const [VisualizationComponent, setVisualizationComponent] = useState(
     () => VisualizationAreaSimple
   );
 
   useEffect(() => {
-    // If the algorithm requires a complex visualization, load it dynamically.
     if (currentAlgorithm === "merge") {
       const loadComplexVisualization = async () => {
         try {
@@ -28,37 +26,57 @@ function Sort() {
           );
         } catch (err) {
           console.error("Failed to load VisualizationArea_complex:", err);
-          // Fallback to simple visualization in case of an error.
           setVisualizationComponent(() => VisualizationAreaSimple);
         }
       };
 
       loadComplexVisualization();
     } else {
-      // Otherwise, use the simple component.
       setVisualizationComponent(() => VisualizationAreaSimple);
     }
   }, [currentAlgorithm]);
 
+  // Get grid layout based on selected layout mode
+  const getGridLayout = () => {
+    switch (layoutMode) {
+      case "minimal":
+        return "grid-cols-1";
+      default: // both default and centered use the same grid
+        return "grid-cols-15";
+    }
+  };
+
+  // Get column span for visualization area based on layout mode
+  const getVisualizationSpan = () => {
+    switch (layoutMode) {
+      case "minimal":
+        return "col-span-full";
+      default:
+        return "col-span-9";
+    }
+  };
+
   return (
     <SortingProvider>
       <main className="w-full mx-auto p-4 relative">
-        {/* Left Panel (Fixed) */}
+        {/* Left Panel (Fixed) - Show in all layouts */}
         <div className="absolute top-4 left-4 z-50">
           <SortingLeftPanel />
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-15 gap-6">
+        <div className={`grid ${getGridLayout()} gap-6`}>
           {/* Visualization Area */}
-          <div className="col-span-9">
+          <div className={getVisualizationSpan()}>
             <VisualizationComponent />
           </div>
 
-          {/* Right Panel */}
-          <div className="col-span-6 space-y-4">
-            <SortingRightPanel />
-          </div>
+          {/* Right Panel - Show in default and centered layouts */}
+          {layoutMode !== "minimal" && (
+            <div className="col-span-6 space-y-4">
+              <SortingRightPanel />
+            </div>
+          )}
         </div>
       </main>
     </SortingProvider>

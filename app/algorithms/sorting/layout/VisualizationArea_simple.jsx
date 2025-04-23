@@ -15,7 +15,7 @@ const VisualizationAreaSimple = () => {
   const { addWarning } = useWarnings();
   const [containerWidth, setContainerWidth] = useState(800);
   const containerRef = useRef(null);
-  const { currentAlgorithm } = useAppContext();
+  const { currentAlgorithm, layoutMode } = useAppContext();
 
   const currentState = states[currentStateIndex];
 
@@ -240,7 +240,7 @@ const VisualizationAreaSimple = () => {
     else if (arrayLength <= 20) gap = 4;
     else gap = 2;
 
-    // Calculate bar width using actual caontainer width
+    // Calculate bar width using actual container width
     const totalGapWidth = (arrayLength - 1) * gap;
     const barWidth = Math.floor((containerWidth - totalGapWidth) / arrayLength);
 
@@ -254,24 +254,23 @@ const VisualizationAreaSimple = () => {
 
   return (
     <>
-      {/* Visualization Area */}
       <div
-        className={`h-130 rounded-t-lg flex items-center justify-center relative shadow-lg ${
+        className={`h-130 rounded-t-lg flex flex-col items-center relative shadow-lg ${
           is3D
             ? !isDarkMode
-              ? "bg-zinc-100 "
+              ? "bg-zinc-100"
               : "bg-zinc-700"
             : !isDarkMode
-            ? "bg-white "
-            : "bg-zinc-700"
+              ? "bg-white"
+              : "bg-zinc-700"
         }`}
       >
         {/* Auto-adjust option */}
         {showAutoAdjustOption && (
           <div
             className={`
-              absolute
-              top-4
+absolute
+top-4
               right-4
               z-10
               px-4
@@ -326,117 +325,127 @@ const VisualizationAreaSimple = () => {
           </div>
         )}
 
-        {is3D ? (
-          // 3D visualization code
-          <div className="w-full h-full">
-            <SortingVisualization3D />
-          </div>
-        ) : (
-          // 2D visualization code
-          <div
-            ref={containerRef}
-            className="flex items-end justify-center h-full w-full p-8 mb-10"
-            style={{ gap: `${gap}px` }}
-          >
-            {currentState?.array.map((value, index) => {
-              // Calculate the percentage height
-              const heightPercentage = Math.max((value / maxValue) * 85, 3);
-
-              // Determine text visibility and styling
-              const textStyle = {
-                fontSize: barWidth < 35 ? "0.6rem" : "0.875rem", // text-xs : text-sm
-                fontWeight: 600,
-                textAlign: "center",
-                position: "absolute",
-                bottom: "2px",
-                left: 0,
-                right: 0,
-              };
-
-              return (
-                <div
-                  key={index}
-                  className={`rounded-t-xs transition-all duration-500 relative ${
-                    currentAlgorithm !== "merge" &&
-                    getBarColorMap[currentAlgorithm](index)
-                  }`}
-                  style={{
-                    height: `${heightPercentage}%`,
-                    width: `${barWidth}px`,
-                  }}
-                >
-                  <div className="text-white" style={textStyle}>
-                    {value}
-                  </div>
-                </div>
-              );
-            })}
-
-            {currentAlgorithm === "insertion" && (
-              <div
-                className={`absolute top-18 right-10 rounded-lg px-3 py-1 text-md font-bold text-blue-900 ${
-                  !isDarkMode ? "bg-blue-200 " : "bg-blue-200"
-                }`}
-              >
-                <span className="opacity-60 mr-2">Key:</span>
-                {currentState ? currentState.key : "_"}
-              </div>
-            )}
-
-            {/* Indices Container */}
+        {/* Main Visualization Content */}
+        <div className="flex-1 w-full flex items-center justify-center">
+          {is3D ? (
+            <div className="w-full h-full">
+              <SortingVisualization3D />
+            </div>
+          ) : (
             <div
-              className="flex items-center justify-center w-full p-8 absolute -bottom-8"
+              ref={containerRef}
+              className="flex items-end justify-center h-full w-full p-8 mb-10"
               style={{ gap: `${gap}px` }}
             >
-              {currentState?.array.map((_, index) => (
+              {currentState?.array.map((value, index) => {
+                // Calculate the percentage height
+                const heightPercentage = Math.max((value / maxValue) * 85, 3);
+
+                // Determine text visibility and styling
+                const textStyle = {
+                  fontSize: barWidth < 35 ? "0.6rem" : "0.875rem", // text-xs : text-sm
+                  fontWeight: 600,
+                  textAlign: "center",
+                  position: "absolute",
+                  bottom: "2px",
+                  left: 0,
+                  right: 0,
+                };
+
+                return (
+                  <div
+                    key={index}
+                    className={`rounded-t-xs transition-all duration-500 relative ${
+                      currentAlgorithm !== "merge" &&
+                      getBarColorMap[currentAlgorithm](index)
+                    }`}
+                    style={{
+                      height: `${heightPercentage}%`,
+                      width: `${barWidth}px`,
+                    }}
+                  >
+                    <div className="text-white" style={textStyle}>
+                      {value}
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Description Text - Show when not in default layout */}
+              {layoutMode !== "default" && (
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+                  <p className="text-sm px-3 py-1.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                    {currentState.description || "Sorting in progress..."}
+                  </p>
+                </div>
+              )}
+
+              {currentAlgorithm === "insertion" && (
                 <div
-                  key={index}
-                  className="flex flex-col items-center relative transition-all duration-300 ease-in-out"
-                  style={{ width: `${barWidth}px`, height: "3rem" }}
+                  className={`absolute top-18 right-10 rounded-lg px-3 py-1 text-md font-bold text-blue-900 ${
+                    !isDarkMode ? "bg-blue-200 " : "bg-blue-200"
+                  }`}
                 >
-                  <div className="flex items-center justify-center space-x-1">
-                    {/* i indicator replacing index when it matches */}
-                    {currentState.i === index && (
-                      <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-medium">
-                        i
-                      </div>
-                    )}
+                  <span className="opacity-60 mr-2">Key:</span>
+                  {currentState ? currentState.key : "_"}
+                </div>
+              )}
 
-                    {currentState.j === index && (
-                      <div className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center text-white text-sm font-medium">
-                        j
-                      </div>
-                    )}
-                    {currentState.minIndex === index && (
-                      <div className="w-6 h-5 rounded-sm bg-purple-400 flex items-center justify-center text-white text-xs font-medium">
-                        min
-                      </div>
-                    )}
-
-                    {currentAlgorithm === "quick" &&
-                      currentState?.pivotIndex === index && (
-                        <div
-                          className={`${
-                            barWidth < 35 ? "w-6" : "w-10"
-                          } h-5 rounded-sm bg-purple-500 flex items-center justify-center text-white text-xs font-medium`}
-                        >
-                          {barWidth < 35 ? "P" : "Pivot"}
+              {/* Indices Container */}
+              <div
+                className="flex items-center justify-center w-full p-8 absolute -bottom-8"
+                style={{ gap: `${gap}px` }}
+              >
+                {currentState?.array.map((_, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center relative transition-all duration-300 ease-in-out"
+                    style={{ width: `${barWidth}px`, height: "3rem" }}
+                  >
+                    <div className="flex items-center justify-center space-x-1">
+                      {/* i indicator replacing index when it matches */}
+                      {currentState.i === index && (
+                        <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-medium">
+                          i
                         </div>
                       )}
-                  </div>
 
-                  <div
-                    className={`text-center ${
-                      !isDarkMode ? "text-zinc-500" : "text-zinc-300"
-                    } ${barWidth < 35 ? "text-xs" : "text-sm"}`}
-                  >
-                    {index}
+                      {currentState.j === index && (
+                        <div className="w-5 h-5 rounded-full bg-amber-600 flex items-center justify-center text-white text-sm font-medium">
+                          j
+                        </div>
+                      )}
+                      {currentState.minIndex === index && (
+                        <div className="w-6 h-5 rounded-sm bg-purple-400 flex items-center justify-center text-white text-xs font-medium">
+                          min
+                        </div>
+                      )}
+
+                      {currentAlgorithm === "quick" &&
+                        currentState?.pivotIndex === index && (
+                          <div
+                            className={`${
+                              barWidth < 35 ? "w-6" : "w-10"
+                            } h-5 rounded-sm bg-purple-500 flex items-center justify-center text-white text-xs font-medium`}
+                          >
+                            {barWidth < 35 ? "P" : "Pivot"}
+                          </div>
+                        )}
+                    </div>
+
+                    <div
+                      className={`text-center ${
+                        !isDarkMode ? "text-zinc-500" : "text-zinc-300"
+                      } ${barWidth < 35 ? "text-xs" : "text-sm"}`}
+                    >
+                      {index}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* View Toggle - Absolute positioned */}
         <div className="absolute top-4 right-4 rounded-lg shadow-lg">
@@ -450,8 +459,8 @@ const VisualizationAreaSimple = () => {
                 !is3D
                   ? "bg-blue-500 text-zinc-100 hover:bg-blue-600"
                   : isDarkMode
-                  ? "hover:bg-zinc-500"
-                  : "hover:bg-zinc-200"
+                    ? "hover:bg-zinc-500"
+                    : "hover:bg-zinc-200"
               }`}
               onClick={() => setIs3D(false)}
             >
@@ -462,8 +471,8 @@ const VisualizationAreaSimple = () => {
                 is3D
                   ? "bg-blue-500 text-zinc-100 hover:bg-blue-600"
                   : isDarkMode
-                  ? "hover:bg-zinc-500"
-                  : "hover:bg-zinc-200"
+                    ? "hover:bg-zinc-500"
+                    : "hover:bg-zinc-200"
               }`}
               onClick={() => handle3DButtonClick()}
             >
@@ -473,10 +482,7 @@ const VisualizationAreaSimple = () => {
         </div>
       </div>
 
-      {/* Progress Bar */}
       <ProgressBar />
-
-      {/* Controls */}
       <Controls />
     </>
   );

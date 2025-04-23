@@ -13,10 +13,10 @@ import { useAppContext } from "@/app/context/AppContext";
 const SortingRightPanel = () => {
   const { isDarkMode } = useTheme();
   const { states, currentStateIndex } = useSorting();
+  const { layoutMode, currentAlgorithm } = useAppContext();
   const [selectedLanguage, setSelectedLanguage] = useState("cpp");
   const [isCopied, setIsCopied] = useState(false);
   const codeContainerRef = useRef(null);
-  const { currentAlgorithm } = useAppContext();
   const [metadata, setMetadata] = useState({
     timeComplexity: { best: "N/A", average: "N/A", worst: "N/A" },
     spaceComplexity: "N/A",
@@ -117,41 +117,44 @@ const SortingRightPanel = () => {
     return "text-md";
   };
 
+  const getCodeAreaMaxHeight = () => {
+    return layoutMode === "centered" ? "max-h-[450px]" : "max-h-[350px]";
+  };
+
   const currentStep = states[currentStateIndex] || {};
   const currHighlightedLines =
     highlightedLines?.lineHighlighting?.[currentStep.action] || [];
 
   return (
     <div className="flex flex-col gap-4 h-full">
-      {/* Current Step */}
-      <div
-        className={`p-4 rounded-lg shadow-lg ${
-          !isDarkMode ? "bg-white" : "bg-zinc-700"
-        }`}
-      >
-        <h3 className="font-medium mb-2">Current Step</h3>
-        <div className="flex items-center gap-2">
-          {/* Message */}
-          <p className="text-sm">
-            {currentStep.description || "Sorting in progress..."}
-          </p>
-
-          {/* Indicator Box */}
-          <div
-            className={`min-w-[20px] min-h-[20px] rounded-sm flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-              currentStep.action === "compare"
-                ? "bg-yellow-400"
-                : currentStep.action === "swap"
-                ? "bg-red-600"
-                : currentStep.action === "increment-j"
-                ? "bg-blue-200"
-                : currentStep.action === "bar-complete"
-                ? "bg-green-500"
-                : "bg-transparent"
-            }`}
-          />
+      {/* Current Step - Only show if not in centered layout */}
+      {layoutMode !== "centered" && (
+        <div
+          className={`p-4 rounded-lg shadow-lg ${
+            !isDarkMode ? "bg-white" : "bg-zinc-700"
+          }`}
+        >
+          <h3 className="font-medium mb-2">Current Step</h3>
+          <div className="flex items-center gap-2">
+            <p className="text-sm">
+              {currentStep.description || "Sorting in progress..."}
+            </p>
+            <div
+              className={`min-w-[20px] min-h-[20px] rounded-sm flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                currentStep.action === "compare"
+                  ? "bg-yellow-400"
+                  : currentStep.action === "swap"
+                    ? "bg-red-600"
+                    : currentStep.action === "increment-j"
+                      ? "bg-blue-200"
+                      : currentStep.action === "bar-complete"
+                        ? "bg-green-500"
+                        : "bg-transparent"
+              }`}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Code Section */}
       <div
@@ -195,7 +198,7 @@ const SortingRightPanel = () => {
             </select>
           </div>
         </div>
-        <div className="overflow-auto max-h-[350px] rounded-lg">
+        <div className={`overflow-auto rounded-lg ${getCodeAreaMaxHeight()}`}>
           <SyntaxHighlighter
             language={selectedLanguage}
             style={isDarkMode ? atomDark : materialLight}
