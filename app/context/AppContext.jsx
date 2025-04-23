@@ -15,6 +15,9 @@ export const AppProvider = ({ children }) => {
   const [currentAlgorithm, setCurrentAlgorithm] = useState("bubble");
   const [activeTab, setActiveTab] = useState("Algorithms");
 
+  // Add new layout state
+  const [layoutMode, setLayoutMode] = useState("default"); // 'default', 'centered', 'minimal'
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -63,6 +66,8 @@ export const AppProvider = ({ children }) => {
     changeCategory,
     activeTab,
     changeTab,
+    layoutMode,
+    setLayoutMode,
   };
 
   return (

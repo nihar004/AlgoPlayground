@@ -5,49 +5,21 @@ import Image from "next/image";
 import DarkModeToggle from "./DarkModeToggle";
 import { useAppContext } from "../../context/AppContext";
 import { algorithms } from "@/app/algorithms/registry/algo.js";
+import LayoutSelector from "./LayoutSelector";
 
 const Header = () => {
   const { isDarkMode } = useTheme();
-  const {
-    currentCategory,
-    currentAlgorithm,
-    changeAlgorithm,
-    activeTab,
-    changeTab,
-  } = useAppContext();
+  const { currentCategory, currentAlgorithm, changeAlgorithm, changeTab } =
+    useAppContext();
   const algoNames = Object.values(algorithms[currentCategory]);
 
   const handleAlgorithmChange = (event) => {
     const selectedAlgoId = event.target.value;
-    changeAlgorithm(selectedAlgoId); // Update the currentAlgorithm in context
-  };
-
-  const getTabStyles = (tabName) => {
-    const isActive = activeTab === tabName;
-    return `font-medium text-md relative transition-all duration-200 ${
-      isActive
-        ? isDarkMode
-          ? "text-blue-400 font-semibold scale-105"
-          : "text-blue-600 font-semibold scale-105"
-        : isDarkMode
-        ? "text-zinc-300 hover:text-white"
-        : "text-zinc-600 hover:text-zinc-900"
-    } ${
-      isActive
-        ? "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:scale-x-100 " +
-          (isDarkMode
-            ? "after:bg-gradient-to-r after:from-blue-400 after:via-purple-400 after:to-blue-400"
-            : "after:bg-gradient-to-r after:from-blue-600 after:via-indigo-500 after:to-blue-600")
-        : "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 " +
-          (isDarkMode
-            ? "after:bg-gradient-to-r after:from-blue-400/50 after:to-purple-400/50"
-            : "after:bg-gradient-to-r after:from-blue-600/50 after:to-indigo-600/50")
-    }`;
+    changeAlgorithm(selectedAlgoId);
   };
 
   return (
     <>
-      {/* Header */}
       <nav
         className={`border-b p-4 shadow-sm ${
           !isDarkMode
@@ -75,7 +47,7 @@ const Header = () => {
                     ? "bg-white border-zinc-200"
                     : "bg-zinc-700 border-zinc-700"
                 }`}
-                onChange={handleAlgorithmChange} // Attach event handler
+                onChange={handleAlgorithmChange}
               >
                 {algoNames.map((algo) => (
                   <option key={algo.id} value={algo.id}>
@@ -86,20 +58,18 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center space-x-6">
-            <nav className="hidden md:flex space-x-8 mr-8">
-              <a
-                href="#"
-                className={getTabStyles("Home")}
-                onClick={(e) => {
-                  e.preventDefault();
-                  changeTab("Home", "/");
-                }}
-              >
-                Home
-              </a>
+            <nav className="space-x-8 mr-8 flex items-center justify-center">
               <a
                 href="/category"
-                className={getTabStyles("Algorithms")}
+                className={`
+                  font-medium text-lg relative transition-all duration-200
+                  ${
+                    isDarkMode
+                      ? "text-zinc-300 hover:text-white"
+                      : "text-zinc-600 hover:text-zinc-900"
+                  }
+                  hover:scale-107
+                `}
                 onClick={(e) => {
                   e.preventDefault();
                   changeTab("Algorithms", "/category");
@@ -107,26 +77,7 @@ const Header = () => {
               >
                 Algorithms
               </a>
-              <a
-                href="/AlgoMentor"
-                className={getTabStyles("AlgoMentor")}
-                onClick={(e) => {
-                  e.preventDefault();
-                  changeTab("AlgoMentor", "/AlgoMentor");
-                }}
-              >
-                AlgoMentor
-              </a>
-              <a
-                href="#"
-                className={getTabStyles("About Us")}
-                onClick={(e) => {
-                  e.preventDefault();
-                  changeTab("About Us", "/about");
-                }}
-              >
-                About Us
-              </a>
+              <LayoutSelector />
             </nav>
             <DarkModeToggle />
           </div>
