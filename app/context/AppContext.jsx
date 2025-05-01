@@ -11,8 +11,8 @@ export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
   // Core states for tracking selections
-  const [currentCategory, setCurrentCategory] = useState("Sorting");
-  const [currentAlgorithm, setCurrentAlgorithm] = useState("bubble");
+  const [currentCategory, setCurrentCategory] = useState("LinkedList");
+  const [currentAlgorithm, setCurrentAlgorithm] = useState("singly");
   const [activeTab, setActiveTab] = useState("Algorithms");
 
   // Add new layout state

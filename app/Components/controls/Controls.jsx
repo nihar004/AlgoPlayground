@@ -77,7 +77,8 @@ const Controls = () => {
 
   useEffect(() => {
     if (currentAlgorithm) {
-      const lowerCaseCategory = currentCategory.toLowerCase();
+      const lowerCaseCategory =
+        currentCategory.charAt(0).toLowerCase() + currentCategory.slice(1);
       import(`../../algorithms/${lowerCaseCategory}/${currentCategory}Context`)
         .then((module) => {
           const hook = module.default || module[`use${currentCategory}`];

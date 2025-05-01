@@ -26,7 +26,8 @@ const ProgressBar = () => {
 
   useEffect(() => {
     if (currentAlgorithm) {
-      const lowerCaseCategory = currentCategory.toLowerCase();
+      const lowerCaseCategory =
+        currentCategory.charAt(0).toLowerCase() + currentCategory.slice(1);
 
       // Dynamically import the context based on the current algorithm
       import(`../../algorithms/${lowerCaseCategory}/${currentCategory}Context`)
