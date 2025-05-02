@@ -1,0 +1,2511 @@
+{
+  "categories": {
+    "basics": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "User Input / Output",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "https://takeuforward.org/sorting/selection-sort-algorithm/",
+            "time": 350
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "input-output",
+              "link": "https://takeuforward.org/plus/dsa/problems/input-output"
+            }
+          ]
+        },
+        "easy-2": {
+          "video": {
+            "title": "Data Types",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "none",
+            "time": 590
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-3": {
+          "video": {
+            "title": "If Else statements",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "https://takeuforward.org/if-else/if-else-statements/",
+            "time": 1320
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "if-elseif",
+              "link": "https://takeuforward.org/plus/dsa/problems/if-elseif"
+            }
+          ]
+        },
+        "easy-4": {
+          "video": {
+            "title": "Switch Statement",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "https://takeuforward.org/switch-case/switch-case-statements/",
+            "time": 2100
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "switch-case",
+              "link": "https://takeuforward.org/plus/dsa/problems/switch-case"
+            }
+          ]
+        },
+        "easy-5": {
+          "video": {
+            "title": "What are arrays, strings?",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "none",
+            "time": 2430
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-6": {
+          "video": {
+            "title": "For loops",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4&t",
+            "notes": "https://takeuforward.org/for-loop/understanding-for-loop/",
+            "time": 3160
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-7": {
+          "video": {
+            "title": "While loops",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "https://takeuforward.org/while-loop/while-loops-in-programming/",
+            "time": 3460
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-8": {
+          "video": {
+            "title": "Functions (Pass by Reference and Value)",
+            "url": "https://www.youtube.com/embed/EAR7De6Goz4",
+            "notes": "none",
+            "time": 3690
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-9": {
+          "video": {
+            "title": "Time Complexity [Learn Basics, and then analyse in next Steps]",
+            "url": "none",
+            "notes": "https://takeuforward.org/time-complexity/time-and-space-complexity-strivers-a2z-dsa-course/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        }
+      }
+    },
+    "basic-logic": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Patterns",
+            "url": "https://www.youtube.com/embed/tNm_NNSB3_w",
+            "notes": "https://takeuforward.org/strivers-a2z-dsa-course/must-do-pattern-problems-before-starting-dsa/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        }
+      }
+    },
+    "basic-math": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Count Digits",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/data-structure/count-digits-in-a-number/",
+            "time": 120
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "count-all-digits-of-a-number",
+              "link": "https://takeuforward.org/plus/dsa/problems/count-all-digits-of-a-number"
+            }
+          ]
+        },
+        "easy-2": {
+          "video": {
+            "title": "Reverse a Number",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/maths/reverse-digits-of-a-number",
+            "time": 935
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "reverse-a-number",
+              "link": "https://takeuforward.org/plus/dsa/problems/reverse-a-number"
+            }
+          ]
+        },
+        "easy-3": {
+          "video": {
+            "title": "Check Palindrome",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/data-structure/check-if-a-number-is-palindrome-or-not/",
+            "time": 1240
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "palindrome-number",
+              "link": "hhttps://takeuforward.org/plus/dsa/problems/palindrome-number"
+            }
+          ]
+        },
+        "easy-4": {
+          "video": {
+            "title": "GCD Or HCF",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/data-structure/find-gcd-of-two-numbers/",
+            "time": 2695
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "gcd-of-two-numbers",
+              "link": "https://takeuforward.org/plus/dsa/problems/gcd-of-two-numbers"
+            }
+          ]
+        },
+        "easy-5": {
+          "video": {
+            "title": "Armstrong Numbers",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/maths/check-if-a-number-is-armstrong-number-or-not/",
+            "time": 1425
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "check-if-the-number-if-armstrong",
+              "link": "https://takeuforward.org/plus/dsa/problems/check-if-the-number-if-armstrong"
+            }
+          ]
+        },
+        "easy-6": {
+          "video": {
+            "title": "Print all Divisors",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/data-structure/print-all-divisors-of-a-given-number/",
+            "time": 1595
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "divisors-of-a-number",
+              "link": "https://takeuforward.org/plus/dsa/problems/divisors-of-a-number"
+            }
+          ]
+        },
+        "easy-7": {
+          "video": {
+            "title": "Check for Prime",
+            "url": "https://www.youtube.com/embed/1xNbjMdbjug",
+            "notes": "https://takeuforward.org/data-structure/check-if-a-number-is-prime-or-not/",
+            "time": 2390
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "check-for-prime-number",
+              "link": "https://takeuforward.org/plus/dsa/problems/check-for-prime-number"
+            }
+          ]
+        }
+      }
+    },
+    "basic-hashing": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Counting frequencies of array elements",
+            "url": "none",
+            "notes": "https://takeuforward.org/data-structure/count-frequency-of-each-element-in-the-array/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-2": {
+          "video": {
+            "title": "Find the highest/lowest frequency element",
+            "url": "none",
+            "notes": "https://takeuforward.org/arrays/find-the-highest-lowest-frequency-element/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "highest-occurring-element-in-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/highest-occurring-element-in-an-array"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Hashing Theory",
+            "url": "https://www.youtube.com/embed/KEs5UyBJ39g",
+            "notes": "https://takeuforward.org/hashing/hashing-maps-time-complexity-collisions-division-rule-of-hashing-strivers-a2z-dsa-course/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        }
+      }
+    },
+    "sorting": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Selection Sort",
+            "url": "https://www.youtube.com/embed/HGk_ypEuS24",
+            "notes": "https://takeuforward.org/sorting/selection-sort-algorithm/",
+            "time": 165
+          },
+          "visualization": { "category": "Sorting", "algorithm": "selection" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/selection-sort"
+            }
+          ]
+        },
+        "easy-2": {
+          "video": {
+            "title": "Bubble Sort",
+            "url": "https://www.youtube.com/embed/HGk_ypEuS24",
+            "notes": "https://takeuforward.org/data-structure/bubble-sort-algorithm/",
+            "time": 1550
+          },
+          "visualization": { "category": "Sorting", "algorithm": "bubble" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/bubble-sort"
+            }
+          ]
+        },
+        "easy-3": {
+          "video": {
+            "title": "Insertion Sort",
+            "url": "https://www.youtube.com/embed/HGk_ypEuS24",
+            "notes": "https://takeuforward.org/data-structure/insertion-sort-algorithm/",
+            "time": 1990
+          },
+          "visualization": { "category": "Sorting", "algorithm": "insertion" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/insertion-sorting"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Merge Sort",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/merge-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": { "category": "Sorting", "algorithm": "merge" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://leetcode.com/problems/sort-an-array/description/?envType=problem-list-v2&envId=merge-sort"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Quick Sort",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/quick-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": { "category": "Sorting", "algorithm": "quick" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://leetcode.com/problems/sort-an-array/description/?envType=problem-list-v2&envId=merge-sort"
+            }
+          ]
+        }
+      }
+    },
+    "arrays": {
+      "easy": {
+        "easy-1": [
+          {
+            "id": "array-basics",
+            "type": "video",
+            "title": "Introduction to Arrays",
+            "url": "https://youtube.com/array-basics",
+            "visualization": "/visualizations/array-basics"
+          },
+          {
+            "id": "two-sum",
+            "type": "leetcode",
+            "title": "Two Sum",
+            "link": "https://leetcode.com/problems/two-sum",
+            "hint": "Use a hashmap to store complements."
+          }
+        ],
+        "easy-medium": []
+      },
+      "medium": {}
+    },
+    "binary-search": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Binary Search to find X in sorted array",
+            "url": "https://www.youtube.com/embed/MHf6awe89xw",
+            "notes": "https://takeuforward.org/data-structure/binary-search-explained/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "Binary Search",
+            "algorithm": "none "
+          },
+          "leetcode": [
+            {
+              "id": "binary-search",
+              "link": "https://leetcode.com/problems/binary-search/description"
+            }
+          ]
+        },
+        "easy-2": {
+          "video": {
+            "title": "Implement Lower Bound",
+            "url": "https://www.youtube.com/embed/6zhGS79oQ4k",
+            "notes": "https://takeuforward.org/arrays/implement-lower-bound-bs-2/",
+            "time": 0
+          },
+          "visualization": { "category": "none ", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "lower-bound",
+              "link": "https://takeuforward.org/plus/dsa/problems/lower-bound-"
+            }
+          ]
+        },
+        "easy-3": {
+          "video": {
+            "title": "Implement Upper Bound",
+            "url": "https://www.youtube.com/embed/6zhGS79oQ4k",
+            "notes": "https://takeuforward.org/arrays/implement-upper-bound/",
+            "time": 946
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "upper_bound",
+              "link": "https://takeuforward.org/plus/dsa/problems/upper-bound"
+            }
+          ]
+        },
+        "easy-4": {
+          "video": {
+            "title": "Search Insert Position",
+            "url": "https://www.youtube.com/embed/6zhGS79oQ4k",
+            "notes": "https://takeuforward.org/arrays/search-insert-position/",
+            "time": 1176
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "upper_bound",
+              "link": "https://leetcode.com/problems/search-insert-position"
+            }
+          ]
+        },
+        "easy-5": {
+          "video": {
+            "title": "Find the first or last occurrence of a given number in a sorted array",
+            "url": "https://www.youtube.com/embed/hjR1IYVx9lY",
+            "notes": "https://takeuforward.org/data-structure/last-occurrence-in-a-sorted-array/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "find-first-and-last-position-of-element-in-sorted-array",
+              "link": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array"
+            }
+          ]
+        },
+        "easy-6": {
+          "video": {
+            "title": "Find out how many times has an array been rotated",
+            "url": "https://www.youtube.com/embed/jtSiWTPLwd0",
+            "notes": "https://takeuforward.org/arrays/find-out-how-many-times-the-array-has-been-rotated/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "find_out_how_many_times_the_array_is_rotated",
+              "link": "https://takeuforward.org/plus/dsa/problems/find-out-how-many-times-the-array-is-rotated/"
+            }
+          ]
+        },
+        "easy-7": {
+          "video": {
+            "title": "Single element in a Sorted Array",
+            "url": "https://www.youtube.com/embed/AZOmHuHadxQ",
+            "notes": "https://takeuforward.org/data-structure/search-single-element-in-a-sorted-array/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "single-element-in-a-sorted-array",
+              "link": "https://leetcode.com/problems/single-element-in-a-sorted-array"
+            }
+          ]
+        },
+        "easy-8": {
+          "video": {
+            "title": "Find the smallest Divisor",
+            "url": "https://www.youtube.com/embed/UvBKTVaG6U8",
+            "notes": "https://takeuforward.org/arrays/find-the-smallest-divisor-given-a-threshold/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "find-the-smallest-divisor-given-a-threshold",
+              "link": "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold"
+            }
+          ]
+        },
+        "easy-9": {
+          "video": {
+            "title": "Kth Missing Positive Number",
+            "url": "https://www.youtube.com/embed/uZ0N_hZpyps",
+            "notes": "https://takeuforward.org/arrays/kth-missing-positive-number/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "kth-missing-positive-number",
+              "link": "https://leetcode.com/problems/kth-missing-positive-number"
+            }
+          ]
+        },
+        "easy-10": {
+          "video": {
+            "title": "Find the row with maximum number of 1's",
+            "url": "https://www.youtube.com/embed/SCz-1TtYxDI",
+            "notes": "https://takeuforward.org/arrays/find-the-row-with-maximum-number-of-1s/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Floor/Ceil in Sorted Array",
+            "url": "https://www.youtube.com/embed/6zhGS79oQ4k",
+            "notes": "https://takeuforward.org/arrays/floor-and-ceil-in-sorted-array/",
+            "time": 1362
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "floor-and-ceil-in-sorted-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/floor-and-ceil-in-sorted-array"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Search in Rotated Sorted Array I",
+            "url": "https://www.youtube.com/embed/5qGrJbHhqFs",
+            "notes": "https://takeuforward.org/data-structure/search-element-in-a-rotated-sorted-array/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "search-in-rotated-sorted-array",
+              "link": "https://leetcode.com/problems/search-in-rotated-sorted-array"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Search in Rotated SortedArray II",
+            "url": "https://www.youtube.com/embed/w2G2W8l__pc",
+            "notes": "https://takeuforward.org/arrays/search-element-in-rotated-sorted-array-ii/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "search-in-rotated-sorted-array-ii",
+              "link": "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "Find minimum in Rotated Sorted Array",
+            "url": "https://www.youtube.com/embed/nhEMDKMB44g",
+            "notes": "https://takeuforward.org/data-structure/minimum-in-rotated-sorted-array/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "•find-minimum-in-rotated-sorted-array",
+              "link": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/"
+            }
+          ]
+        },
+        "medium-5": {
+          "video": {
+            "title": "Find square root of a number in log n",
+            "url": "https://www.youtube.com/embed/Bsv3FPUX_BA",
+            "notes": "https://takeuforward.org/binary-search/finding-sqrt-of-a-number-using-binary-search/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "•find-square-root-of-a-number",
+              "link": "https://takeuforward.org/plus/dsa/problems/find-square-root-of-a-number"
+            }
+          ]
+        },
+        "medium-6": {
+          "video": {
+            "title": "Find the Nth root of a number using binary search",
+            "url": "https://www.youtube.com/embed/rjEJeYCasHs",
+            "notes": "https://takeuforward.org/data-structure/nth-root-of-a-number-using-binary-search/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "•find-nth-root-of-a-number",
+              "link": "https://takeuforward.org/plus/dsa/problems/find-nth-root-of-a-number"
+            }
+          ]
+        }
+      }
+    },
+    "strings": {},
+    "linked-lists": {},
+    "recursion": {},
+    "bit-manipulation": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Introduction to Bit Manipulation [Theory]",
+            "url": "https://www.youtube.com/embed/qQd-ViW7bfk",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-2": {
+          "video": {
+            "title": "Check if the i-th bit is set or not",
+            "url": "https://www.youtube.com/embed/nttpF8kwgd4",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-3": {
+          "video": {
+            "title": "Check if a number is odd or not",
+            "url": "https://www.youtube.com/embed/nttpF8kwgd4",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-4": {
+          "video": {
+            "title": "Check if a number is power of 2 or not",
+            "url": "https://www.youtube.com/embed/nttpF8kwgd4",
+            "notes": "none",
+            "time": 1720
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "power-of-two",
+              "link": "https://leetcode.com/problems/power-of-two"
+            }
+          ]
+        },
+        "easy-5": {
+          "video": {
+            "title": "Count the number of set bits",
+            "url": "https://www.youtube.com/embed/XnMdNUkX6VM",
+            "notes": "none",
+            "time": 1885
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-6": {
+          "video": {
+            "title": "Set/Unset the rightmost unset bit",
+            "url": "https://www.youtube.com/embed/XnMdNUkX6VM",
+            "notes": "none",
+            "time": 1285
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        },
+        "easy-7": {
+          "video": {
+            "title": "Swap two numbers",
+            "url": "https://www.youtube.com/embed/XnMdNUkX6VM",
+            "notes": "none",
+            "time": 20
+          },
+          "visualization": { "category": "none", "algorithm": "none" }
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Divide two integers without using multiplication, division and mod operator",
+            "url": "https://www.youtube.com/embed/pBD4B1tzgVc",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "divide-two-integers",
+              "link": "https://leetcode.com/problems/divide-two-integers"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Count number of bits to be flipped to convert A to B",
+            "url": "https://www.youtube.com/embed/OOdrmcfZXd8",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "minimum-bit-flips-to-convert-number",
+              "link": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Power Set",
+            "url": "https://www.youtube.com/embed/LqKaUv1G3_I",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "subsets",
+              "link": "https://leetcode.com/problems/subsets"
+            }
+          ]
+        }
+      }
+    },
+    "stack-&-queue": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Implement Stack using Arrays",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-stack-using-array/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-2": {
+          "video": {
+            "title": "Implement Queue using Arrays",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-queue-using-array/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-3": {
+          "video": {
+            "title": "Implement stack using Linkedlist",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-stack-using-linked-list/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-4": {
+          "video": {
+            "title": "Next Greater Element",
+            "url": "https://www.youtube.com/embed/e7XQLtOQM3I",
+            "notes": "https://takeuforward.org/data-structure/next-greater-element-using-stack/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "next-greater-element-i",
+              "link": "https://leetcode.com/problems/next-greater-element-i/description/"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Implement Stack using Queue",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-stack-using-single-queue/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "implement-stack-using-queues",
+              "link": "https://leetcode.com/problems/implement-stack-using-queues/description/"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "N meetings in one room",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-queue-using-stack/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "implement-queue-using-stacks",
+              "link": "https://leetcode.com/problems/implement-queue-using-stacks/description/"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Implement Queue using Stack",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-queue-using-stack/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "implement-queue-using-stacks",
+              "link": "https://leetcode.com/problems/implement-queue-using-stacks/description/"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "Implement queue using Linkedlist",
+            "url": "https://www.youtube.com/embed/tqQ5fTamIN4",
+            "notes": "https://takeuforward.org/data-structure/implement-queue-using-linked-list/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-5": {
+          "video": {
+            "title": "Check for balanced paranthesis",
+            "url": "https://www.youtube.com/embed/xwjS0iZhw4I",
+            "notes": "https://takeuforward.org/data-structure/check-for-balanced-parentheses/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "valid-parentheses",
+              "link": "https://leetcode.com/problems/valid-parentheses/description/"
+            }
+          ]
+        }
+      }
+    },
+    "sliding-window-&-two-pointer": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Binary subarray with sum",
+            "url": "https://www.youtube.com/embed/XnMdNUkX6VM",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "binary-subarrays-with-sum",
+              "link": "https://leetcode.com/problems/binary-subarrays-with-sum"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Longest Substring Without Repeating Characters",
+            "url": "https://www.youtube.com/embed/zSxTJkcdAo",
+            "notes": "https://takeuforward.org/data-structure/length-of-longest-substring-without-any-repeating-character/",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "longest-substring-without-repeating-characters",
+              "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Max Consecutive Ones III",
+            "url": "https://www.youtube.com/embed/3E4JBHSLpYk",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "max-consecutive-ones-iii",
+              "link": "https://leetcode.com/problems/max-consecutive-ones-iii"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Fruit Into Baskets",
+            "url": "https://www.youtube.com/embed/e3bs0uA1NhQ",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "fruit-into-baskets",
+              "link": "https://takeuforward.org/plus/dsa/problems/fruit-into-baskets"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "longest repeating character replacement",
+            "url": "https://www.youtube.com/embed/eNhaDCr6P0",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "longest-repeating-character-replacement",
+              "link": "https://leetcode.com/problems/longest-repeating-character-replacement"
+            }
+          ]
+        },
+        "medium-5": {
+          "video": {
+            "title": "Count number of nice subarrays",
+            "url": "https://www.youtube.com/embed/j_QOv9OT9Og",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "count-number-of-nice-subarrays",
+              "link": "https://leetcode.com/problems/count-number-of-nice-subarrays"
+            }
+          ]
+        },
+        "medium-6": {
+          "video": {
+            "title": "Number of substring containing all three characters",
+            "url": "https://www.youtube.com/embed/xtqN4qlgr8s",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "lnumber-of-substrings-containing-all-three-characters",
+              "link": "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters"
+            }
+          ]
+        },
+        "medium-7": {
+          "video": {
+            "title": "Maximum point you can obtain from cards",
+            "url": "https://www.youtube.com/embed/pBWCOCS636U",
+            "notes": "none",
+            "time": 0
+          },
+          "visualization": { "category": "none", "algorithm": "none" },
+          "leetcode": [
+            {
+              "id": "maximum-points-you-can-obtain-from-cards",
+              "link": "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards"
+            }
+          ]
+        }
+      }
+    },
+    "greedy": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Assign Cookies",
+            "url": "https://www.youtube.com/embed/DIX2p7vb9co",
+            "notes": "https://takeuforward.org/Greedy/assign-cookies",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "assign-cookies",
+              "link": "https://leetcode.com/problems/assign-cookies/description/"
+            }
+          ]
+        },
+        "easy-2": {
+          "video": {
+            "title": "Lemonade Change",
+            "url": "https://www.youtube.com/embed/n_tmibEhO6Q",
+            "notes": "https://takeuforward.org/Greedy/lemonade-change",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "lemonade-change",
+              "link": "https://leetcode.com/problems/lemonade-change/description/"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "N meetings in one room",
+            "url": "https://www.youtube.com/embed/mKfhTotEguk",
+            "notes": "https://takeuforward.org/data-structure/n-meetings-in-one-room/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-2": {
+          "video": {
+            "title": "Jump Game",
+            "url": "https://www.youtube.com/embed/tZAa_jJ3SwQ",
+            "notes": "https://takeuforward.org/Greedy/jump-game-i",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "jump-game",
+              "link": "https://leetcode.com/problems/jump-game/description/"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Jump Game 2",
+            "url": "https://www.youtube.com/embed/7SBVnw7GSTk",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "jump-game-ii",
+              "link": "https://leetcode.com/problems/jump-game-ii/description/"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "Minimum number of platforms required for a railway",
+            "url": "https://www.youtube.com/embed/AsGzwR_FWok",
+            "notes": "https://takeuforward.org/data-structure/minimum-number-of-platforms-required-for-a-railway/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-5": {
+          "video": {
+            "title": "Job sequencing Problem",
+            "url": "https://www.youtube.com/embed/QbwltemZbRg",
+            "notes": "https://takeuforward.org/data-structure/job-sequencing-problem/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-6": {
+          "video": {
+            "title": "Program for Shortest Job First (or SJF) CPU Scheduling",
+            "url": "https://www.youtube.com/embed/3-QbX1iDbXs",
+            "notes": "https://takeuforward.org/Greedy/shortest-job-first-or-sjf-cpu-scheduling",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "delete-node-in-a-bst",
+              "link": "https://leetcode.com/problems/delete-node-in-a-bst/description/"
+            }
+          ]
+        },
+        "medium-7": {
+          "video": {
+            "title": "Insert Interval",
+            "url": "https://www.youtube.com/embed/xxRE-46OCC8",
+            "notes": "https://takeuforward.org/?s=Insert+Interval",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "insert-interval",
+              "link": "https://leetcode.com/problems/insert-interval/description/"
+            }
+          ]
+        },
+        "medium-8": {
+          "video": {
+            "title": "Merge Intervals",
+            "url": "https://www.youtube.com/embed/2JzRBPFYbKE?si=fJJJ3TrrllwsywWR",
+            "notes": "https://takeuforward.org/data-structure/merge-overlapping-sub-intervals/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "merge-intervals",
+              "link": "https://leetcode.com/problems/merge-intervals/description/"
+            }
+          ]
+        },
+        "medium-9": {
+          "video": {
+            "title": "Non-overlapping Intervals",
+            "url": "https://www.youtube.com/embed/HDHQ8lAWakY",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "non-overlapping-intervals",
+              "link": "https://leetcode.com/problems/non-overlapping-intervals/description/"
+            }
+          ]
+        }
+      }
+    },
+    "binary-tree": {
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Post-order Traversal of Binary Tree using 1 stack",
+            "url": "https://www.youtube.com/embed/NzIGLLwZBS8",
+            "notes": "https://takeuforward.org/data-structure/post-order-traversal-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-postorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-postorder-traversal/description/"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Delete a Node in Binary Search Tree",
+            "url": "https://www.youtube.com/embed/kouxiP_H5WE",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "delete-node-in-a-bst",
+              "link": "https://leetcode.com/problems/delete-node-in-a-bst/description/"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Preorder, Inorder, and Postorder Traversal in one Traversal",
+            "url": "https://www.youtube.com/embed/ySp2epYvgTE",
+            "notes": "https://takeuforward.org/data-structure/preorder-inorder-postorder-traversals-in-one-traversal/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-4": {
+          "video": {
+            "title": "Height of a Binary Tree",
+            "url": "https://www.youtube.com/embed/eD3tmO66aBA",
+            "notes": "https://takeuforward.org/data-structure/maximum-depth-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "maximum-depth-of-binary-tree",
+              "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/description/"
+            }
+          ]
+        },
+        "medium-5": {
+          "video": {
+            "title": "Check if the Binary tree is height-balanced or not",
+            "url": "https://www.youtube.com/embed/Yt50Jfbd8Po",
+            "notes": "https://takeuforward.org/data-structure/check-if-the-binary-tree-is-balanced-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "balanced-binary-tree",
+              "link": "https://leetcode.com/problems/balanced-binary-tree/description/"
+            }
+          ]
+        },
+        "medium-6": {
+          "video": {
+            "title": "Diameter of Binary Tree",
+            "url": "https://www.youtube.com/embed/Rezetez59Nk",
+            "notes": "https://takeuforward.org/data-structure/calculate-the-diameter-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "diameter-of-binary-tree",
+              "link": "https://leetcode.com/problems/diameter-of-binary-tree/description/"
+            }
+          ]
+        },
+        "medium-7": {
+          "video": {
+            "title": "Check if two trees are identical or not",
+            "url": "https://www.youtube.com/embed/BhuvF_-PWS0",
+            "notes": "https://takeuforward.org/data-structure/check-if-two-trees-are-identical/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "same-tree",
+              "link": "https://leetcode.com/problems/same-tree/description/"
+            }
+          ]
+        },
+        "medium-8": {
+          "video": {
+            "title": "Bottom View of Binary Tree",
+            "url": "https://www.youtube.com/embed/0FtVY6I4pB8",
+            "notes": "https://takeuforward.org/data-structure/bottom-view-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-9": {
+          "video": {
+            "title": "Right/Left View of Binary Tree",
+            "url": "https://www.youtube.com/embed/KV4mRzTjlAk",
+            "notes": "https://takeuforward.org/data-structure/right-left-view-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-right-side-view",
+              "link": "https://leetcode.com/problems/binary-tree-right-side-view/description/"
+            }
+          ]
+        },
+        "medium-10": {
+          "video": {
+            "title": "Root to Node Path in Binary Tree",
+            "url": "https://www.youtube.com/embed/fmflMqVOC7k",
+            "notes": "https://takeuforward.org/data-structure/print-root-to-node-path-in-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-11": {
+          "video": {
+            "title": "LCA in Binary Tree",
+            "url": "https://www.youtube.com/embed/_-QHfMDde90",
+            "notes": "https://takeuforward.org/data-structure/lowest-common-ancestor-for-two-given-nodes/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "dlowest-common-ancestor-of-a-binary-tree",
+              "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/"
+            }
+          ]
+        },
+        "medium-12": {
+          "video": {
+            "title": "Maximum width of a Binary Tree",
+            "url": "https://www.youtube.com/embed/ZbybYvcVLks",
+            "notes": "https://takeuforward.org/data-structure/maximum-width-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "dmaximum-width-of-binary-tree",
+              "link": "https://leetcode.com/problems/maximum-width-of-binary-tree/description/"
+            }
+          ]
+        },
+        "medium-13": {
+          "video": {
+            "title": "Print all the Nodes at a distance of K in a Binary Tree",
+            "url": "https://www.youtube.com/embed/i9ORlEy6EsI",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "all-nodes-distance-k-in-binary-tree",
+              "link": "http://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/description/"
+            }
+          ]
+        },
+        "medium-14": {
+          "video": {
+            "title": "Count total Nodes in a COMPLETE Binary Tree",
+            "url": "https://www.youtube.com/embed/u-yWemKGWO0",
+            "notes": "https://takeuforward.org/binary-tree/count-number-of-nodes-in-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "count-complete-tree-nodes",
+              "link": "https://leetcode.com/problems/count-complete-tree-nodes/description/"
+            }
+          ]
+        },
+        "medium-15": {
+          "video": {
+            "title": "Requirements needed to construct a Unique Binary Tree | Theory",
+            "url": "https://www.youtube.com/embed/9GMECGQgWrQ",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-16": {
+          "video": {
+            "title": "Morris Preorder Traversal of a Binary Tree",
+            "url": "https://www.youtube.com/embed/80Zug6D1_r4",
+            "notes": "https://takeuforward.org/data-structure/morris-inorder-traversal-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-inorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/description/"
+            }
+          ]
+        },
+        "medium-17": {
+          "video": {
+            "title": "Morris Inorder Traversal of a Binary Tree",
+            "url": "https://www.youtube.com/embed/binary-tree-inorder-traversal",
+            "notes": "https://takeuforward.org/data-structure/morris-inorder-traversal-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-inorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/description/"
+            }
+          ]
+        }
+      }
+    },
+    "binary-search-tree": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Introduction to Binary Search Tree",
+            "url": "https://www.youtube.com/embed/p7-9UvDQZ3w",
+            "notes": "https://takeuforward.org/binary-search-tree/introduction-to-binary-search-trees/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-2": {
+          "video": {
+            "title": "Binary Tree Representation in C++",
+            "url": "https://www.youtube.com/embed/ctCpP0RFDFc",
+            "notes": "https://takeuforward.org/data-structure/search-in-a-binary-search-tree-2/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-3": {
+          "video": {
+            "title": "Binary Tree Representation in Java",
+            "url": "https://www.youtube.com/embed/hyLyW7rP24I",
+            "notes": "https://takeuforward.org/binary-tree/binary-tree-representation-in-java/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-4": {
+          "video": {
+            "title": "Binary Tree Traversals in Binary Tree",
+            "url": "https://www.youtube.com/embed/jmy0LaGET1I",
+            "notes": "https://takeuforward.org/binary-tree/binary-tree-traversal-inorder-preorder-postorder/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-5": {
+          "video": {
+            "title": "Preorder Traversal of Binary Tree",
+            "url": "https://www.youtube.com/embed/RlUu72JrOCQ",
+            "notes": "https://takeuforward.org/data-structure/preorder-traversal-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-preorder-traversale",
+              "link": "https://leetcode.com/problems/binary-tree-preorder-traversal/description/"
+            }
+          ]
+        },
+        "easy-6": {
+          "video": {
+            "title": "Inorder Traversal of Binary Tree",
+            "url": "https://www.youtube.com/embed/Z_NEgBgbRVI",
+            "notes": "https://takeuforward.org/data-structure/inorder-traversal-of-binary-tree//",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-inorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/description/"
+            }
+          ]
+        },
+        "easy-7": {
+          "video": {
+            "title": "Post-order Traversal of Binary Tree",
+            "url": "https://www.youtube.com/embed/COQOU6klsBg",
+            "notes": "https://takeuforward.org/data-structure/post-order-traversal-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-postorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-postorder-traversal/description/"
+            }
+          ]
+        },
+        "easy-8": {
+          "video": {
+            "title": "Level order Traversal / Level order traversal in spiral form",
+            "url": "https://www.youtube.com/embed/EoAsWbO7sqg",
+            "notes": "https://takeuforward.org/data-structure/search-in-a-binary-search-tree-2/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-level-order-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/description/"
+            }
+          ]
+        },
+        "easy-9": {
+          "video": {
+            "title": "Iterative Preorder Traversal of Binary Tree",
+            "url": "https://www.youtube.com/embed/Bfqd8BsPVuw",
+            "notes": "https://takeuforward.org/data-structure/iterative-preorder-traversal-of-binary-tree",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-preorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-preorder-traversal/description/"
+            }
+          ]
+        },
+        "easy-10": {
+          "video": {
+            "title": "Iterative Inorder Traversal of Binary Tree",
+            "url": "https://www.youtube.com/embed/lxTGsVXjwvM",
+            "notes": "https://takeuforward.org/data-structure/inorder-traversal-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-inorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/description/"
+            }
+          ]
+        },
+        "easy-11": {
+          "video": {
+            "title": "Post-order Traversal of Binary Tree using 2 stack",
+            "url": "https://www.youtube.com/embed/2YBhNLodD8Q",
+            "notes": "https://takeuforward.org/data-structure/iterative-postorder-traversal-of-binary-tree-using-2-stack",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-postorder-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-postorder-traversal/description/"
+            }
+          ]
+        },
+        "easy-12": {
+          "video": {
+            "title": "Zig Zag Traversal of Binary Tree",
+            "url": "https://www.youtube.com/embed/3OXWEdlIGl4",
+            "notes": "https://takeuforward.org/data-structure/zig-zag-traversal-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-zigzag-level-order-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/"
+            }
+          ]
+        },
+        "easy-13": {
+          "video": {
+            "title": "Vertical Order Traversal of Binary Treek",
+            "url": "https://www.youtube.com/embed/q_a6lpbKJdw",
+            "notes": "https://takeuforward.org/data-structure/vertical-order-traversal-of-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "vertical-order-traversal-of-a-binary-tree",
+              "link": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/"
+            }
+          ]
+        },
+        "easy-14": {
+          "video": {
+            "title": "Top View of Binary Tree",
+            "url": "https://www.youtube.com/embed/Et9OCDNvJ78",
+            "notes": "https://takeuforward.org/data-structure/top-view-of-a-binary-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Delete a Node in Binary Search Tree",
+            "url": "https://www.youtube.com/embed/kouxiP_H5WE",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "delete-node-in-a-bst",
+              "link": "https://leetcode.com/problems/delete-node-in-a-bst/description/"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Find K-th smallest/largest element in BST",
+            "url": "https://www.youtube.com/embed/9TJYWh0adfk",
+            "notes": "https://takeuforward.org/data-structure/kth-largest-smallest-element-in-binary-search-tree/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "kth-smallest-element-in-a-bst",
+              "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "BFS",
+            "url": "https://www.youtube.com/embed/-tgVpUgsQ5k",
+            "notes": "https://takeuforward.org/graph/breadth-first-search-bfs-level-order-traversal/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "binary-tree-level-order-traversal",
+              "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/description/"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "Check if a tree is a BST or BT",
+            "url": "https://www.youtube.com/embed/f-sj7I5oXEI",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "validate-binary-search-tree",
+              "link": "https://leetcode.com/problems/validate-binary-search-tree/description/"
+            }
+          ]
+        },
+        "medium-5": {
+          "video": {
+            "title": "LCA in Binary Search Tree",
+            "url": "https://www.youtube.com/embed/cX_kPV_foZc",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "lowest-common-ancestor-of-a-binary-search-tree",
+              "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/"
+            }
+          ]
+        },
+        "medium-6": {
+          "video": {
+            "title": "Construct a BST from a preorder traversal",
+            "url": "https://www.youtube.com/embed/UmJT3j26t1I",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "construct-binary-search-tree-from-preorder-traversal",
+              "link": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/"
+            }
+          ]
+        },
+        "medium-7": {
+          "video": {
+            "title": "Two Sum In BST | Check if there exists a pair with Sum K",
+            "url": "https://www.youtube.com/embed/ssL3sHwPeb4",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "two-sum-iv-input-is-a-bst",
+              "link": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/"
+            }
+          ]
+        }
+      }
+    },
+    "graph": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Introduction to Binary Search Tree",
+            "url": "https://www.youtube.com/embed/p7-9UvDQZ3w",
+            "notes": "https://takeuforward.org/binary-search-tree/introduction-to-binary-search-trees/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "easy-2": {
+          "video": {
+            "title": "Search in a Binary Search Tree",
+            "url": "https://www.youtube.com/embed/KcNt6v_56cc",
+            "notes": "https://takeuforward.org/data-structure/search-in-a-binary-search-tree-2/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "search-in-a-binary-search-tree",
+              "link": "https://leetcode.com/problems/search-in-a-binary-search-tree/description/"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "BFS",
+            "url": "https://www.youtube.com/embed/-tgVpUgsQ5k",
+            "notes": "https://takeuforward.org/graph/breadth-first-search-bfs-level-order-traversal/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-2": {
+          "video": {
+            "title": "Number of provinces",
+            "url": "https://www.youtube.com/embed/ACzkVtewUYA",
+            "notes": "https://takeuforward.org/data-structure/number-of-provinces/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "number-of-provinces",
+              "link": "https://leetcode.com/problems/number-of-provinces/description/"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Rotten Oranges",
+            "url": "https://www.youtube.com/embed/yf3oUhkvqA0",
+            "notes": "https://takeuforward.org/data-structure/rotten-oranges-min-time-to-rot-all-oranges-bfs/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "rotting-oranges",
+              "link": "https://leetcode.com/problems/rotting-oranges/description/"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "0/1 Matrix",
+            "url": "https://www.youtube.com/embed/edXdVwkYHF8",
+            "notes": "https://takeuforward.org/graph/distance-of-nearest-cell-having-1/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "01-matrix",
+              "link": "https://leetcode.com/problems/01-matrix/description/"
+            }
+          ]
+        },
+        "medium-5": {
+          "video": {
+            "title": "Bipartite Graph",
+            "url": "https://www.youtube.com/embed/KG5YFfR0j8A",
+            "notes": "https://takeuforward.org/graph/bipartite-graph-dfs-implementation/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "is-graph-bipartite",
+              "link": "https://leetcode.com/problems/is-graph-bipartite/description/"
+            }
+          ]
+        },
+        "medium-6": {
+          "video": {
+            "title": "Why priority Queue is used in Djisktra's Algorithm",
+            "url": "https://www.youtube.com/embed/rp1SMw7HSO8?si=y4-b2Ehv6xZayuNr",
+            "notes": "https://takeuforward.org/data-structure/dijkstras-algorithm-using-priority-queue-g-32/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-7": {
+          "video": {
+            "title": "Shortest path in a binary maze",
+            "url": "https://www.youtube.com/embed/U5Mw4eyUmw4?si=b0DLqQbJrDh0DaXa",
+            "notes": "https://takeuforward.org/data-structure/g-36-shortest-distance-in-a-binary-maze/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "shortest-path-in-binary-matrix",
+              "link": "https://leetcode.com/problems/shortest-path-in-binary-matrix/description/"
+            }
+          ]
+        },
+        "medium-8": {
+          "video": {
+            "title": "Path with minimum effort",
+            "url": "https://www.youtube.com/embed/0ytpZyiZFhA",
+            "notes": "https://takeuforward.org/data-structure/g-37-path-with-minimum-effort/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "path-with-minimum-effort",
+              "link": "https://leetcode.com/problems/path-with-minimum-effort/description/"
+            }
+          ]
+        },
+
+        "medium-9": {
+          "video": {
+            "title": "Number of ways to arrive at destination",
+            "url": "https://www.youtube.com/embed/_-0mx0SmYxA",
+            "notes": "hhttps://takeuforward.org/data-structure/g-40-number-of-ways-to-arrive-at-destination/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "number-of-ways-to-arrive-at-destination",
+              "link": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/description/"
+            }
+          ]
+        },
+        "medium-10": {
+          "video": {
+            "title": "Number of operations to make network connected",
+            "url": "https://www.youtube.com/embed/FYrl7iz9_ZU",
+            "notes": "https://takeuforward.org/data-structure/number-of-operations-to-make-network-connected-dsu-g-49/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "number-of-operations-to-make-network-connected",
+              "link": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/description/"
+            }
+          ]
+        },
+        "medium-11": {
+          "video": {
+            "title": "Most stones removed with same rows or columns",
+            "url": "https://www.youtube.com/embed/OwMNX8SPavM?si=VdJNVfWRTH0b3Mpu",
+            "notes": "https://takeuforward.org/data-structure/most-stones-removed-with-same-row-or-column-dsu-g-53/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "most-stones-removed-with-same-row-or-column",
+              "link": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/description/"
+            }
+          ]
+        },
+        "medium-12": {
+          "video": {
+            "title": "",
+            "url": "https://www.youtube.com/embed/edXdVwkYHF8",
+            "notes": "https://takeuforward.org/data-structure/maximum-xor-of-two-numbers-in-an-array/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "maximum-xor-of-two-numbers-in-an-array",
+              "link": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/"
+            }
+          ]
+        },
+        "medium-13": {
+          "video": {
+            "title": "",
+            "url": "https://www.youtube.com/embed/edXdVwkYHF8",
+            "notes": "https://takeuforward.org/data-structure/maximum-xor-of-two-numbers-in-an-array/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "maximum-xor-of-two-numbers-in-an-array",
+              "link": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/"
+            }
+          ]
+        }
+      }
+    },
+    "dynamic-programming": {
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Dynamic Programming Introduction",
+            "url": "https://www.youtube.com/embed/tyB0ztf0DNY",
+            "notes": "https://takeuforward.org/data-structure/dynamic-programming-introduction/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-2": {
+          "video": {
+            "title": "Climbing Stars",
+            "url": "https://www.youtube.com/embed/mLfjzJsN8us",
+            "notes": "https://takeuforward.org/data-structure/dynamic-programming-climbing-stairs/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "climbing-stars",
+              "link": "https://leetcode.com/problems/climbing-stairs/description/"
+            }
+          ]
+        },
+        "medium-3": {
+          "video": {
+            "title": "Frog Jump",
+            "url": "https://www.youtube.com/embed/EgG3jsGoPvQ",
+            "notes": "https://takeuforward.org/data-structure/dynamic-programming-climbing-stairs/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "frog-jump",
+              "link": "https://leetcode.com/problems/frog-jump/description/"
+            }
+          ]
+        },
+        "medium-4": {
+          "video": {
+            "title": "Frog Jump with k distances",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-5": {
+          "video": {
+            "title": "Maximum sum of non-adjacent elements ",
+            "url": "https://www.youtube.com/embed/GrMBfJNk_NY",
+            "notes": "https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "house-robber",
+              "link": "https://leetcode.com/problems/house-robber/description/"
+            }
+          ]
+        },
+        "medium-6": {
+          "video": {
+            "title": "House Robber",
+            "url": "https://www.youtube.com/embed/3WaxQMELSkw",
+            "notes": "https://takeuforward.org/data-structure/quick-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "house-robber-ii",
+              "link": "https://leetcode.com/problems/house-robber-ii/description/"
+            }
+          ]
+        },
+        "medium-7": {
+          "video": {
+            "title": "Ninja's Training ",
+            "url": "https://www.youtube.com/embed/AE39gJYuRog",
+            "notes": "https://takeuforward.org/data-structure/dynamic-programming-ninjas-training-dp-7/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-8": {
+          "video": {
+            "title": "Grid Unique Paths : DP on Grids",
+            "url": "https://www.youtube.com/embed/sdE0A2Oxofw",
+            "notes": "https://takeuforward.org/data-structure/grid-unique-paths-dp-on-grids-dp8/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "unique-paths",
+              "link": "https://leetcode.com/problems/unique-paths/description/"
+            }
+          ]
+        },
+        "medium-9": {
+          "video": {
+            "title": "Grid Unique Paths 2",
+            "url": "https://www.youtube.com/embed/TmhpgXScLyY",
+            "notes": "https://takeuforward.org/data-structure/grid-unique-paths-2-dp-9/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "unique-paths-ii",
+              "link": "https://leetcode.com/problems/unique-paths-ii/description/"
+            }
+          ]
+        },
+        "medium-10": {
+          "video": {
+            "title": "Minimum path sum in Grid ",
+            "url": "https://www.youtube.com/embed/_rgTlyky1uQ",
+            "notes": "https://takeuforward.org/data-structure/minimum-path-sum-in-a-grid-dp-10/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "minimum-path-sum",
+              "link": "https://leetcode.com/problems/minimum-path-sum/description/"
+            }
+          ]
+        },
+        "medium-11": {
+          "video": {
+            "title": "Minimum path sum in Triangular Grid",
+            "url": "https://www.youtube.com/embed/SrP-PiLSYC0",
+            "notes": "https://takeuforward.org/data-structure/minimum-path-sum-in-triangular-grid-dp-11/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "triangle",
+              "link": "https://leetcode.com/problems/triangle/description/"
+            }
+          ]
+        },
+        "medium-12": {
+          "video": {
+            "title": "Minimum/Maximum Falling Path Sum",
+            "url": "https://www.youtube.com/embed/N_aJ5qQbYA0",
+            "notes": "https://takeuforward.org/data-structure/minimum-maximum-falling-path-sum-dp-12/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "minimum-falling-path-sum",
+              "link": "https://leetcode.com/problems/minimum-falling-path-sum/description/"
+            }
+          ]
+        },
+        "medium-13": {
+          "video": {
+            "title": "3-d DP : Ninja and his friends",
+            "url": "https://www.youtube.com/embed/QGfn7JeXK54",
+            "notes": "https://takeuforward.org/data-structure/3-d-dp-ninja-and-his-friends-dp-13/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-14": {
+          "video": {
+            "title": "Subset sum equal to target",
+            "url": "https://www.youtube.com/embed/fWX9xDmIzRI",
+            "notes": "https://takeuforward.org/data-structure/subset-sum-equal-to-target-dp-14/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-15": {
+          "video": {
+            "title": "Partition Equal Subset Sum ",
+            "url": "https://www.youtube.com/embed/7win3dcgo3k",
+            "notes": "https://takeuforward.org/data-structure/partition-equal-subset-sum-dp-15/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "partition-equal-subset-sum",
+              "link": "https://leetcode.com/problems/partition-equal-subset-sum/description/"
+            }
+          ]
+        },
+        "medium-16": {
+          "video": {
+            "title": "Partition Set Into 2 Subsets With Min Absolute Sum Diff ",
+            "url": "https://www.youtube.com/embed/GS_OqZb2CWc",
+            "notes": "https://takeuforward.org/data-structure/partition-set-into-2-subsets-with-min-absolute-sum-diff-dp-16/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "partition-array-into-two-arrays-to-minimize-sum-difference",
+              "link": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/description/"
+            }
+          ]
+        },
+        "medium-17": {
+          "video": {
+            "title": "Count Subsets with Sum K",
+            "url": "https://www.youtube.com/embed/ZHyb-A2Mte4",
+            "notes": "https://takeuforward.org/data-structure/count-subsets-with-sum-k-dp-17/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-18": {
+          "video": {
+            "title": "Count Partitions with Given Difference ",
+            "url": "https://www.youtube.com/embed/zoilQD1kYSg",
+            "notes": "https://takeuforward.org/data-structure/count-partitions-with-given-difference-dp-18/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-19": {
+          "video": {
+            "title": "Target Sum ",
+            "url": "https://www.youtube.com/embed/b3GD8263-PQ",
+            "notes": "https://takeuforward.org/data-structure/target-sum-dp-21/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "target-sum ",
+              "link": "https://leetcode.com/problems/target-sum/description/"
+            }
+          ]
+        },
+        "medium-20": {
+          "video": {
+            "title": "",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/quick-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://leetcode.com/problems/sort-an-array/description/?envType=problem-list-v2&envId=merge-sort"
+            }
+          ]
+        },
+        "medium-21": {
+          "video": {
+            "title": "Wildcard Matching",
+            "url": "https://www.youtube.com/embed/ZmlQ3vgAOMo",
+            "notes": "https://takeuforward.org/data-structure/wildcard-matching-dp-34/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "wildcard-matching",
+              "link": "https://leetcode.com/problems/wildcard-matching/description/"
+            }
+          ]
+        },
+        "medium-22": {
+          "video": {
+            "title": "",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/quick-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://leetcode.com/problems/sort-an-array/description/?envType=problem-list-v2&envId=merge-sort"
+            }
+          ]
+        }
+      }
+    },
+    "tries": {
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Longest String with All Prefixes",
+            "url": "https://www.youtube.com/embed/AWnBa91lThI?si=5KiwDc-NFPqZg5Ol",
+            "notes": "",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": []
+        },
+        "medium-2": {
+          "video": {
+            "title": "Maximum XOR of two numbers in an array",
+            "url": "https://www.youtube.com/embed/EIhAwfHubE8?si=evrjiyF1PY7OmYwM",
+            "notes": "https://takeuforward.org/data-structure/maximum-xor-of-two-numbers-in-an-array/",
+            "time": 0
+          },
+          "visualization": {
+            "category": "none",
+            "algorithm": "none"
+          },
+          "leetcode": [
+            {
+              "id": "maximum-xor-of-two-numbers-in-an-array",
+              "link": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/description/"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

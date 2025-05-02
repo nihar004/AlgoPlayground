@@ -116,6 +116,7 @@ export default function CodeEditor({ code, setCode }) {
           }`}
         >
           <textarea
+            id="code-editor"
             ref={editorRef}
             className={`w-full h-full p-2 font-mono text-sm ${
               isDarkMode ? "text-white" : "text-gray-800"

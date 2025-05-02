@@ -1,0 +1,127 @@
+{
+  "categories": {
+    "basics": {},
+    "basic-logic": {},
+    "basic-math": {},
+    "basic-hashing": {},
+    "sorting": {
+      "easy": {
+        "easy-1": {
+          "video": {
+            "title": "Selection Sort",
+            "url": "https://www.youtube.com/embed/HGk_ypEuS24",
+            "notes": "https://takeuforward.org/sorting/selection-sort-algorithm/",
+            "time": 165
+          },
+          "visualization": { "category": "Sorting", "algorithm": "selection" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/selection-sort"
+            }
+          ]
+        },
+        "easy-2": {
+          "video": {
+            "title": "Bubble Sort",
+            "url": "https://www.youtube.com/embed/HGk_ypEuS24",
+            "notes": "https://takeuforward.org/data-structure/bubble-sort-algorithm/",
+            "time": 1550
+          },
+          "visualization": { "category": "Sorting", "algorithm": "bubble" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/bubble-sort"
+            }
+          ]
+        },
+        "easy-3": {
+          "video": {
+            "title": "Insertion Sort",
+            "url": "https://www.youtube.com/embed/HGk_ypEuS24",
+            "notes": "https://takeuforward.org/data-structure/insertion-sort-algorithm/",
+            "time": 1990
+          },
+          "visualization": { "category": "Sorting", "algorithm": "insertion" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://takeuforward.org/plus/dsa/problems/insertion-sorting"
+            }
+          ]
+        }
+      },
+      "medium": {
+        "medium-1": {
+          "video": {
+            "title": "Merge Sort",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/merge-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": { "category": "Sorting", "algorithm": "merge" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://leetcode.com/problems/sort-an-array/description/?envType=problem-list-v2&envId=merge-sort"
+            }
+          ]
+        },
+        "medium-2": {
+          "video": {
+            "title": "Quick Sort",
+            "url": "https://www.youtube.com/embed/ogjf7ORKfd8",
+            "notes": "https://takeuforward.org/data-structure/quick-sort-algorithm/",
+            "time": 0
+          },
+          "visualization": { "category": "Sorting", "algorithm": "quick" },
+          "leetcode": [
+            {
+              "id": "sort-an-array",
+              "link": "https://leetcode.com/problems/sort-an-array/description/?envType=problem-list-v2&envId=merge-sort"
+            }
+          ]
+        }
+      }
+    },
+    "arrays": {
+      "easy": {
+        "easy-1": [
+          {
+            "id": "array-basics",
+            "type": "video",
+            "title": "Introduction to Arrays",
+            "url": "https://youtube.com/array-basics",
+            "visualization": "/visualizations/array-basics"
+          },
+          {
+            "id": "two-sum",
+            "type": "leetcode",
+            "title": "Two Sum",
+            "link": "https://leetcode.com/problems/two-sum",
+            "hint": "Use a hashmap to store complements."
+          }
+        ],
+        "easy-medium": []
+      },
+      "medium": {}
+    },
+    "binary-search": { "easy": {}, "medium": {} },
+    "strings": {},
+    "linked-lists": {},
+    "recursion": {},
+    "bit-manipulation": {},
+    "stack": {},
+    "queue": {},
+    "two-pointer": {},
+    "sliding-window": {},
+    "heaps": {},
+    "greedy": {},
+    "binary-tree": {},
+    "binary-search-tree": {},
+    "graph": {},
+    "dynamic-programming": {},
+    "tries": {}
+  }
+}

@@ -325,15 +325,15 @@ const AlgorithmsPage = () => {
                         ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-900/20"
                         : "bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md shadow-blue-500/20"
                       : isDarkMode
-                      ? "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-zinc-200"
-                      : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800"
+                        ? "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 hover:text-zinc-200"
+                        : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-800"
                   }`}
                 >
                   {category === "all"
                     ? "All Categories"
                     : category === "dynamic"
-                    ? "Dynamic Programming"
-                    : `${category.charAt(0).toUpperCase() + category.slice(1)}`}
+                      ? "Dynamic Programming"
+                      : `${category.charAt(0).toUpperCase() + category.slice(1)}`}
                 </button>
               )
             )}
@@ -371,11 +371,11 @@ const AlgorithmsPage = () => {
             {activeCategory === "all"
               ? "All Algorithms"
               : activeCategory === "dynamic"
-              ? "Dynamic Programming"
-              : `${
-                  activeCategory.charAt(0).toUpperCase() +
-                  activeCategory.slice(1)
-                } Algorithms`}
+                ? "Dynamic Programming"
+                : `${
+                    activeCategory.charAt(0).toUpperCase() +
+                    activeCategory.slice(1)
+                  } Algorithms`}
           </h2>
           <p
             className={`text-base ${
@@ -452,7 +452,8 @@ const AlgorithmsPage = () => {
               >
                 Follow our structured learning paths to master algorithms from
                 beginner to advanced levels. Each path includes interactive
-                lessons, exercises, and projects.
+                lessons, coding exercises, AI assistants and visualizations to
+                help you learn effectively.
               </p>
               <button
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${
@@ -461,7 +462,7 @@ const AlgorithmsPage = () => {
                     : "text-blue-600 hover:text-blue-700"
                 }`}
               >
-                <span>Explore learning paths</span>
+                <a href="/LearningPath">Explore learning paths</a>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

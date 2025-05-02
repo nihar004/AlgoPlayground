@@ -17,8 +17,8 @@ function Header({ title }) {
           ? "text-blue-400 font-extrabold scale-105 text-lg"
           : "text-blue-600 font-extrabold scale-105 text-lg"
         : isDarkMode
-        ? "text-zinc-300 hover:text-white"
-        : "text-zinc-600 hover:text-zinc-900"
+          ? "text-zinc-300 hover:text-white"
+          : "text-zinc-600 hover:text-zinc-900"
     } ${
       isActive
         ? "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:scale-x-100 " +
@@ -90,6 +90,7 @@ function Header({ title }) {
             >
               Home
             </a>
+
             <a
               href="/category"
               className={getTabStyles("Algorithms")}
@@ -99,6 +100,16 @@ function Header({ title }) {
               }}
             >
               Algorithms
+            </a>
+            <a
+              href="/LearningPath"
+              className={getTabStyles("LearningPath")}
+              onClick={(e) => {
+                e.preventDefault();
+                changeTab("LearningPath", "/LearningPath");
+              }}
+            >
+              Learning Path
             </a>
             <a
               href="/AlgoMentor"

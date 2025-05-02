@@ -468,6 +468,7 @@ export default function Home() {
                         Problem
                       </div>
                       <textarea
+                        id="problem-statement"
                         className={`w-full h-40 p-4 pt-8 outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent resize-none ${
                           isDarkMode
                             ? "bg-transparent text-white placeholder-gray-400"

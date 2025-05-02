@@ -11,8 +11,8 @@ export const useAppContext = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
   // Core states for tracking selections
-  const [currentCategory, setCurrentCategory] = useState("LinkedList");
-  const [currentAlgorithm, setCurrentAlgorithm] = useState("singly");
+  const [currentCategory, setCurrentCategory] = useState("Sorting");
+  const [currentAlgorithm, setCurrentAlgorithm] = useState("bubble");
   const [activeTab, setActiveTab] = useState("Algorithms");
 
   // Add new layout state
@@ -28,6 +28,7 @@ export const AppProvider = ({ children }) => {
       if (pathname === "/category" || pathname.includes("/algorithm/"))
         return "Algorithms";
       if (pathname === "/AlgoMentor") return "AlgoMentor";
+      if (pathname === "/LearningPath") return "LearningPath";
       if (pathname === "/about") return "About Us";
       return "Home";
     };
@@ -48,7 +49,11 @@ export const AppProvider = ({ children }) => {
   };
 
   const changeTab = async (tabName, href) => {
-    if (["Home", "Algorithms", "AlgoMentor", "About Us"].includes(tabName)) {
+    if (
+      ["Home", "Algorithms", "AlgoMentor", "LearningPath", "About Us"].includes(
+        tabName
+      )
+    ) {
       setActiveTab(tabName);
       if (href) {
         await router.push(href);
