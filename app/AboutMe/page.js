@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import Image from "next/image";
 
 const createCustomShape = (type) => {
   switch (type) {
@@ -246,9 +247,11 @@ export default function AboutMe() {
           <div className="flex flex-col md:flex-row items-start mb-8">
             <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
               <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-indigo-400 shadow-lg">
-                <img
-                  src="/api/placeholder/200/200"
+                <Image
+                  // src="/api/placeholder/200/200"
                   alt="Nihar Singla"
+                  width={200}
+                  height={200}
                   className="w-full h-full object-cover"
                 />
               </div>

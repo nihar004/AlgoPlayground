@@ -560,14 +560,14 @@ export default function LearningPathPage() {
             {/* Message if search yields no results [2] */}
             {filteredPaths.length === 0 && searchTerm && (
               <div className="text-center text-gray-500 dark:text-gray-400 py-8">
-                No paths found matching "{searchTerm}".
+                No paths found matching &quot;{searchTerm}&quot;.
               </div>
             )}
             {/* Message if no custom paths exist yet */}
             {paths.length === 0 && !searchTerm && (
               <div className="text-center text-gray-500 dark:text-gray-400 py-8">
-                You haven't created any custom paths yet. Use "Create With AI"
-                to get started!
+                You haven&apos;t created any custom paths yet. Use &quot;Create
+                With AI&quot; to get started!
               </div>
             )}
           </div>

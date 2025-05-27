@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutAlgoPlayground() {
   const mountRef = useRef(null);
@@ -345,9 +347,11 @@ export default function AboutAlgoPlayground() {
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-indigo-400">
-                      <img
+                      <Image
                         src="/api/placeholder/64/64"
                         alt="Nihar Singla"
+                        width={64}
+                        height={64}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -517,12 +521,12 @@ export default function AboutAlgoPlayground() {
                   Begin your journey into the world of algorithms with our
                   interactive learning platform.
                 </p>
-                <a
+                <Link
                   href="/"
                   className="block w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-lg transition duration-300 text-center transform hover:scale-105 shadow-lg"
                 >
                   Explore AlgoPlayground
-                </a>
+                </Link>
               </div>
             </div>
           </div>

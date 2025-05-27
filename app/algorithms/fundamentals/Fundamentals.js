@@ -482,7 +482,7 @@ export default function Fundamentals() {
     <div className={styles.goalPopup}>
       <div className={styles.popupContent}>
         <h3>🎉 Congratulations! 🎉</h3>
-        <p>You've successfully reached the goal!</p>
+        <p>You&apos;ve successfully reached the goal!</p>
         <button
           onClick={() => {
             setShowGoalPopup(false); // Ensure it stays marked as reached
@@ -592,7 +592,7 @@ export default function Fundamentals() {
             className={`${styles.popupContent} ${isDarkMode ? "text-zinc-100" : "text-zinc-900"}`}
           >
             <h3 className="text-2xl font-bold mb-4">🎉 Congratulations! 🎉</h3>
-            <p className="mb-6">You've successfully reached the goal!</p>
+            <p className="mb-6">You&apos;ve successfully reached the goal!</p>
             <button
               onClick={() => setShowGoalPopup(false)}
               className={`${styles.popupButton} ${
