@@ -156,10 +156,10 @@
   cursor: pointer;
 }
 
-.commandButtons button:disabled {
+/* .commandButtons button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */
 
 .loopControls,
 .functionControls {
@@ -205,10 +205,10 @@
   transition: all 0.2s ease;
 }
 
-.executeButton:disabled {
+/* .executeButton:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */
 
 .clearButton {
   padding: 0.75rem;
@@ -460,11 +460,11 @@
 }
 
 /* Add to existing button styles */
-button:disabled {
+/* button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none !important;
-}
+} */
 
 .resetButton:not(:disabled) {
   background-color: #ff9800;
