@@ -242,10 +242,10 @@ export default function AboutAlgoPlayground() {
                   memorable.
                 </p>
                 <p className="text-lg text-blue-100">
-                  Whether you're a computer science student, a coding bootcamp
-                  graduate, or a seasoned developer brushing up on fundamentals,
-                  AlgoPlayground offers a space to explore, experiment, and grow
-                  your algorithmic thinking.
+                  Whether you&apos;re a computer science student, a coding
+                  bootcamp graduate, or a seasoned developer brushing up on
+                  fundamentals, AlgoPlayground offers a space to explore,
+                  experiment, and grow your algorithmic thinking.
                 </p>
               </div>
 
@@ -307,7 +307,7 @@ export default function AboutAlgoPlayground() {
                       Hands-On Practice
                     </h4>
                     <p className="text-pink-100">
-                      Apply what you've learned through interactive coding
+                      Apply what you&apos;ve learned through interactive coding
                       exercises and real-world problem-solving challenges that
                       reinforce your understanding.
                     </p>
@@ -315,9 +315,9 @@ export default function AboutAlgoPlayground() {
                 </div>
 
                 <p className="text-lg text-blue-200 italic">
-                  "AlgoPlayground transforms the way algorithms are taught and
-                  learned, making the complex accessible through visual,
-                  interactive experiences."
+                  &quot;AlgoPlayground transforms the way algorithms are taught
+                  and learned, making the complex accessible through visual,
+                  interactive experiences.&quot;
                 </p>
               </div>
             </div>

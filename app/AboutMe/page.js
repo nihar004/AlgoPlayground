@@ -310,8 +310,8 @@ export default function AboutMe() {
                 About Me
               </h3>
               <p className="mb-4">
-                I'm a passionate full-stack developer with a deep interest in
-                algorithms and data structures. My journey in software
+                I&apos;m a passionate full-stack developer with a deep interest
+                in algorithms and data structures. My journey in software
                 development has been driven by a desire to create intuitive,
                 efficient, and impactful solutions that make complex concepts
                 accessible to everyone.
@@ -445,9 +445,9 @@ export default function AboutMe() {
                 Get In Touch
               </h3>
               <p className="mb-6">
-                I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your vision. Feel free to reach out
-                through LinkedIn or visit AlgoPlayground to see my work in
+                I&apos;m always open to discussing new projects, creative ideas,
+                or opportunities to be part of your vision. Feel free to reach
+                out through LinkedIn or visit AlgoPlayground to see my work in
                 action.
               </p>
               <div className="flex flex-wrap gap-4">
