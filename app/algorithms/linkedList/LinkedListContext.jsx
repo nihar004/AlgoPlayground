@@ -1,25 +1,24 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { generateStates } from "./singly/StateGenerator";
+import { generateStates, OPERATIONS } from "./singly/StateGenerator/index";
 
 const LinkedListContext = createContext();
 
 export const LinkedListProvider = ({ children }) => {
   const [nodes, setNodes] = useState([
     { id: 1, value: 10, next: 2 },
-    { id: 2, value: 20, next: 5 },
-    { id: 3, value: 30, next: 1 },
+    { id: 2, value: 20, next: 3 },
+    { id: 3, value: 30, next: 4 },
     { id: 4, value: 40, next: 5 },
     { id: 5, value: 20, next: 6 },
     { id: 6, value: 30, next: 7 },
-    { id: 7, value: 30, next: 8 },
+    { id: 7, value: 30, next: 9 },
     { id: 8, value: 30, next: 9 },
     { id: 9, value: 30, next: 10 },
     { id: 10, value: 30, next: 11 },
     { id: 11, value: 30, next: 12 },
     { id: 12, value: 30, next: 13 },
     { id: 13, value: 30, next: 14 },
-    { id: 14, value: 30, next: 15 },
-    { id: 15, value: 50, next: null },
+    { id: 14, value: 50, next: null },
   ]);
   const [currentStateIndex, setCurrentStateIndex] = useState(0);
   const [states, setStates] = useState([]);
@@ -44,7 +43,6 @@ export const LinkedListProvider = ({ children }) => {
 
   // Update states when operation changes
   const updateOperation = (category, type, value = null, position = null) => {
-    console.log("Operation Update:", { category, type, value, position });
     setCurrentOperation({ category, type });
 
     const newStates = generateStates(nodes, type, value, position, head);

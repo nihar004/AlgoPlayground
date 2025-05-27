@@ -43,15 +43,11 @@ const CodeViewer = ({
         if (command.action === "turn_left") return "Turn Left";
         return "Move";
 
+      // In getCommandText function:
       case "if":
-        if (command.condition === "obstacle_ahead")
-          return "if (obstacleAhead()) {";
-        if (command.condition === "at_goal") return "if (atGoal()) {";
-        return "if (condition) {";
-
+        return `if (${command.condition.replace(/_/g, " ")}) {`;
       case "else":
         return "} else {";
-
       case "endif":
         return "}";
 

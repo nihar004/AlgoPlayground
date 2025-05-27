@@ -23,6 +23,9 @@ const LinkedListRightPanel = () => {
   const [tooltipContent, setTooltipContent] = useState("");
   const tooltipTimeout = useRef(null);
   const codeContainerRef = useRef(null);
+  const [searchValue, setSearchValue] = useState("");
+  const [deletePosition, setDeletePosition] = useState("");
+  const [deleteValue, setDeleteValue] = useState("");
 
   const [metadata, setMetadata] = useState({
     timeComplexity: { best: "N/A", average: "N/A", worst: "N/A" },
@@ -207,7 +210,45 @@ const LinkedListRightPanel = () => {
   const handleOperationChange = (e) => {
     const newOperation = e.target.value;
     setSelectedOperation(newOperation);
-    updateOperation(selectedCategory, newOperation);
+
+    if (newOperation === "search") {
+      updateOperation(selectedCategory, newOperation, searchValue || null);
+    } else if (newOperation === "deleteAt") {
+      updateOperation(
+        selectedCategory,
+        newOperation,
+        null,
+        deletePosition || null
+      );
+    } else if (newOperation === "deleteValue") {
+      updateOperation(selectedCategory, newOperation, deleteValue || null);
+    } else {
+      updateOperation(selectedCategory, newOperation);
+    }
+  };
+
+  const handleSearchValueChange = (e) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    if (selectedOperation === "search") {
+      updateOperation(selectedCategory, selectedOperation, value || null);
+    }
+  };
+
+  const handleDeletePositionChange = (e) => {
+    const value = e.target.value;
+    setDeletePosition(value);
+    if (selectedOperation === "deleteAt") {
+      updateOperation(selectedCategory, selectedOperation, null, value || null);
+    }
+  };
+
+  const handleDeleteValueChange = (e) => {
+    const value = e.target.value;
+    setDeleteValue(value);
+    if (selectedOperation === "deleteValue") {
+      updateOperation(selectedCategory, selectedOperation, value || null);
+    }
   };
 
   return (
@@ -267,6 +308,45 @@ const LinkedListRightPanel = () => {
                 </option>
               ))}
             </select>
+            {selectedOperation === "search" && (
+              <input
+                type="number"
+                value={searchValue}
+                onChange={handleSearchValueChange}
+                placeholder="Enter value to search"
+                className={`text-sm px-2 py-1 rounded border outline-none ${
+                  !isDarkMode
+                    ? "border-zinc-200 bg-white"
+                    : "border-zinc-700 bg-zinc-600"
+                }`}
+              />
+            )}
+            {selectedOperation === "deleteAt" && (
+              <input
+                type="number"
+                value={deletePosition}
+                onChange={handleDeletePositionChange}
+                placeholder="Enter position"
+                className={`text-sm px-2 py-1 rounded border outline-none ${
+                  !isDarkMode
+                    ? "border-zinc-200 bg-white"
+                    : "border-zinc-700 bg-zinc-600"
+                }`}
+              />
+            )}
+            {selectedOperation === "deleteValue" && (
+              <input
+                type="number"
+                value={deleteValue}
+                onChange={handleDeleteValueChange}
+                placeholder="Enter value to delete"
+                className={`text-sm px-2 py-1 rounded border outline-none ${
+                  !isDarkMode
+                    ? "border-zinc-200 bg-white"
+                    : "border-zinc-700 bg-zinc-600"
+                }`}
+              />
+            )}
           </div>
           <div className="flex items-center gap-2">
             <button

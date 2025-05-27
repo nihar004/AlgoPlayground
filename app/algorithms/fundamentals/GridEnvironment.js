@@ -2,6 +2,13 @@
 import React from "react";
 import styles from "./styles.module.css";
 
+const directionArrows = {
+  north: "↑",
+  south: "↓",
+  east: "→",
+  west: "←",
+};
+
 const GridEnvironment = ({ grid, soldier }) => {
   return (
     <div className={styles.grid}>
@@ -18,8 +25,9 @@ const GridEnvironment = ({ grid, soldier }) => {
                     styles[`facing-${soldier.direction}`]
                   }`}
                 >
-                  {/* SVG or character representation of soldier */}
-                  <div className={styles.soldierIcon}>🧍</div>
+                  <div className={styles.soldierIcon}>
+                    {directionArrows[soldier.direction] || "→"}
+                  </div>
                 </div>
               )}
             </div>

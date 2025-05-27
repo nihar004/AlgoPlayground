@@ -21,18 +21,6 @@ export const algorithms = {
       id: "merge",
       name: "Merge Sort",
     },
-    heap: {
-      id: "heap",
-      name: "Heap Sort",
-    },
-    radix: {
-      id: "radix",
-      name: "Radix Sort",
-    },
-    counting: {
-      id: "counting",
-      name: "Counting Sort",
-    },
   },
   Searching: {
     linear: {
@@ -42,14 +30,6 @@ export const algorithms = {
     binary: {
       id: "binary",
       name: "Binary Search",
-    },
-    jump: {
-      id: "jump",
-      name: "Jump Search",
-    },
-    interpolation: {
-      id: "interpolation",
-      name: "Interpolation Search",
     },
   },
   LinkedList: {
@@ -144,7 +124,7 @@ export const algorithms = {
   },
   Stack: {
     array: {
-      id: "stack-array",
+      id: "array",
       name: "Array Implementation",
       ops: {
         push: { id: "stack-array-push", name: "Push" },
@@ -153,26 +133,11 @@ export const algorithms = {
       },
     },
     linkedList: {
-      id: "stack-ll",
+      id: "linkedList",
       name: "Linked List Implementation",
       ops: {
         push: { id: "stack-ll-push", name: "Push" },
         pop: { id: "stack-ll-pop", name: "Pop" },
-      },
-    },
-    applications: {
-      id: "stack-apps",
-      name: "Applications",
-      ops: {
-        balancedParentheses: {
-          id: "stack-balanced",
-          name: "Balanced Parentheses",
-        },
-        postfixEvaluation: { id: "stack-postfix", name: "Postfix Evaluation" },
-        infixToPostfix: {
-          id: "stack-infix-to-postfix",
-          name: "Infix to Postfix",
-        },
       },
     },
   },
@@ -392,63 +357,75 @@ export const algorithms = {
     },
   },
   Fundamentals: {
-    asymptotic: {
-      id: "fundamentals-asymptotic",
-      name: "Asymptotic Analysis",
-      ops: {
-        bigO: { id: "fundamentals-big-o", name: "Big O Notation" },
-        bigOmega: { id: "fundamentals-big-omega", name: "Big Omega Notation" },
-        bigTheta: { id: "fundamentals-big-theta", name: "Big Theta Notation" },
-      },
+    "if-else": {
+      id: "fundamentals-if-else",
+      name: "If-Else Statements",
     },
-    recursion: {
-      id: "fundamentals-recursion",
-      name: "Recursion",
-      ops: {
-        factorial: {
-          id: "fundamentals-recursion-factorial",
-          name: "Factorial",
-        },
-        fibonacci: {
-          id: "fundamentals-recursion-fibonacci",
-          name: "Fibonacci",
-        },
-      },
+    forLoop: {
+      id: "fundamentals-for-loop",
+      name: "For Loop",
     },
-    divideConquer: {
-      id: "fundamentals-dc",
-      name: "Divide and Conquer",
-      ops: {
-        binarySearch: {
-          id: "fundamentals-dc-binsearch",
-          name: "Binary Search",
-        },
-        mergeSort: { id: "fundamentals-dc-mergesort", name: "Merge Sort" },
-      },
+    functions: {
+      id: "fundamentals-functions",
+      name: "Functions",
     },
-    dynamicProgramming: {
-      id: "fundamentals-dp",
-      name: "Dynamic Programming",
-      ops: {
-        fibonacci: { id: "fundamentals-dp-fibonacci", name: "Fibonacci" },
-        knapsack: { id: "fundamentals-dp-knapsack", name: "0/1 Knapsack" },
-        lcs: { id: "fundamentals-dp-lcs", name: "Longest Common Subsequence" },
-      },
-    },
-    greedy: {
-      id: "fundamentals-greedy",
-      name: "Greedy Algorithms",
-      ops: {
-        activitySelection: {
-          id: "fundamentals-greedy-activity",
-          name: "Activity Selection",
-        },
-        huffmanCoding: {
-          id: "fundamentals-greedy-huffman",
-          name: "Huffman Coding",
-        },
-      },
-    },
+    // asymptotic: {
+    //   id: "fundamentals-asymptotic",
+    //   name: "Asymptotic Analysis",
+    //   ops: {
+    //     bigO: { id: "fundamentals-big-o", name: "Big O Notation" },
+    //     bigOmega: { id: "fundamentals-big-omega", name: "Big Omega Notation" },
+    //     bigTheta: { id: "fundamentals-big-theta", name: "Big Theta Notation" },
+    //   },
+    // },
+    // recursion: {
+    //   id: "fundamentals-recursion",
+    //   name: "Recursion",
+    //   ops: {
+    //     factorial: {
+    //       id: "fundamentals-recursion-factorial",
+    //       name: "Factorial",
+    //     },
+    //     fibonacci: {
+    //       id: "fundamentals-recursion-fibonacci",
+    //       name: "Fibonacci",
+    //     },
+    //   },
+    // },
+    // divideConquer: {
+    //   id: "fundamentals-dc",
+    //   name: "Divide and Conquer",
+    //   ops: {
+    //     binarySearch: {
+    //       id: "fundamentals-dc-binsearch",
+    //       name: "Binary Search",
+    //     },
+    //     mergeSort: { id: "fundamentals-dc-mergesort", name: "Merge Sort" },
+    //   },
+    // },
+    // dynamicProgramming: {
+    //   id: "fundamentals-dp",
+    //   name: "Dynamic Programming",
+    //   ops: {
+    //     fibonacci: { id: "fundamentals-dp-fibonacci", name: "Fibonacci" },
+    //     knapsack: { id: "fundamentals-dp-knapsack", name: "0/1 Knapsack" },
+    //     lcs: { id: "fundamentals-dp-lcs", name: "Longest Common Subsequence" },
+    //   },
+    // },
+    // greedy: {
+    //   id: "fundamentals-greedy",
+    //   name: "Greedy Algorithms",
+    //   ops: {
+    //     activitySelection: {
+    //       id: "fundamentals-greedy-activity",
+    //       name: "Activity Selection",
+    //     },
+    //     huffmanCoding: {
+    //       id: "fundamentals-greedy-huffman",
+    //       name: "Huffman Coding",
+    //     },
+    //   },
+    // },
   },
 };
 
@@ -472,7 +449,7 @@ export const algorithmCardData = {
     image: "searching_img.png",
   },
   LinkedList: {
-    name: "Linked List",
+    name: "LinkedList",
     background: "from-red-100 via-red-300 to-red-500",
     button: "from-red-500 to-red-300",
     image: "linkedlist_img.png",

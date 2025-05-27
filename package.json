@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@prettier/plugin-python": "^0.0.0-development",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
@@ -21,7 +22,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
-    "react-motion": "^0.5.2",
+    "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^15.6.1",
     "three": "^0.174.0"
   },

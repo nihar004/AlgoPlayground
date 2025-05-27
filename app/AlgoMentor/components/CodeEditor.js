@@ -1,11 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function CodeEditor({ code, setCode }) {
   const editorRef = useRef(null);
   const lineNumbersRef = useRef(null);
-  const [isFocused, setIsFocused] = useState(false);
   const [activeLine, setActiveLine] = useState(1);
   const { isDarkMode } = useTheme();
 

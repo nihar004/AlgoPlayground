@@ -43,3 +43,46 @@ body::-webkit-scrollbar {
 .animate-shine {
   animation: shine 1.2s;
 }
+
+/* Custom scrollbar for chat */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Markdown styling */
+.prose {
+  max-width: 100%;
+}
+
+.prose code {
+  background-color: rgba(55, 65, 81, 0.5);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+  font-size: 0.9em;
+}
+
+.prose pre {
+  background-color: #1e293b;
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin: 0.5em 0;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+}

@@ -238,7 +238,7 @@ export async function analyzeAlgorithm(code, inputArray, expectedOutput) {
 export async function getAlgorithmComplexity(code) {
   try {
     const prompt = `
-      Analyze this sorting algorithm and provide its complexities:
+      Analyze this algorithm and provide its complexities:
       ${code}
 
       Return the analysis in this exact JSON format without any additional text or markdown:

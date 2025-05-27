@@ -1,12 +1,65 @@
 import { motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
-import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Eye, EyeOff, RefreshCw } from "lucide-react";
+
+const formatCodeWithGroq = async (code) => {
+  try {
+    const response = await fetch("/api/format-code", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code: code,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to format code");
+    }
+
+    const data = await response.json();
+    return data.formattedCode;
+  } catch (error) {
+    console.error("Error formatting code:", error);
+    return code; // Return original code on error
+  }
+};
 
 export default function AnalysisResults({ results, onVisualize }) {
   const { isDarkMode } = useTheme();
   const { isCorrect, userCode, correctedCode, explanation } = results;
   const [showHighlight, setShowHighlight] = useState(true);
+  const [formattedUserCode, setFormattedUserCode] = useState(userCode);
+  const [formattedCorrectedCode, setFormattedCorrectedCode] =
+    useState(correctedCode);
+  const [isFormatting, setIsFormatting] = useState(false);
+
+  useEffect(() => {
+    // Update state when props change
+    setFormattedUserCode(userCode);
+    setFormattedCorrectedCode(correctedCode);
+  }, [userCode, correctedCode]);
+
+  const formatCode = async () => {
+    setIsFormatting(true);
+    try {
+      // Format both user code and corrected code if it exists
+      const formattedUser = await formatCodeWithGroq(userCode);
+      setFormattedUserCode(formattedUser);
+
+      if (!isCorrect && correctedCode) {
+        const formattedCorrected = await formatCodeWithGroq(correctedCode);
+        setFormattedCorrectedCode(formattedCorrected);
+      }
+    } catch (error) {
+      console.error("Error during code formatting:", error);
+      // You might want to add a toast or error message here
+    } finally {
+      setIsFormatting(false);
+    }
+  };
 
   const renderCodeWithDiff = (originalCode, correctedCode) => {
     const originalLines = originalCode.split("\n");
@@ -18,36 +71,62 @@ export default function AnalysisResults({ results, onVisualize }) {
       i < Math.max(originalLines.length, correctedLines.length);
       i++
     ) {
-      if (originalLines[i] !== correctedLines[i]) {
-        if (i < originalLines.length) {
-          diff.push(
-            <div
-              key={`removed-${i}`}
-              className={`${
-                isDarkMode
-                  ? "bg-red-900/20 text-red-300"
-                  : "bg-red-100 text-red-600"
-              } px-2 border-l-2 border-red-500`}
-            >
-              - {originalLines[i]}
-            </div>
-          );
-        }
-        if (i < correctedLines.length) {
-          diff.push(
-            <div
-              key={`added-${i}`}
-              className={`${
-                isDarkMode
-                  ? "bg-green-900/20 text-green-300"
-                  : "bg-green-100 text-green-600"
-              } px-2 border-l-2 border-green-500`}
-            >
-              + {correctedLines[i]}
-            </div>
-          );
-        }
+      if (i >= originalLines.length) {
+        // Added lines in corrected code
+        diff.push(
+          <div
+            key={`added-${i}`}
+            className={`${
+              isDarkMode
+                ? "bg-green-900/20 text-green-300"
+                : "bg-green-100 text-green-600"
+            } px-2 border-l-2 border-green-500`}
+          >
+            + {correctedLines[i]}
+          </div>
+        );
+      } else if (i >= correctedLines.length) {
+        // Removed lines from original
+        diff.push(
+          <div
+            key={`removed-${i}`}
+            className={`${
+              isDarkMode
+                ? "bg-red-900/20 text-red-300"
+                : "bg-red-100 text-red-600"
+            } px-2 border-l-2 border-red-500`}
+          >
+            - {originalLines[i]}
+          </div>
+        );
+      } else if (originalLines[i] !== correctedLines[i]) {
+        // Different lines
+        diff.push(
+          <div
+            key={`removed-${i}`}
+            className={`${
+              isDarkMode
+                ? "bg-red-900/20 text-red-300"
+                : "bg-red-100 text-red-600"
+            } px-2 border-l-2 border-red-500`}
+          >
+            - {originalLines[i]}
+          </div>
+        );
+        diff.push(
+          <div
+            key={`added-${i}`}
+            className={`${
+              isDarkMode
+                ? "bg-green-900/20 text-green-300"
+                : "bg-green-100 text-green-600"
+            } px-2 border-l-2 border-green-500`}
+          >
+            + {correctedLines[i]}
+          </div>
+        );
       } else {
+        // Unchanged lines
         diff.push(
           <div
             key={i}
@@ -88,9 +167,9 @@ export default function AnalysisResults({ results, onVisualize }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="mb-6">
+      <div className="mb-6 flex justify-between items-center">
         <h2
-          className={`text-2xl font-bold mb-4 flex items-center ${
+          className={`text-2xl font-bold flex items-center ${
             isDarkMode ? "text-white" : "text-gray-800"
           }`}
         >
@@ -133,6 +212,24 @@ export default function AnalysisResults({ results, onVisualize }) {
             </span>
           )}
         </h2>
+
+        <motion.button
+          className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all
+            ${
+              isDarkMode
+                ? "bg-purple-500/20 text-purple-400 hover:bg-purple-500/30"
+                : "bg-purple-100 text-purple-600 hover:bg-purple-200"
+            }`}
+          onClick={formatCode}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          disabled={isFormatting}
+        >
+          <RefreshCw
+            className={`w-4 h-4 mr-2 ${isFormatting ? "animate-spin" : ""}`}
+          />
+          <span>{isFormatting ? "Formatting..." : "Format Code"}</span>
+        </motion.button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
@@ -154,14 +251,17 @@ export default function AnalysisResults({ results, onVisualize }) {
             </h3>
           </div>
           <pre
-            className={`text-sm font-mono whitespace-pre-wrap p-2 mb-4 ${
+            className={`text-sm font-mono whitespace-pre-wrap p-2 mb-4 overflow-auto max-h-[400px] ${
               isDarkMode ? "text-white" : "text-gray-800"
             }`}
           >
-            {userCode}
+            {formattedUserCode}
           </pre>
           <div className="mt-auto">
-            <VisualizeButton code={userCode} label="▶ Visualize Your Code" />
+            <VisualizeButton
+              code={formattedUserCode}
+              label="▶ Visualize Your Code"
+            />
           </div>
         </div>
 
@@ -207,17 +307,17 @@ export default function AnalysisResults({ results, onVisualize }) {
               </button>
             </div>
             <pre
-              className={`text-sm font-mono whitespace-pre-wrap p-2 mb-4 ${
+              className={`text-sm font-mono whitespace-pre-wrap p-2 mb-4 overflow-auto max-h-[400px] ${
                 isDarkMode ? "text-white" : "text-gray-800"
               }`}
             >
               {showHighlight
-                ? renderCodeWithDiff(userCode, correctedCode)
-                : correctedCode}
+                ? renderCodeWithDiff(formattedUserCode, formattedCorrectedCode)
+                : formattedCorrectedCode}
             </pre>
             <div className="mt-auto">
               <VisualizeButton
-                code={correctedCode}
+                code={formattedCorrectedCode}
                 label="▶ Visualize Corrected Code"
               />
             </div>

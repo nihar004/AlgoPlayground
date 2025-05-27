@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import CodeEditor from "./components/CodeEditor";
@@ -9,9 +9,10 @@ import Footer from "../category/Footer";
 import { ArrowRight, Sparkle, Zap } from "lucide-react";
 import { NextResponse } from "next/server";
 import VisualizationContainer from "./components/VisualizationContainer";
+import ChatBot from "./components/ChatBot";
 
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = "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";
 const MODEL = "llama-3.3-70b-versatile";
 
 // Add this utility function at the top of the file
@@ -286,6 +287,39 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    // Check if we're running in the browser
+    if (typeof window !== "undefined") {
+      const queryParams = new URLSearchParams(window.location.search);
+      const dataParam = queryParams.get("data");
+
+      if (dataParam) {
+        try {
+          const decodedData = decodeURIComponent(dataParam);
+          const parsedData = JSON.parse(decodedData);
+
+          // Update state with the received data
+          setProblemStatement(parsedData.description || parsedData.title || "");
+          setCode(parsedData.code || "");
+
+          // Set language if it matches one of our supported languages
+          if (parsedData.language) {
+            const lang = LANGUAGES.find(
+              (l) =>
+                l.id.toLowerCase() === parsedData.language.toLowerCase() ||
+                l.name.toLowerCase() === parsedData.language.toLowerCase()
+            );
+            if (lang) {
+              setSelectedLanguage(lang);
+            }
+          }
+        } catch (error) {
+          console.error("Error parsing URL data:", error);
+        }
+      }
+    }
+  }, []);
+
   const handleVisualize = (code) => {
     setShowVisualization(true);
     setVisualizationCode(code);
@@ -467,6 +501,17 @@ export default function Home() {
                       >
                         Problem
                       </div>
+                      {/* <textarea
+                        id="problem-statement"
+                        className={`w-full h-40 p-4 pt-8 outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent resize-none ${
+                          isDarkMode
+                            ? "bg-transparent text-white placeholder-gray-400"
+                            : "bg-transparent text-zinc-800 placeholder-zinc-400"
+                        }`}
+                        placeholder="Enter the problem statement here..."
+                        value={problemStatement}
+                        onChange={(e) => setProblemStatement(e.target.value)}
+                      ></textarea> */}
                       <textarea
                         id="problem-statement"
                         className={`w-full h-40 p-4 pt-8 outline-none focus:ring-1 focus:ring-blue-500 focus:border-transparent resize-none ${
@@ -477,6 +522,7 @@ export default function Home() {
                         placeholder="Enter the problem statement here..."
                         value={problemStatement}
                         onChange={(e) => setProblemStatement(e.target.value)}
+                        // readOnly={!!problemStatement} // Make it read-only if there's content from the extension
                       ></textarea>
                     </div>
 
@@ -784,6 +830,7 @@ export default function Home() {
           </AnimatePresence>
         )}
       </main>
+      <ChatBot initialCode={code} />
     </div>
   );
 }

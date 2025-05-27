@@ -99,7 +99,7 @@ export const NodeContent = ({ node, onClose, onComplete, nodeTypes }) => {
           )}
 
           {/* Right sidebar (20%) */}
-          <div className="w-1/5 border-l border-gray-200 p-4 overflow-y-auto">
+          <div className="w-1/5 border-l border-gray-200 p-4 overflow-y-auto text-black">
             <div className="space-y-6">
               {/* Notes section */}
               {content.video?.notes && (

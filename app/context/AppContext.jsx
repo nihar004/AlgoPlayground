@@ -25,8 +25,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const getInitialTab = () => {
       if (pathname === "/") return "Home";
-      if (pathname === "/category" || pathname.includes("/algorithm/"))
-        return "Algorithms";
+      if (pathname === "/category") return "Algorithms";
       if (pathname === "/AlgoMentor") return "AlgoMentor";
       if (pathname === "/LearningPath") return "LearningPath";
       if (pathname === "/about") return "About Us";
@@ -39,11 +38,16 @@ export const AppProvider = ({ children }) => {
   const changeCategory = (category) => {
     if (algorithms[category]) {
       setCurrentCategory(category);
+      // If category is fundamentals, set appropriate initial algorithm
+      if (category === "Fundamentals") {
+        setCurrentAlgorithm("fundamentals-if-else"); // or whatever your default fundamentals algorithm is
+      }
     }
   };
 
   const changeAlgorithm = (algorithmId) => {
-    if (algorithms[currentCategory][algorithmId]) {
+    const categoryAlgorithms = algorithms[currentCategory];
+    if (categoryAlgorithms && categoryAlgorithms[algorithmId]) {
       setCurrentAlgorithm(algorithmId);
     }
   };

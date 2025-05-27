@@ -1,0 +1,638 @@
+/* Base styles with theme variables */
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  min-height: 100vh;
+  padding: 1.5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0 2rem 0;
+  line-height: 1.15;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.visualization {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  gap: 2rem;
+}
+
+.gridContainer {
+  flex: 1;
+  min-width: 400px;
+}
+
+.controlContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 400px;
+}
+
+/* styles/GridEnvironment.module.css */
+.grid {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #333;
+  background-color: #f5f5f5;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.row {
+  display: flex;
+  flex: 1;
+}
+
+.cell {
+  flex: 1;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.empty {
+  background-color: #fff;
+}
+
+.obstacle {
+  background-color: #666;
+}
+
+.goal {
+  background-color: #4caf50;
+}
+
+.soldier {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.soldierIcon {
+  font-size: 1.5rem;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.facing-right .soldierIcon {
+  transform: rotate(0deg);
+}
+
+.facing-down .soldierIcon {
+  transform: rotate(90deg);
+}
+
+.facing-left .soldierIcon {
+  transform: rotate(180deg);
+}
+
+.facing-up .soldierIcon {
+  transform: rotate(270deg);
+}
+
+/* styles/ControlPanel.module.css */
+.controlPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab.active {
+  border-bottom: 2px solid #0070f3;
+  color: #0070f3;
+}
+
+.commandButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.commandButtons button {
+  padding: 0.5rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.commandButtons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.loopControls,
+.functionControls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.loopControls input,
+.functionControls input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+/* styles/ControlPanel.module.css (continued) */
+.executionControls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.speedControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.speedControl input {
+  flex: 1;
+}
+
+.executeButton {
+  padding: 0.75rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.executeButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.clearButton {
+  padding: 0.75rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* styles/CodeViewer.module.css */
+.codeViewer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.commandList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #fff;
+  padding: 0.5rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.commandItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.commandItem:hover {
+  background-color: #f0f8ff;
+}
+
+.commandItem.executing {
+  background-color: var(--highlight-color);
+}
+
+.commandText {
+  flex: 1;
+}
+
+.commandActions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.commandActions button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.commandActions button:hover {
+  background-color: #ddd;
+}
+
+.emptyMessage {
+  padding: 1rem;
+  color: #666;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Path tracing */
+.path-marker {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  background-color: rgba(0, 116, 217, 0.3);
+  border-radius: 50%;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.tooltipContent {
+  visibility: hidden;
+  position: absolute;
+  /* ...tooltip positioning... */
+}
+
+.tooltip:hover .tooltipContent {
+  visibility: visible;
+}
+
+/* Execution visualizations */
+.loop-counter {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #ff5722;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add to your existing styles */
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.actionButtons > button {
+  flex: 1;
+  min-width: 80px;
+}
+
+.resetButton {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton {
+  flex: 1;
+  padding: 0.75rem;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Disabled states */
+.executeButton:disabled,
+.resetButton:disabled,
+.clearButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Add to your existing styles */
+.stopButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* GOAL REACHD POP UP
+/* Goal Popup Styles */
+.goalPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.popupContent {
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  color: white;
+  transition: all 0.3s ease;
+  /* animation: popIn 0.3s ease-out; */
+}
+
+/* @keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+} */
+
+.popupButton {
+  background-color: white;
+  color: #4caf50;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.popupButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add to existing button styles */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.resetButton:not(:disabled) {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Make reset button more prominent when enabled */
+.resetButton:not(:disabled):hover {
+  background-color: #fb8c00;
+}
+
+/* AUTOMATION PART CSS */
+/* Mode selector */
+.modeSelector {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #f0f0f0;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.modeSelector label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.explanationBubble {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: white;
+  border-left: 4px solid #2196f3;
+  border-radius: 0 4px 4px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add to styles.module.css */
+.disabledTab {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.demoHelperText {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  background: #e3f2fd;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.executionExplanation {
+  margin: 1rem 0;
+  min-height: 3rem;
+}
+
+.explanationBubble {
+  padding: 0.75rem;
+  background: white;
+  border-left: 4px solid #2196f3;
+  border-radius: 0 4px 4px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add these new styles */
+.loadingTab {
+  position: relative;
+  opacity: 0.8;
+}
+
+.disabledTab {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.demoHelperText {
+  margin: 10px 0;
+  padding: 8px;
+  background: #e3f2fd;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .controlPanel {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .codeViewer {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .commandList {
+  background-color: #111827;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .commandItem {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .commandItem:hover {
+  background-color: #374151;
+}
+
+[data-theme="dark"] .commandItem.executing {
+  background-color: #1d4ed8;
+}
+
+[data-theme="dark"] .modeSelector {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .executeButton:not(:disabled):hover,
+[data-theme="dark"] .resetButton:not(:disabled):hover,
+[data-theme="dark"] .clearButton:not(:disabled):hover,
+[data-theme="dark"] .stopButton:not(:disabled):hover {
+  filter: brightness(1.1);
+}
+
+[data-theme="dark"] .explanationBubble {
+  background-color: #1f2937;
+  border-color: #3b82f6;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .demoHelperText {
+  background-color: #1e3a5f;
+  color: #e5e7eb;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
