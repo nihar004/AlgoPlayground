@@ -478,22 +478,30 @@ export default function Fundamentals() {
     }
   };
 
-  const GoalPopup = React.memo(() => (
-    <div className={styles.goalPopup}>
-      <div className={styles.popupContent}>
-        <h3>🎉 Congratulations! 🎉</h3>
-        <p>You&apos;ve successfully reached the goal!</p>
+  const GoalPopupComponent = ({ isDarkMode, onClose }) => (
+    <div
+      className={`${styles.goalPopup} ${isDarkMode ? "bg-zinc-800/95" : "bg-white/95"}`}
+    >
+      <div
+        className={`${styles.popupContent} ${isDarkMode ? "text-zinc-100" : "text-zinc-900"}`}
+      >
+        <h3 className="text-2xl font-bold mb-4">🎉 Congratulations! 🎉</h3>
+        <p className="mb-6">You&apos;ve successfully reached the goal!</p>
         <button
-          onClick={() => {
-            setShowGoalPopup(false); // Ensure it stays marked as reached
-          }}
-          className={styles.popupButton}
+          onClick={onClose}
+          className={`${styles.popupButton} ${
+            isDarkMode
+              ? "bg-blue-600 hover:bg-blue-700 text-white"
+              : "bg-blue-500 hover:bg-blue-600 text-white"
+          } transition-colors`}
         >
           Continue
         </button>
       </div>
     </div>
-  ));
+  );
+
+  const GoalPopup = React.memo(GoalPopupComponent);
 
   // Add to your existing state
 
