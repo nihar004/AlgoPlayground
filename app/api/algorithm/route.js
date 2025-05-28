@@ -445,9 +445,7 @@ import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Initialize Google AI
-const genAI = new GoogleGenerativeAI(
-  process.env.GOOGLE_AI_API_KEY || "AIzaSyASA0ITCAGnwEW-k83vm-FGf3ngVMwdnqk"
-);
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
 const MODEL_NAME = "gemini-1.5-pro"; // or "gemini-pro" for the lighter model
 
 // Helper function to extract function code from AI response
