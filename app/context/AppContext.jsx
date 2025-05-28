@@ -35,21 +35,41 @@ export const AppProvider = ({ children }) => {
     setActiveTab(getInitialTab());
   }, []); // Only run once on mount
 
+  // Add logging when states change
+  useEffect(() => {
+    console.log("Current Category:", currentCategory);
+    console.log("Current Algorithm:", currentAlgorithm);
+  }, [currentCategory, currentAlgorithm]);
+
   const changeCategory = (category) => {
+    console.log("Changing category to:", category);
     if (algorithms[category]) {
       setCurrentCategory(category);
       // If category is fundamentals, set appropriate initial algorithm
       if (category === "Fundamentals") {
+        console.log("Setting default Fundamentals algorithm");
         setCurrentAlgorithm("fundamentals-if-else"); // or whatever your default fundamentals algorithm is
       }
+    } else {
+      console.warn("Invalid category:", category);
     }
   };
 
   const changeAlgorithm = (algorithmId) => {
-    const categoryAlgorithms = algorithms[currentCategory];
-    if (categoryAlgorithms && categoryAlgorithms[algorithmId]) {
-      setCurrentAlgorithm(algorithmId);
-    }
+    console.log("Attempting to change algorithm to:", algorithmId);
+    // const categoryAlgorithms = algorithms[currentCategory];
+    // if (categoryAlgorithms && categoryAlgorithms[algorithmId]) {
+    //   console.log("Algorithm change successful:", {
+    //     category: currentCategory,
+    //     algorithm: algorithmId,
+    //   });
+    setCurrentAlgorithm(algorithmId);
+    // } else {
+    //   console.warn("Invalid algorithm for category:", {
+    //     category: currentCategory,
+    //     attemptedAlgorithm: algorithmId,
+    //   });
+    // }
   };
 
   const changeTab = async (tabName, href) => {

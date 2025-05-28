@@ -26,9 +26,9 @@ const AlgorithmCard = ({ categoryData, data }) => {
   // Handle algorithm selection
   const handleAlgorithmClick = (algo) => {
     // First set the selected algorithm
+    changeCategory(data.name);
     changeAlgorithm(algo.id);
     // Then set its parent category
-    changeCategory(data.name);
     // Finally navigate to home
     router.push("/");
   };
@@ -38,9 +38,9 @@ const AlgorithmCard = ({ categoryData, data }) => {
     // Get the first algorithm from the category
     const firstAlgo = Object.values(categoryData)[0];
     // Set the selected algorithm
+    changeCategory(data.name);
     changeAlgorithm(firstAlgo.id);
     // Set its parent category
-    changeCategory(data.name);
     // Navigate to home
     router.push("/");
   };
