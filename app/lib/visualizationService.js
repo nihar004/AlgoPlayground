@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 // API endpoint for Groq
 const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const MODEL = "llama-3.3-70b-versatile"; // Current model
 
 export async function checkVisualization(code) {

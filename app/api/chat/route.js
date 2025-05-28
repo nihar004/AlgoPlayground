@@ -1,5 +1,3 @@
-// const GROQ_API_KEY = "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";
-
 // export async function OPTIONS(request) {
 //   return new Response(null, {
 //     status: 200,
@@ -113,7 +111,7 @@
 
 import { NextResponse } from "next/server";
 
-const GROQ_API_KEY = "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";
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 export async function OPTIONS(request) {
   return new Response(null, {

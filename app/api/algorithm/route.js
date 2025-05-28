@@ -2,7 +2,6 @@
 
 // // API endpoint for Groq
 // const GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions";
-// const GROQ_API_KEY = "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";
 // const MODEL = "llama-3.3-70b-versatile"; // Current model
 
 // // Function to generate algorithm states based on code

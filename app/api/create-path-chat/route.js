@@ -6,7 +6,6 @@
 // // Although we'll use fetch here as per your example structure.
 
 // // const GROQ_API_KEY = process.env.GROQ_API_KEY; // Use environment variable
-// const GROQ_API_KEY = "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";
 
 // // CORS Headers - Reusable
 // const corsHeaders = {
@@ -195,7 +194,7 @@ import { NextResponse } from "next/server";
 // Ensure you have the Groq SDK installed if you switch from fetch: npm install groq-sdk
 
 // --- Environment Variable ---
-const GROQ_API_KEY = process.env.GROQ_API_KEY; // Use environment variable
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 // --- CORS Headers (Reusable) ---
 const corsHeaders = {
