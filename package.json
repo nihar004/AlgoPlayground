@@ -11,6 +11,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@prettier/plugin-python": "^0.0.0-development",
+    "@react-spring/three": "^10.0.1",
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.5.0",
