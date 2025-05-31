@@ -1,6 +1,5 @@
 # 🚀 AlgoPlayground - Complete DSA Learning Platform
-
-![AlgoPlayground Banner](https://via.placeholder.com/800x200/4f46e5/ffffff?text=AlgoPlayground+-+Master+DSA+with+Interactive+Learning)
+![logo_cropped](https://github.com/user-attachments/assets/10178ae8-efd7-4689-b73a-d99c492126d3)
 
 ## 📖 About
 
